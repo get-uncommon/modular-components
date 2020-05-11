@@ -1,0 +1,24 @@
+/* Document colors */
+
+:root {
+  --color-primary: #1f2ef5;
+  --color-secondary: #f9e8d5;
+  --color-light: #fff;
+  --color-dark: #000;
+}
+
+$primary: var(--color-primary) !default;
+$secondary: var(--color-secondary) !default;
+$light: var(--color-light) !default;
+$dark: var(--color-dark) !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    'primary': $primary,
+    'secondary': $secondary,
+    'light': $light,
+    'dark': $dark
+  ),
+  $theme-colors
+);

@@ -1,0 +1,47 @@
+/* Base Styling */
+
+body {
+  @include get-font-size(base);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-family-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+}
+
+::selection {
+  background-color: theme-color(primary);
+}
+
+// reset button defaults
+button {
+  -webkit-appearance: none;
+  padding: 0;
+  background: none;
+  border: 0;
+
+  &:focus { outline: none; }
+}
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+address,
+figure { margin-bottom: 0; }

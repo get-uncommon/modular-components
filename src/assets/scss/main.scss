@@ -1,0 +1,33 @@
+/* RFS (responsive font size) https://github.com/twbs/rfs */
+@import '~rfs/scss';
+
+/*  Functions */
+@import 'functions/colors';
+@import 'functions/get-value-if-key-exists';
+@import 'functions/rem';
+@import 'functions/strip-units';
+
+/* Mixins */
+@import 'mixins/get-font-size';
+@import 'mixins/gradient';
+@import 'mixins/headings';
+
+/* Config */
+@import 'config/colors';
+@import 'config/base';
+@import 'config/font-sizes';
+
+/* Reboot and normalize css */
+@import 'base/reboot';
+
+/*  Utilities (all) */
+@import 'utilities/utils';
+
+/* Base Styling */
+@import 'base/base';
+@import 'base/headings';
+
+/* Layout */
+@import 'layout/container';
+
+/* Global components here */

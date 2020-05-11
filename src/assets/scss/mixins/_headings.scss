@@ -1,0 +1,11 @@
+/* Mixin for all headings + classes */
+
+@mixin headings() {
+  @for $i from 1 through 6 {
+    .h#{$i},
+    h#{$i} {
+      @include get-font-size(#{h#{$i}});
+      @content;
+    }
+  }
+}

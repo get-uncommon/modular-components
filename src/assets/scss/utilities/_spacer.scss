@@ -1,0 +1,53 @@
+[class^=u-spacer-],
+.u-spacer {
+  position: relative;
+}
+
+[class^=u-spacer-negative-] {
+  z-index: 1;
+}
+
+@mixin spacer-query($max-width) {
+  @media (min-width: $max-width) {
+    @content;
+  }
+}
+
+@each $type, $prop in (inset: padding, outset: margin, negative: margin) {
+  $class: 'u-spacer-#{$type}';
+  $max: strip-units($u-spacer-max-value);
+  $max-width: $max * 10px;
+  $fluid: $max * .1vw;
+
+  // Use negative values for pull
+  @if $type == negative {
+    $fluid: -$fluid;
+    $max: -$max;
+  }
+
+  .#{$class}-y {
+    #{$prop}-top: $fluid;
+    #{$prop}-bottom: $fluid;
+
+    @include spacer-query($max-width) {
+      #{$prop}-top: rem($max);
+      #{$prop}-bottom: rem($max);
+    }
+  }
+
+  .#{$class}-t {
+    #{$prop}-top: $fluid;
+
+    @include spacer-query($max-width) {
+      #{$prop}-top: rem($max);
+    }
+  }
+
+  .#{$class}-b {
+    #{$prop}-bottom: $fluid;
+
+    @include spacer-query($max-width) {
+      #{$prop}-bottom: rem($max);
+    }
+  }
+}
