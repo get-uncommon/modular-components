@@ -1,7 +1,21 @@
 {
-  "name": "modular-components",
+  "name": "@get-uncommon/modular-components",
   "version": "0.1.0",
-  "private": true,
+  "main": "dist/modular-components.umd.min.js",
+  "unpkg": "dist/modular-components.umd.min.js",
+  "jsdelivr": "dist/modular-components.umd.min.js",
+  "author": "Uncommon",
+  "license": "Can only be used with UNCOMMON's permissions",
+  "description": "Awesome Uncommon component library",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "src/*",
+    "dist/*",
+    "package.json"
+  ],
+  "homepage": "https://getuncommon.digital/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
