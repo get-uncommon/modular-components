@@ -8,6 +8,9 @@ module.exports = {
         // Access config / mixins / variables and functions in .vue files
         prependData:
         `
+          @import '~bootstrap/scss/functions';
+          @import '~bootstrap/scss/variables';
+          @import '~bootstrap/scss/mixins';
           @import "~rfs/scss.scss";
           @import "~@/assets/scss/functions/_colors.scss";
           @import "~@/assets/scss/functions/_get-value-if-key-exists.scss";
