@@ -1,16 +1,18 @@
 /* Document colors */
 
 :root {
-  --color-primary: #1f2ef5;
-  --color-secondary: #f9e8d5;
+  --color-primary: #3a3f33;
+  --color-secondary: #bfc1bd;
   --color-light: #fff;
   --color-dark: #000;
+  --color-background: #f6eee2;
 }
 
 $primary: var(--color-primary) !default;
 $secondary: var(--color-secondary) !default;
 $light: var(--color-light) !default;
 $dark: var(--color-dark) !default;
+$background: var(--color-background) !default;
 
 $theme-colors: () !default;
 $theme-colors: map-merge(
@@ -18,7 +20,8 @@ $theme-colors: map-merge(
     'primary': $primary,
     'secondary': $secondary,
     'light': $light,
-    'dark': $dark
+    'dark': $dark,
+    'background': $background
   ),
   $theme-colors
 );

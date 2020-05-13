@@ -20,11 +20,11 @@ $headings-margin-bottom: .5em;
 $headings-font-family: $font-family-base;
 $headings-font-weight: bold;
 $headings-line-height: 1;
-$headings-color: theme-color(light);
+$headings-color: theme-color(dark);
 
 // Body
-$body-bg: theme-color(dark);
-$body-color: theme-color(light);
+$body-bg: theme-color(background);
+$body-color: theme-color(dark);
 
 // Links
 $link-color: theme-color(primary);
