@@ -54,6 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  /* Main CTA button */
   .button {
     display: inline-block;
     position: relative;
@@ -113,18 +114,23 @@ export default {
       }
     }
 
+    /* Setting button icon positions */
+    &.bordered .button--icon {
+      right: 16px;
+      background-color: var(--color-primary);
+    }
+    &.anchor .button--icon { right: -4px; }
+
+    /* Bordered button */
     &.bordered {
       padding: 22px 48px;
       color: var(--color-primary);
       background-color: transparent;
       border: 1px solid var(--color-primary);
+      transition: $transition-base;
 
       &::after {
         background-color: var(--color-primary);
-      }
-
-      .button--icon {
-        right: 16px;
       }
 
       &:hover {
@@ -132,6 +138,33 @@ export default {
 
         .button--icon {
           right: 10px;
+          background-color: var(--color-light);
+        }
+      }
+    }
+
+    /* Anchor link */
+    &.anchor {
+      padding: 0 28px 0 0;
+      overflow: visible;
+      color: var(--color-primary);
+      background-color: transparent;
+      border-radius: 0;
+
+      &::after {
+        top: auto;
+        bottom: 0;
+        height: 1px;
+        background-color: currentColor;
+      }
+
+      &:hover {
+        &::after {
+          width: calc(100% - 28px);
+        }
+
+        .button--icon {
+          right: -12px;
         }
       }
     }

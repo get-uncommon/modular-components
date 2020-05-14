@@ -13,6 +13,23 @@
         </Button>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <Button
+          type="anchor"
+        >
+          Lees verder
+        </Button>
+      </div>
+      <div class="col-md-6">
+        <Button
+          type="anchor"
+          href="#"
+        >
+          bekijk meer nieuws
+        </Button>
+      </div>
+    </div>
   </div>
 </template>
 
