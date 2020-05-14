@@ -1,7 +1,9 @@
 /*  Base Config */
 
+$helvetica: helvetica, 'Arial';
+
 :root {
-  --font-family-base: helvetica, 'Arial';
+  --font-family-base: #{$helvetica};
   --font-family-monospace: 'Courier New', courier, monospace;
 }
 
@@ -23,7 +25,7 @@ $headings-line-height: 1;
 $headings-color: theme-color(dark);
 
 // Body
-$body-bg: theme-color(background);
+$body-bg: theme-color(tertiary);
 $body-color: theme-color(dark);
 
 // Links
