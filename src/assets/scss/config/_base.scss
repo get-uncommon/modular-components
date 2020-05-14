@@ -1,8 +1,9 @@
 /*  Base Config */
 
+$helvetica: helvetica, 'Arial';
+
 :root {
-  --font-family-sans-serif: 'Arial', sans-serif;
-  --font-family-serif: 'Times New Roman', times, serif;
+  --font-family-base: #{$helvetica};
   --font-family-monospace: 'Courier New', courier, monospace;
 }
 
@@ -10,10 +11,8 @@
 $default-font-size: 16px;
 $font-size-base: rem(22px);
 $line-height-base: 1.8;
-$font-family-sans-serif: var(--font-family-sans-serif);
-$font-family-serif: var(--font-family-serif);
 $font-family-monospace: var(--font-family-monospace);
-$font-family-base: $font-family-sans-serif;
+$font-family-base: var(--font-family-base);
 // (optional) Responsive font size options
 $rfs-minimum-font-size: $default-font-size;
 $rfs-base-font-size: $default-font-size;
@@ -23,11 +22,11 @@ $headings-margin-bottom: .5em;
 $headings-font-family: $font-family-base;
 $headings-font-weight: bold;
 $headings-line-height: 1;
-$headings-color: theme-color(light);
+$headings-color: theme-color(dark);
 
 // Body
-$body-bg: theme-color(dark);
-$body-color: theme-color(light);
+$body-bg: theme-color(tertiary);
+$body-color: theme-color(dark);
 
 // Links
 $link-color: theme-color(primary);

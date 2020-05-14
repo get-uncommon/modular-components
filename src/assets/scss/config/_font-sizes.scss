@@ -1,16 +1,16 @@
 /*
- * Document font sizes using RFS (respnsive font size)
+ * Document font sizes using RFS (responsive font size)
  * Usage: @include get-font-size(base);
  */
 
 $font-sizes: () !default;
 $font-sizes: map-merge(
   (
-    'h1': 200px,
-    'h2': 100px,
-    'h3': 80px,
-    'h4': 50px,
-    'h5': 30px,
+    'h1': 100px,
+    'h2': 47px,
+    'h3': 37px,
+    'h4': 25px,
+    'h5': 20px,
     'h6': 18px,
     'base': $font-size-base
   ),
