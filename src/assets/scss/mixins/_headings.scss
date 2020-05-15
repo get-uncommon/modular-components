@@ -5,6 +5,7 @@
     .h#{$i},
     h#{$i} {
       @include get-font-size(#{h#{$i}});
+      @include get-line-height(#{h#{$i}});
       @content;
     }
   }

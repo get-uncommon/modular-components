@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+# Put all the data you need to load the components in the data folder
+data
+
 # local env files
 .env.local
 .env.*.local

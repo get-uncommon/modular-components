@@ -1,14 +1,22 @@
 /* Document colors */
 
+$kelp: #3a3f33;
+$grey: #bfc1bd;
+$beige: #f6eee2;
+$white: #fff;
+$black: #000;
+
 :root {
-  --color-primary: #1f2ef5;
-  --color-secondary: #f9e8d5;
-  --color-light: #fff;
-  --color-dark: #000;
+  --color-primary: #{$kelp};
+  --color-secondary: #{$grey};
+  --color-tertiary: #{$beige};
+  --color-light: #{$white};
+  --color-dark: #{$black};
 }
 
 $primary: var(--color-primary) !default;
 $secondary: var(--color-secondary) !default;
+$tertiary: var(--color-tertiary) !default;
 $light: var(--color-light) !default;
 $dark: var(--color-dark) !default;
 
@@ -17,6 +25,7 @@ $theme-colors: map-merge(
   (
     'primary': $primary,
     'secondary': $secondary,
+    'tertiary': $tertiary,
     'light': $light,
     'dark': $dark
   ),

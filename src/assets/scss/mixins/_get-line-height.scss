@@ -1,0 +1,9 @@
+@mixin get-line-height($key) {
+  @if map-has-key($line-heights, $key) {
+    line-height: map-get($line-heights, $key);
+  }
+
+  @else {
+    @warn 'Unknown `#{$key}` in $map.';
+  }
+}

@@ -1,0 +1,18 @@
+/*
+ * Document line heights
+ * Usage: @include get-line-height(base);
+ */
+
+$line-heights: () !default;
+$line-heights: map-merge(
+  (
+    'h1': 1,
+    'h2': 1.28,
+    'h3': 1.32,
+    'h4': 1.52,
+    'h5': 1.9,
+    'h6': $line-height-base,
+    'base': $line-height-base
+  ),
+  $line-heights
+);
