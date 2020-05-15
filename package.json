@@ -23,6 +23,8 @@
     "stylelint": "vue-cli-service lint:style --no-fix"
   },
   "dependencies": {
+    "@get-uncommon/modular-components": "^0.1.0-beta",
+    "bootstrap": "^4.5.0",
     "core-js": "^3.6.4",
     "normalize.css": "^8.0.1",
     "rfs": "^9.0.3",
