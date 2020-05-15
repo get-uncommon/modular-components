@@ -809,6 +809,16 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@get-uncommon/modular-components@^0.1.0-beta":
+  version "0.1.0-beta"
+  resolved "https://npm.pkg.github.com/download/@get-uncommon/modular-components/0.1.0-beta/d9e1dfb77e68723da83e05cd38f8ff23de64cb252a75845b6e55a76b16b84c02#8a10caf98fc5aa62d17d9fa3d0b5ceea1b9767f0"
+  integrity sha512-cWVJhBWW5dAvojbimky+s+rJ/qfH8jU6hHIciSGM1DtsoZFdZLuuGeGXfkRak9FzjLYSgf3P5J3XmZ8NxmKLFw==
+  dependencies:
+    core-js "^3.6.4"
+    normalize.css "^8.0.1"
+    rfs "^9.0.3"
+    vue "^2.6.11"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
