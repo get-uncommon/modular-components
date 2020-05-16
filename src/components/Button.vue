@@ -56,10 +56,12 @@ export default {
 <style scoped lang="scss">
 /* Main CTA button */
 .c-button {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
   z-index: 1;
-  padding: 22px 55px;
+  height: $button-height;
+  padding-right: $button-padding;
+  padding-left: $button-padding;
   overflow: hidden;
   font-style: normal;
   font-weight: bold;
@@ -68,7 +70,7 @@ export default {
   text-decoration: none;
   cursor: pointer;
   background-color: var(--color-primary);
-  border-radius: 9999px;
+  border-radius: $button-border-radius;
 
   @include get-font-size(button);
 
@@ -146,6 +148,7 @@ export default {
 
   /* Anchor link */
   &--anchor {
+    height: auto;
     padding: 0 28px 0 0;
     overflow: visible;
     color: var(--color-primary);
