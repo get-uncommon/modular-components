@@ -64,12 +64,12 @@ export default {
   padding-left: $button-padding;
   overflow: hidden;
   font-style: normal;
-  font-weight: bold;
+  font-weight: $action-font-weight;
   line-height: 1;
-  color: var(--color-light);
+  color: $button-color;
   text-decoration: none;
   cursor: pointer;
-  background-color: var(--color-primary);
+  background-color: $button-background-color;
   border-radius: $button-border-radius;
 
   @include get-font-size(button);
@@ -82,7 +82,7 @@ export default {
     width: 100%;
     height: 100%;
     content: '';
-    background-color: var(--color-dark);
+    background-color: $button-hover-color;
     opacity: 0;
     transition: $transition-base;
     transform: scale3d(0, 1, 1);
@@ -109,7 +109,7 @@ export default {
   /* Setting button icon positions */
   &--bordered .c-button__icon {
     right: 16px;
-    background-color: var(--color-primary);
+    background-color: $button-background-color;
   }
   &--anchor .c-button__icon { right: -4px; }
 
@@ -127,9 +127,9 @@ export default {
   /* Bordered button */
   &--bordered {
     padding: 22px 48px;
-    color: var(--color-primary);
+    color: $button-background-color;
     background-color: transparent;
-    border: 1px solid var(--color-primary);
+    border: 1px solid $button-background-color;
     transition: $transition-base;
 
     &::after {
@@ -151,7 +151,7 @@ export default {
     height: auto;
     padding: 0 28px 0 0;
     overflow: visible;
-    color: var(--color-primary);
+    color: $anchor-color;
     background-color: transparent;
     border-radius: 0;
 

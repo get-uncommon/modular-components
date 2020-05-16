@@ -10,6 +10,12 @@ $helvetica: helvetica, 'Arial';
   --button-height: 62px;
   --button-border-radius: 31px;
   --button-padding: 55px;
+  --button-color: #{$white};
+  --button-background-color: #{$kelp};
+  --button-hover-color: #{$black};
+
+  // anchors
+  --anchor-color: $kelp;
 
   // actions
   --action-font-weight: bold;
@@ -43,6 +49,12 @@ $u-spacer-max-value: 100px;
 $button-height: var(--button-height);
 $button-padding: var(--button-padding);
 $button-border-radius: var(--button-border-radius);
+$button-color: var(--button-color);
+$button-background-color: var(--button-background-color);
+$button-hover-color: var(--button-hover-color);
 
 // Actions
 $action-font-weight: var(--action-font-weight);
+
+// Anchor
+$anchor-color: var(--anchor-color);
