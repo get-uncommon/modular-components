@@ -77,12 +77,13 @@ export default {
     top: 0;
     left: 0;
     z-index: -1;
-    width: 0;
+    width: 100%;
     height: 100%;
     content: '';
     background-color: var(--color-dark);
     opacity: 0;
     transition: $transition-base;
+    transform: scale3d(0, 1, 1);
   }
 
   &--icon {
@@ -105,8 +106,8 @@ export default {
 
   &:hover {
     &::after {
-      width: 100%;
       opacity: 1;
+      transform: scale3d(1, 1, 1);
     }
 
     .button--icon {
@@ -154,18 +155,13 @@ export default {
     &::after {
       top: auto;
       bottom: 0;
+      width: calc(100% - 28px);
       height: 1px;
       background-color: currentColor;
     }
 
-    &:hover {
-      &::after {
-        width: calc(100% - 28px);
-      }
-
-      .button--icon {
-        right: -12px;
-      }
+    &:hover .button--icon {
+      right: -12px;
     }
   }
 }
