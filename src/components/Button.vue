@@ -1,25 +1,25 @@
 <template>
   <button
     v-if="!href"
-    :class="`button ${type} ${className}`"
+    :class="`c-button c-button--${type} ${className}`"
     :onClick="action"
   >
     <slot />
     <i
       v-if="icon"
-      class="button--icon"
+      class="c-button__icon"
     />
   </button>
   <a
     v-else
     :href="href"
-    :class="`button ${type} ${className}`"
+    :class="`c-button c-button--${type} ${className}`"
     :onClick="action"
   >
     <slot />
     <i
       v-if="icon"
-      class="button--icon"
+      class="c-button__icon"
     />
   </a>
 </template>
@@ -55,7 +55,7 @@ export default {
 
 <style scoped lang="scss">
 /* Main CTA button */
-.button {
+.c-button {
   display: inline-block;
   position: relative;
   z-index: 1;
@@ -86,7 +86,7 @@ export default {
     transform: scale3d(0, 1, 1);
   }
 
-  &--icon {
+  &__icon {
     position: absolute;
     top: 50%;
     right: 21px;
@@ -104,26 +104,26 @@ export default {
     }
   }
 
+  /* Setting button icon positions */
+  &--bordered .c-button__icon {
+    right: 16px;
+    background-color: var(--color-primary);
+  }
+  &--anchor .c-button__icon { right: -4px; }
+
   &:hover {
     &::after {
       opacity: 1;
       transform: scale3d(1, 1, 1);
     }
 
-    .button--icon {
+    .c-button__icon {
       right: 13px;
     }
   }
 
-  /* Setting button icon positions */
-  &.bordered .button--icon {
-    right: 16px;
-    background-color: var(--color-primary);
-  }
-  &.anchor .button--icon { right: -4px; }
-
   /* Bordered button */
-  &.bordered {
+  &--bordered {
     padding: 22px 48px;
     color: var(--color-primary);
     background-color: transparent;
@@ -137,7 +137,7 @@ export default {
     &:hover {
       color: var(--color-light);
 
-      .button--icon {
+      .c-button__icon {
         right: 10px;
         background-color: var(--color-light);
       }
@@ -145,7 +145,7 @@ export default {
   }
 
   /* Anchor link */
-  &.anchor {
+  &--anchor {
     padding: 0 28px 0 0;
     overflow: visible;
     color: var(--color-primary);
@@ -160,7 +160,7 @@ export default {
       background-color: currentColor;
     }
 
-    &:hover .button--icon {
+    &:hover .c-button__icon {
       right: -12px;
     }
   }
