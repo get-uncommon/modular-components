@@ -113,7 +113,10 @@ export default {
   }
   &--anchor .c-button__icon { right: -4px; }
 
+  &:focus,
   &:hover {
+    outline: 0;
+
     &::after {
       opacity: 1;
       transform: scale3d(1, 1, 1);
@@ -136,6 +139,7 @@ export default {
       background-color: var(--color-primary);
     }
 
+    &:focus,
     &:hover {
       color: var(--color-light);
 
@@ -163,8 +167,11 @@ export default {
       background-color: currentColor;
     }
 
-    &:hover .c-button__icon {
-      right: -12px;
+    &:focus,
+    &:hover {
+      .c-button__icon {
+        right: -12px;
+      }
     }
   }
 }
