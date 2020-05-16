@@ -1,7 +1,7 @@
 <template>
   <button
     v-if="!href"
-    :class="'button ' + type + ' ' + className"
+    :class="`button ${type} ${className}`"
     :onClick="action"
   >
     <slot />
@@ -13,7 +13,7 @@
   <a
     v-else
     :href="href"
-    :class="'button ' + type + ' ' + className"
+    :class="`button ${type} ${className}`"
     :onClick="action"
   >
     <slot />
@@ -25,9 +25,9 @@
 </template>
 
 <script>
-
 export default {
   name: 'Button',
+
   props: {
     type: {
       type: String,
@@ -54,119 +54,119 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  /* Main CTA button */
-  .button {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    padding: 22px 55px;
-    overflow: hidden;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 1;
-    color: var(--color-light);
-    text-decoration: none;
-    cursor: pointer;
-    background-color: var(--color-primary);
-    border-radius: 9999px;
+/* Main CTA button */
+.button {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 22px 55px;
+  overflow: hidden;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--color-light);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  border-radius: 9999px;
 
-    @include get-font-size(button);
+  @include get-font-size(button);
 
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 0;
+    height: 100%;
+    content: '';
+    background-color: var(--color-dark);
+    opacity: 0;
+    transition: $transition-base;
+  }
+
+  &--icon {
+    position: absolute;
+    top: 50%;
+    right: 21px;
+    width: 16px;
+    height: 12px;
+    background-color: currentColor;
+    transition: $transition-base;
+    transform: translate(-50%, -50%);
+    -webkit-mask: url(../assets/images/arrow.svg) no-repeat center;
+    mask: url(../assets/images/arrow.svg) no-repeat center;
+
+    path {
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+
+  &:hover {
     &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 0;
-      height: 100%;
-      content: '';
-      background-color: var(--color-dark);
-      opacity: 0;
-      transition: $transition-base;
+      width: 100%;
+      opacity: 1;
     }
 
-    &--icon {
-      position: absolute;
-      top: 50%;
-      right: 21px;
-      width: 16px;
-      height: 12px;
-      background-color: currentColor;
-      transition: $transition-base;
-      transform: translate(-50%, -50%);
-      -webkit-mask: url(../assets/images/arrow.svg) no-repeat center;
-      mask: url(../assets/images/arrow.svg) no-repeat center;
+    .button--icon {
+      right: 13px;
+    }
+  }
 
-      path {
-        fill: currentColor;
-        stroke: currentColor;
+  /* Setting button icon positions */
+  &.bordered .button--icon {
+    right: 16px;
+    background-color: var(--color-primary);
+  }
+  &.anchor .button--icon { right: -4px; }
+
+  /* Bordered button */
+  &.bordered {
+    padding: 22px 48px;
+    color: var(--color-primary);
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    transition: $transition-base;
+
+    &::after {
+      background-color: var(--color-primary);
+    }
+
+    &:hover {
+      color: var(--color-light);
+
+      .button--icon {
+        right: 10px;
+        background-color: var(--color-light);
       }
+    }
+  }
+
+  /* Anchor link */
+  &.anchor {
+    padding: 0 28px 0 0;
+    overflow: visible;
+    color: var(--color-primary);
+    background-color: transparent;
+    border-radius: 0;
+
+    &::after {
+      top: auto;
+      bottom: 0;
+      height: 1px;
+      background-color: currentColor;
     }
 
     &:hover {
       &::after {
-        width: 100%;
-        opacity: 1;
+        width: calc(100% - 28px);
       }
 
       .button--icon {
-        right: 13px;
-      }
-    }
-
-    /* Setting button icon positions */
-    &.bordered .button--icon {
-      right: 16px;
-      background-color: var(--color-primary);
-    }
-    &.anchor .button--icon { right: -4px; }
-
-    /* Bordered button */
-    &.bordered {
-      padding: 22px 48px;
-      color: var(--color-primary);
-      background-color: transparent;
-      border: 1px solid var(--color-primary);
-      transition: $transition-base;
-
-      &::after {
-        background-color: var(--color-primary);
-      }
-
-      &:hover {
-        color: var(--color-light);
-
-        .button--icon {
-          right: 10px;
-          background-color: var(--color-light);
-        }
-      }
-    }
-
-    /* Anchor link */
-    &.anchor {
-      padding: 0 28px 0 0;
-      overflow: visible;
-      color: var(--color-primary);
-      background-color: transparent;
-      border-radius: 0;
-
-      &::after {
-        top: auto;
-        bottom: 0;
-        height: 1px;
-        background-color: currentColor;
-      }
-
-      &:hover {
-        &::after {
-          width: calc(100% - 28px);
-        }
-
-        .button--icon {
-          right: -12px;
-        }
+        right: -12px;
       }
     }
   }
+}
 </style>
