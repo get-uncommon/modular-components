@@ -31,7 +31,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: () => 'cta',
+      default: 'cta',
     },
     action: {
       type: Function,
@@ -39,15 +39,15 @@ export default {
     },
     href: {
       type: String,
-      default: () => null,
+      default: null,
     },
     className: {
-      type: Array,
-      default: () => [],
+      type: String,
+      default: null,
     },
     icon: {
       type: Boolean,
-      default: () => true,
+      default: true,
     },
   },
 };
