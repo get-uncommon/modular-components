@@ -109,7 +109,7 @@ export default {
     width: 16px;
     height: 12px;
     transition: $transition-base;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translateX(0);
   }
 
   /* Setting button icon positions */
@@ -128,7 +128,7 @@ export default {
     }
 
     .c-button__icon {
-      right: 13px;
+      transform: translate(-50%, -50%) translateX(8px);
     }
   }
 
@@ -147,10 +147,6 @@ export default {
     &:focus,
     &:hover {
       color: var(--color-light);
-
-      .c-button__icon {
-        right: 10px;
-      }
     }
   }
 
@@ -166,7 +162,7 @@ export default {
     &::after {
       top: auto;
       bottom: 0;
-      width: 100%;
+      width: 1;
       height: 1px;
       background-color: currentColor;
     }
@@ -176,13 +172,6 @@ export default {
 
       &::after {
         width: calc(100% - 28px);
-      }
-    }
-
-    &:focus,
-    &:hover {
-      .c-button__icon {
-        right: -12px;
       }
     }
   }
