@@ -9,7 +9,6 @@
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
-      color="currentColor"
     />
   </component>
   <button
@@ -21,7 +20,6 @@
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
-      color="currentColor"
     />
   </button>
   <a
@@ -34,7 +32,6 @@
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
-      color="currentColor"
     />
   </a>
 </template>
@@ -115,6 +112,7 @@ export default {
   /* Setting button icon positions */
   &--bordered .c-button__icon {
     right: 16px;
+    fill: var(--color-primary);
   }
   &--anchor .c-button__icon { right: -4px; }
 
@@ -147,6 +145,10 @@ export default {
     &:focus,
     &:hover {
       color: var(--color-light);
+
+      .c-button__icon {
+        fill: var(--color-light);
+      }
     }
   }
 
@@ -162,7 +164,6 @@ export default {
     &::after {
       top: auto;
       bottom: 0;
-      width: 1;
       height: 1px;
       background-color: currentColor;
     }
