@@ -6,6 +6,7 @@
       </div>
       <div class="col-md-6">
         <Button
+          as="div"
           class="extra--class"
           type="bordered"
           href="#"
@@ -41,6 +42,7 @@ import Button from './components/Button.vue';
 
 export default {
   name: 'App',
+
   components: { Button },
 };
 </script>

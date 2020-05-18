@@ -1,6 +1,17 @@
 <template>
+  <component
+    :is="as"
+    v-if="as"
+    :class="`c-button c-button--${type}`"
+  >
+    <slot />
+    <i
+      v-if="icon"
+      class="c-button__icon"
+    />
+  </component>
   <button
-    v-if="!href"
+    v-else-if="!href"
     :class="`c-button c-button--${type}`"
   >
     <slot />
@@ -38,6 +49,10 @@ export default {
     icon: {
       type: Boolean,
       default: true,
+    },
+    as: {
+      type: String,
+      default: null,
     },
   },
 };
