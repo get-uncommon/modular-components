@@ -21,19 +21,6 @@ button {
   padding: 0;
   background: none;
   border: 0;
-
-  &:focus { outline: none; }
-}
-
-a {
-  color: $link-color;
-  text-decoration: $link-decoration;
-
-  &:hover,
-  &:focus {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-  }
 }
 
 img,
@@ -45,3 +32,18 @@ svg {
 
 address,
 figure { margin-bottom: 0; }
+
+.svg-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+}
+
+.svg-fill {
+  fill: currentColor;
+  stroke: none;
+}

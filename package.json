@@ -6,14 +6,16 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "stylelint": "vue-cli-service lint:style --no-fix"
+    "stylelint": "vue-cli-service lint:style --no-fix",
+    "svg": "vsvg -s ./static/svg/src -t ./src/icons"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.4",
     "normalize.css": "^8.0.1",
     "rfs": "^9.0.3",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-svgicon": "^3.2.6"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
