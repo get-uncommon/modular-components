@@ -5,9 +5,10 @@
     :class="`c-button c-button--${type}`"
   >
     <slot />
-    <i
-      v-if="icon"
+    <svgicon
       class="c-button__icon"
+      icon="arrow"
+      color="currentColor"
     />
   </component>
   <button
@@ -15,9 +16,10 @@
     :class="`c-button c-button--${type}`"
   >
     <slot />
-    <i
-      v-if="icon"
+    <svgicon
       class="c-button__icon"
+      icon="arrow"
+      color="currentColor"
     />
   </button>
   <a
@@ -26,14 +28,17 @@
     :class="`c-button c-button--${type}`"
   >
     <slot />
-    <i
-      v-if="icon"
+    <svgicon
       class="c-button__icon"
+      icon="arrow"
+      color="currentColor"
     />
   </a>
 </template>
 
 <script>
+import '../icons/arrow';
+
 export default {
   name: 'Button',
 
@@ -65,6 +70,7 @@ export default {
   position: relative;
   z-index: 1;
   height: $button-height;
+  align-items: center;
   padding-right: $button-padding;
   padding-left: $button-padding;
   overflow: hidden;
@@ -99,22 +105,13 @@ export default {
     right: 21px;
     width: 16px;
     height: 12px;
-    background-color: currentColor;
     transition: $transition-base;
     transform: translate(-50%, -50%);
-    -webkit-mask: url(../assets/images/arrow.svg) no-repeat center;
-    mask: url(../assets/images/arrow.svg) no-repeat center;
-
-    path {
-      fill: currentColor;
-      stroke: currentColor;
-    }
   }
 
   /* Setting button icon positions */
   &--bordered .c-button__icon {
     right: 16px;
-    background-color: $button-background-color;
   }
   &--anchor .c-button__icon { right: -4px; }
 
@@ -150,7 +147,6 @@ export default {
 
       .c-button__icon {
         right: 10px;
-        background-color: var(--color-light);
       }
     }
   }
