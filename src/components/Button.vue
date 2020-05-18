@@ -2,35 +2,38 @@
   <component
     :is="as"
     v-if="as"
-    :class="`c-button c-button--${type}`"
+    :class="`c-button c-button--${type} ${icon && `c-button--${type}--with-icon`}`"
   >
     <slot />
     <svgicon
+      v-if="icon"
       class="c-button__icon"
-      icon="arrow"
+      :icon="icon"
       color="currentColor"
     />
   </component>
   <button
     v-else-if="!href"
-    :class="`c-button c-button--${type}`"
+    :class="`c-button c-button--${type}  ${icon && `c-button--${type}--with-icon`}`"
   >
     <slot />
     <svgicon
+      v-if="icon"
       class="c-button__icon"
-      icon="arrow"
+      :icon="icon"
       color="currentColor"
     />
   </button>
   <a
     v-else
     :href="href"
-    :class="`c-button c-button--${type}`"
+    :class="`c-button c-button--${type} ${icon && `c-button--${type}--with-icon`}`"
   >
     <slot />
     <svgicon
+      v-if="icon"
       class="c-button__icon"
-      icon="arrow"
+      :icon="icon"
       color="currentColor"
     />
   </a>
@@ -52,8 +55,8 @@ export default {
       default: null,
     },
     icon: {
-      type: Boolean,
-      default: true,
+      type: String,
+      default: null,
     },
     as: {
       type: String,
@@ -154,7 +157,7 @@ export default {
   /* Anchor link */
   &--anchor {
     height: auto;
-    padding: 0 28px 0 0;
+    padding: 0;
     overflow: visible;
     color: $anchor-color;
     background-color: transparent;
@@ -163,9 +166,17 @@ export default {
     &::after {
       top: auto;
       bottom: 0;
-      width: calc(100% - 28px);
+      width: 100%;
       height: 1px;
       background-color: currentColor;
+    }
+
+    &--with-icon {
+      padding: 0 28px 0 0;
+
+      &::after {
+        width: calc(100% - 28px);
+      }
     }
 
     &:focus,

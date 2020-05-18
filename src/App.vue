@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <Button>lees verder</Button>
+        <Button icon="arrow">lees verder</Button>
       </div>
       <div class="col-md-6">
         <Button
@@ -11,6 +11,7 @@
           type="bordered"
           href="#"
           target="_blank"
+          icon="arrow"
         >
           bekijk meer nieuws
         </Button>
@@ -20,6 +21,7 @@
       <div class="col-md-6">
         <Button
           type="anchor"
+          icon="arrow"
         >
           Lees verder
         </Button>
