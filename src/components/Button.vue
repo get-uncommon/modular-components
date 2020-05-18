@@ -1,8 +1,7 @@
 <template>
   <button
     v-if="!href"
-    :class="`c-button c-button--${type} ${className}`"
-    :onClick="action"
+    :class="`c-button c-button--${type}`"
   >
     <slot />
     <i
@@ -13,8 +12,7 @@
   <a
     v-else
     :href="href"
-    :class="`c-button c-button--${type} ${className}`"
-    :onClick="action"
+    :class="`c-button c-button--${type}`"
   >
     <slot />
     <i
@@ -33,15 +31,7 @@ export default {
       type: String,
       default: 'cta',
     },
-    action: {
-      type: Function,
-      default: () => null,
-    },
     href: {
-      type: String,
-      default: null,
-    },
-    className: {
       type: String,
       default: null,
     },

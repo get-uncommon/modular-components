@@ -6,8 +6,10 @@
       </div>
       <div class="col-md-6">
         <Button
+          class="extra--class"
           type="bordered"
           href="#"
+          target="_blank"
         >
           bekijk meer nieuws
         </Button>
