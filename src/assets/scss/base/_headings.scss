@@ -12,3 +12,8 @@
 @include headings {
   @extend %headings;
 }
+
+h1,
+.h1 {
+  font-family: var(--font-family-secondary);
+}

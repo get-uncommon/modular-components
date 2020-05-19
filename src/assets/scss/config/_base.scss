@@ -1,9 +1,10 @@
 /*  Base Config */
 
-$helvetica: helvetica, 'Arial';
+$openSans: 'Open Sans', sans-serif;
 
 :root {
-  --font-family-base: #{$helvetica};
+  --font-family-base: #{$openSans};
+  --font-family-secondary: #{$openSans};
   --font-family-monospace: 'Courier New', courier, monospace;
 
   // buttons
