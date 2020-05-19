@@ -1,15 +1,33 @@
-.u-margin-top {
-  margin-top: var(--spacing-base);
-}
+.u-margin {
+  &-top {
+    margin-top: var(--spacing-base);
 
-.u-margin-bottom {
-  margin-bottom: var(--spacing-base);
-}
+    &--big {
+      margin-top: var(--spacing-big);
+    }
+  }
 
-.u-margin-left {
-  margin-left: var(--spacing-base);
-}
+  &-bottom {
+    margin-bottom: var(--spacing-base);
 
-.u-margin-right {
-  margin-right: var(--spacing-base);
+    &--big {
+      margin-bottom: var(--spacing-big);
+    }
+  }
+
+  &-left {
+    margin-left: var(--spacing-base);
+
+    &--big {
+      margin-left: var(--spacing-big);
+    }
+  }
+
+  &-right {
+    margin-right: var(--spacing-base);
+
+    &--big {
+      margin-right: var(--spacing-big);
+    }
+  }
 }

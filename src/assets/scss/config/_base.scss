@@ -3,12 +3,15 @@
 $openSans: 'Open Sans', sans-serif;
 
 :root {
+  // Text
   --font-family-base: #{$openSans};
   --font-family-secondary: #{$openSans};
   --font-family-monospace: 'Courier New', courier, monospace;
+  --font-weight-bold: 600;
 
   // Margins and padding
   --spacing-base: 24px;
+  --spacing-big: 50px;
 
   // buttons
   --button-height: 62px;
