@@ -1,6 +1,6 @@
 <template>
-  <div class="l-container">
-    <div class="row">
+  <div class="l-container u-margin-bottom--big u-margin-top--big">
+    <div class="row  u-margin-bottom--big">
       <div class="col-md-6">
         <Button icon="arrow">
           lees verder
@@ -19,7 +19,7 @@
         </Button>
       </div>
     </div>
-    <div class="row">
+    <div class="row u-margin-bottom--big">
       <div class="col-md-6">
         <Button
           type="anchor"
@@ -60,9 +60,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-  .row {
-    margin-top: 50px;
-  }
-</style>

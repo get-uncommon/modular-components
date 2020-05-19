@@ -71,6 +71,7 @@ export default {
     position: relative;
     z-index: 1;
     margin-bottom: -12px;
+    text-align: center;
   }
 
   &__image {
