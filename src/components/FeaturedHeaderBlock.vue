@@ -1,9 +1,9 @@
 <template>
   <div class="row">
     <h1 class="col-md-8 offset-2 header__title">
-      {{title}}
+      {{ title }}
     </h1>
-    <div class="col-md-10 offset-1">
+    <div v-if="img" class="col-md-10 offset-1">
       <div class="header__image">
         <img
           :src="img"
@@ -11,12 +11,30 @@
         >
       </div>
     </div>
+    <div class="header__bottom">
+      <p
+        v-if="body"
+        class="col-md-8 offset-2 h4 u-margin-top u-margin-bottom"
+      >
+        {{ body }}
+      </p>
+      <Button
+        v-if="buttonText"
+        v-bind="buttonProps"
+      >
+        {{ buttonText }}
+      </Button>
+    </div>
   </div>
 </template>
 
 <script>
+import Button from './Button.vue';
+
 export default {
   name: 'FeaturedHeaderBlock',
+
+  components: { Button },
 
   props: {
     title: {
@@ -35,31 +53,43 @@ export default {
       type: String,
       default: null,
     },
+    buttonText: {
+      type: String,
+      default: null,
+    },
+    buttonProps: {
+      type: Object,
+      default: () => {},
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  .header {
-    &__title {
-      position: relative;
-      z-index: 1;
-      margin-bottom: -12px;
-    }
+.header {
+  &__title {
+    position: relative;
+    z-index: 1;
+    margin-bottom: -12px;
+  }
 
-    &__image {
-      position: relative;
-      width: 100%;
-      padding-bottom: 66%;
-      overflow: hidden;
+  &__image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66%;
+    overflow: hidden;
 
-      img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        object-fit: cover;
-      }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
     }
   }
+
+  &__bottom {
+    text-align: center;
+  }
+}
 </style>

@@ -41,6 +41,8 @@
       title="a new model for companies"
       body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper aliquam iaculis. Pellentesque eu nisi euismod lorem malesuada aliquet."
       :img="require('./assets/images/Training_Fitlab.jpg')"
+      button-text="lees verder"
+      :button-props="{icon: 'arrow'}"
     />
   </div>
 </template>
