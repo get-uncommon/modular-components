@@ -1,8 +1,10 @@
 <template>
-  <div class="container">
+  <div class="l-container">
     <div class="row">
       <div class="col-md-6">
-        <Button icon="arrow">lees verder</Button>
+        <Button icon="arrow">
+          lees verder
+        </Button>
       </div>
       <div class="col-md-6">
         <Button
@@ -35,16 +37,25 @@
         </Button>
       </div>
     </div>
+    <FeaturedHeaderBlock
+      title="a new model for companies"
+      body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper aliquam iaculis. Pellentesque eu nisi euismod lorem malesuada aliquet."
+      :img="require('./assets/images/Training_Fitlab.jpg')"
+    />
   </div>
 </template>
 
 <script>
 import Button from './components/Button.vue';
+import FeaturedHeaderBlock from './components/FeaturedHeaderBlock.vue';
 
 export default {
   name: 'App',
 
-  components: { Button },
+  components: {
+    Button,
+    FeaturedHeaderBlock,
+  },
 };
 </script>
 
