@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <h1 class="col-md-8 offset-2 header__title">
+    <h1 class="col-md-8 offset-md-2 header__title">
       {{ title }}
     </h1>
-    <div v-if="img" class="col-md-10 offset-1">
+    <div v-if="img" class="col-md-10 offset-md-1">
       <div class="header__image">
         <img
           :src="img"
@@ -14,7 +14,7 @@
     <div class="header__bottom">
       <p
         v-if="body"
-        class="col-md-8 offset-2 h4 u-margin-top u-margin-bottom"
+        class="col-md-8 offset-md-2 h4 u-margin-top--big u-margin-bottom--big"
       >
         {{ body }}
       </p>
