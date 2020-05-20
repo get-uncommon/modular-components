@@ -70,8 +70,12 @@ export default {
   &__title {
     position: relative;
     z-index: 1;
-    margin-bottom: -12px;
+    margin-bottom: -4px;
     text-align: center;
+
+    @include media-breakpoint-up(xl) {
+      margin-bottom: -12px;
+    }
   }
 
   &__image {

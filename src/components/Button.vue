@@ -83,7 +83,11 @@ export default {
   background-color: $button-background-color;
   border-radius: $button-border-radius;
 
-  @include get-font-size(button);
+  @include get-responsive-font-size(button);
+
+  @include media-breakpoint-up(xl) {
+    @include get-font-size(button);
+  }
 
   &::after {
     position: absolute;
