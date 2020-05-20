@@ -80,6 +80,7 @@
 <script>
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
+import FeaturedSingle from './components/FeaturedSingle.vue';
 import TextBlocks from './components/TextBlocks.vue';
 
 export default {
@@ -88,6 +89,7 @@ export default {
   components: {
     Button,
     FeaturedHeaderBlock,
+    FeaturedSingle,
     TextBlocks,
   },
 };
