@@ -59,14 +59,14 @@
           buttonText: 'Lees meer',
           buttonProps: {icon: 'arrow'},
         },
-          {
+        {
           title: 'Lorum porem facero eatibusae',
           body: 'In egestas quis lectus ut mollis. Proin tincidunt diam at nisl bibendum rutrum. Sed condimentum diam faucibus, congue' +
             ' odio ut, vestibulum enim. Integer eu ex nisl. Nam blandit scelerisque purus a elementum. Vestibulum efficitur pellentesque lorem.',
           buttonText: 'Lees meer',
           buttonProps: {icon: 'arrow'},
         },
-          {
+        {
           title: 'Donor porem facero eatibusae',
           body: 'In egestas quis lectus ut mollis. Proin tincidunt diam at nisl bibendum rutrum. Sed condimentum diam faucibus, congue',
           buttonText: 'Lees meer',
