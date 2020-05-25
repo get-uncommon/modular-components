@@ -14,7 +14,7 @@
     <div class="header__bottom">
       <p
         v-if="body"
-        class="col-md-8 offset-md-2 h4 u-margin-top--big u-margin-bottom--big"
+        class="col-md-8 offset-md-2 h4 u-margin-top-lg u-margin-bottom-lg"
       >
         {{ body }}
       </p>

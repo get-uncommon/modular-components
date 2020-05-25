@@ -1,6 +1,6 @@
 <template>
-  <div class="l-container u-margin-bottom--big u-margin-top--big">
-    <div class="row  u-margin-bottom--big">
+  <div class="l-container u-margin-bottom-lg u-margin-top-lg">
+    <div class="row  u-margin-bottom-lg">
       <div class="col-md-6">
         <Button icon="arrow">
           lees verder
@@ -19,7 +19,7 @@
         </Button>
       </div>
     </div>
-    <div class="row u-margin-bottom--big">
+    <div class="row u-margin-bottom-lg">
       <div class="col-md-6">
         <Button
           type="anchor"

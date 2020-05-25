@@ -1,33 +1,24 @@
+$spacers: (
+  base: var(--spacing-base),
+  lg: var(--spacing-lg)
+);
+
 .u-margin {
-  &-top {
-    margin-top: var(--spacing-base);
-
-    &--big {
-      margin-top: var(--spacing-big);
+  @each $key, $value in $spacers {
+    &-top-#{$key} {
+      margin-top: $value;
     }
-  }
 
-  &-bottom {
-    margin-bottom: var(--spacing-base);
-
-    &--big {
-      margin-bottom: var(--spacing-big);
+    &-right-#{$key} {
+      margin-right: $value;
     }
-  }
 
-  &-left {
-    margin-left: var(--spacing-base);
-
-    &--big {
-      margin-left: var(--spacing-big);
+    &-bottom-#{$key} {
+      margin-bottom: $value;
     }
-  }
 
-  &-right {
-    margin-right: var(--spacing-base);
-
-    &--big {
-      margin-right: var(--spacing-big);
+    &-left-#{$key} {
+      margin-left: $value;
     }
   }
 }
