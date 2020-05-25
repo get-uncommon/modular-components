@@ -40,7 +40,7 @@
     <FeaturedHeaderBlock
       title="a new model for companies"
       body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper aliquam iaculis. Pellentesque eu nisi euismod lorem malesuada aliquet."
-      :img="require('./assets/images/Training_Fitlab.jpg')"
+      :img="require('@/assets/images/Training_Fitlab.jpg')"
       button-text="lees verder"
       :button-props="{icon: 'arrow'}"
     />
@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import Button from './components/Button.vue';
-import FeaturedHeaderBlock from './components/FeaturedHeaderBlock.vue';
+import Button from '@/components/Button.vue';
+import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 
 export default {
   name: 'App',

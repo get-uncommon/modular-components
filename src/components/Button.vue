@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import '../icons/arrow';
+import '@/icons/arrow';
 
 export default {
   name: 'Button',
