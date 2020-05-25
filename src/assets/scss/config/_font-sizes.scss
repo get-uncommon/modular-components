@@ -30,8 +30,8 @@ $base: 18;
   --font-size-h4-responsive: calc(#{$h4 / 2 + px} + 100vw / 1200 * #{$h4} / 2);
   --font-size-h5-responsive: calc(#{$h5 / 2 + px} + 100vw / 1200 * #{$h5} / 2);
   --font-size-h6-responsive: calc(#{$h6 / 2 + px} + 100vw / 1200 * #{$h6} / 2);
-  --font-size-button-responsive: calc(#{$button / 2 + px} + 100vw / 1200 * #{$button} / 2);
-  --font-size-base-responsive: calc(#{$base / 2 + px} + 100vw / 1200 * #{$base} / 2);
+  --font-size-button-responsive: $button + px;
+  --font-size-base-responsive: base + px;
 }
 
 $font-sizes: () !default;
