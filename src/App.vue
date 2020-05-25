@@ -47,6 +47,17 @@
           :button-props="{icon: 'arrow'}"
         />
       </div>
+      <FeaturedSingle
+        :main-image="require('@/assets/images/business_fitlab.png')"
+        main-image-alt="Wow cool image"
+        :secondary-image="require('@/assets/images/training_for_her.png')"
+        secondary-image-alt="Wowowo what an image"
+        title="A new model for building companies"
+        body="This is going to be the paragraph text but it is quite long so I will just keep on typing for just a second in order to fill some more space on this paragraph."
+        button-text="lees verder"
+        :button-props="{type: 'anchor', icon: 'arrow'}"
+        class="row"
+      />
     </div>
     <TextBlocks
       class="u-margin-bottom-xl"
