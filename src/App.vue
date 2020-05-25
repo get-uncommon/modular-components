@@ -48,7 +48,7 @@
         />
       </div>
     </div>
-    <Services
+    <TextBlocks
       class="u-margin-bottom-xl"
       title="a new model for building companies"
       :services="[
@@ -80,7 +80,7 @@
 <script>
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
-import Services from './components/Services.vue';
+import TextBlocks from './components/TextBlocks.vue';
 
 export default {
   name: 'App',
@@ -88,7 +88,7 @@ export default {
   components: {
     Button,
     FeaturedHeaderBlock,
-    Services,
+    TextBlocks,
   },
 };
 </script>

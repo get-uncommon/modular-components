@@ -34,7 +34,7 @@
 import Button from './Button.vue';
 
 export default {
-  name: 'Services',
+  name: 'TextBlocks',
 
   components: { Button },
 
@@ -53,11 +53,11 @@ export default {
 
 <style scoped lang="scss">
 $offset: 89px;
-$offsetMob: 72px;
+$offset-mob: 72px;
 
 .services {
   display: grid;
-  padding-top: $offsetMob;
+  padding-top: $offset-mob;
 
   @include media-breakpoint-up(lg) {
     padding-top: $offset;
@@ -69,7 +69,7 @@ $offsetMob: 72px;
   }
 
   &__title {
-    margin-top: -#{$offsetMob};
+    margin-top: -#{$offset-mob};
 
     @include media-breakpoint-up(lg) {
       margin-top: -#{$offset};
