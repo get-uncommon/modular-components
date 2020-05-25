@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div>
     <h1 class="col-md-8 offset-md-2 header__title">
       {{ title }}
     </h1>
