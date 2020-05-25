@@ -1,10 +1,17 @@
 /*  Base Config */
 
-$helvetica: helvetica, 'Arial';
+$open-sans: 'Open Sans', sans-serif;
 
 :root {
-  --font-family-base: #{$helvetica};
+  // Text
+  --font-family-base: #{$open-sans};
+  --font-family-secondary: #{$open-sans};
   --font-family-monospace: 'Courier New', courier, monospace;
+  --font-weight-bold: 600;
+
+  // Margins and padding
+  --spacing-base: 24px;
+  --spacing-lg: 50px;
 
   // buttons
   --button-height: 62px;
@@ -23,7 +30,7 @@ $helvetica: helvetica, 'Arial';
 
 // Type
 $default-font-size: 16px;
-$font-size-base: rem(22px);
+$font-size-base: rem(18px);
 $line-height-base: 1.8;
 $font-family-monospace: var(--font-family-monospace);
 $font-family-base: var(--font-family-base);

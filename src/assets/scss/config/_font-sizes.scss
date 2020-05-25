@@ -3,15 +3,35 @@
  * Usage: @include get-font-size(base);
  */
 
+$h1: 100;
+$h2: 47;
+$h3: 37;
+$h4: 25;
+$h5: 20;
+$h6: 18;
+$button: 17;
+$base: 18;
+
 :root {
-  --font-size-h1: 100px;
-  --font-size-h2: 47px;
-  --font-size-h3: 37px;
-  --font-size-h4: 25px;
-  --font-size-h5: 20px;
-  --font-size-h6: 18px;
-  --font-size-button: 17px;
-  --font-size-base: #{$font-size-base};
+  // Regular font sizes
+  --font-size-h1: #{$h1 + 'px'};
+  --font-size-h2: #{$h2 + 'px'};
+  --font-size-h3: #{$h3 + 'px'};
+  --font-size-h4: #{$h4 + 'px'};
+  --font-size-h5: #{$h5 + 'px'};
+  --font-size-h6: #{$h6 + 'px'};
+  --font-size-button: #{$button + 'px'};
+  --font-size-base: #{$base + 'px'};
+
+  // Responsive font sizes
+  --font-size-h1-responsive: calc(#{$h1 / 2 + px} + 100vw / 1200 * #{$h1} / 2);
+  --font-size-h2-responsive: calc(#{$h2 / 2 + px} + 100vw / 1200 * #{$h2} / 2);
+  --font-size-h3-responsive: calc(#{$h3 / 2 + px} + 100vw / 1200 * #{$h3} / 2);
+  --font-size-h4-responsive: calc(#{$h4 / 2 + px} + 100vw / 1200 * #{$h4} / 2);
+  --font-size-h5-responsive: calc(#{$h5 / 2 + px} + 100vw / 1200 * #{$h5} / 2);
+  --font-size-h6-responsive: calc(#{$h6 / 2 + px} + 100vw / 1200 * #{$h6} / 2);
+  --font-size-button-responsive: calc(#{$button / 2 + px} + 100vw / 1200 * #{$button} / 2);
+  --font-size-base-responsive: calc(#{$base / 2 + px} + 100vw / 1200 * #{$base} / 2);
 }
 
 $font-sizes: () !default;
@@ -27,4 +47,19 @@ $font-sizes: map-merge(
     'base': var(--font-size-base)
   ),
   $font-sizes
+);
+
+$responsive-font-sizes: () !default;
+$responsive-font-sizes: map-merge(
+  (
+    'h1': var(--font-size-h1-responsive),
+    'h2': var(--font-size-h2-responsive),
+    'h3': var(--font-size-h3-responsive),
+    'h4': var(--font-size-h4-responsive),
+    'h5': var(--font-size-h5-responsive),
+    'h6': var(--font-size-h6-responsive),
+    'button': var(--font-size-button-responsive),
+    'base': var(--font-size-base-responsive)
+  ),
+  $responsive-font-sizes
 );

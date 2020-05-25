@@ -1,8 +1,10 @@
 <template>
-  <div class="container">
-    <div class="row">
+  <div class="container u-margin-bottom-lg u-margin-top-lg">
+    <div class="row  u-margin-bottom-lg">
       <div class="col-md-6">
-        <Button icon="arrow">lees verder</Button>
+        <Button icon="arrow">
+          lees verder
+        </Button>
       </div>
       <div class="col-md-6">
         <Button
@@ -17,7 +19,7 @@
         </Button>
       </div>
     </div>
-    <div class="row">
+    <div class="row u-margin-bottom-lg">
       <div class="col-md-6">
         <Button
           type="anchor"
@@ -35,21 +37,28 @@
         </Button>
       </div>
     </div>
+    <div class="row">
+      <FeaturedHeaderBlock
+        title="a new model for companies"
+        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper aliquam iaculis. Pellentesque eu nisi euismod lorem malesuada aliquet."
+        :img="require('@/assets/images/Training_Fitlab.jpg')"
+        button-text="lees verder"
+        :button-props="{icon: 'arrow'}"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import Button from './components/Button.vue';
+import Button from '@/components/Button.vue';
+import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 
 export default {
   name: 'App',
 
-  components: { Button },
+  components: {
+    Button,
+    FeaturedHeaderBlock,
+  },
 };
 </script>
-
-<style scoped>
-  .row {
-    margin-top: 50px;
-  }
-</style>

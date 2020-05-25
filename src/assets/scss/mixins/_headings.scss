@@ -4,8 +4,12 @@
   @for $i from 1 through 6 {
     .h#{$i},
     h#{$i} {
-      @include get-font-size(#{h#{$i}});
+      @include get-responsive-font-size(#{h#{$i}});
       @include get-line-height(#{h#{$i}});
+
+      @include media-breakpoint-up(xl) {
+        @include get-font-size(#{h#{$i}});
+      }
       @content;
     }
   }

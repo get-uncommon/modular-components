@@ -25,12 +25,12 @@
 /* Reboot and normalize css */
 @import 'base/reboot';
 
-/*  Utilities (all) */
-@import 'utilities/utils';
-
 /* Base Styling */
 @import 'base/base';
 @import 'base/headings';
+
+/*  Utilities (all) */
+@import 'utilities/utils';
 
 /* Layout */
 @import 'layout/container';

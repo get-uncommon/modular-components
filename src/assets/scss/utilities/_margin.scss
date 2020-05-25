@@ -1,0 +1,24 @@
+$spacers: (
+  base: var(--spacing-base),
+  lg: var(--spacing-lg)
+);
+
+.u-margin {
+  @each $key, $value in $spacers {
+    &-top-#{$key} {
+      margin-top: $value;
+    }
+
+    &-right-#{$key} {
+      margin-right: $value;
+    }
+
+    &-bottom-#{$key} {
+      margin-bottom: $value;
+    }
+
+    &-left-#{$key} {
+      margin-left: $value;
+    }
+  }
+}
