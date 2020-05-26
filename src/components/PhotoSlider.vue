@@ -1,17 +1,19 @@
 <template>
-  <div class="photo-slider">
-    <swiper
-      ref="mySwiper"
-      :options="swiperOptions"
-    >
-      <swiper-slide v-for="slide in slides" :key="slide.alt" class="photo-slider__slide">
-        <img :src="slide.image" :alt="slide.alt" />
-      </swiper-slide>
-      <div
-        slot="pagination"
-        class="swiper-pagination"
-      />
-    </swiper>
+  <div>
+    <div class="photo-slider">
+      <swiper
+        ref="mySwiper"
+        :options="swiperOptions"
+      >
+        <swiper-slide v-for="slide in slides" :key="slide.alt" class="photo-slider__slide">
+          <img :src="slide.image" :alt="slide.alt" />
+        </swiper-slide>
+      </swiper>
+    </div>
+    <div
+      slot="pagination"
+      class="photo-slider__pagination u-margin-top-md"
+    />
   </div>
 </template>
 
@@ -31,7 +33,8 @@ export default {
     return {
       swiperOptions: {
         pagination: {
-          el: '.swiper-pagination',
+          el: '.photo-slider__pagination',
+          clickable: true,
         },
       },
     };
@@ -40,12 +43,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$slider-width: calc(50vw + 600px);
+
 .photo-slider {
   position: relative;
   width: 100%;
-  max-width: calc(50vw + 600px);
+  max-width: $slider-width;
   height: 0;
-  margin-bottom: 200px;
   padding-bottom: 40%;
   overflow: hidden;
   cursor: grab;
@@ -67,6 +71,12 @@ export default {
     }
   }
 
+  &__pagination {
+    display: flex;
+    max-width: $slider-width;
+    justify-content: flex-end;
+  }
+
   .swiper-slide-active {
     transform: scale(1);
 
@@ -75,4 +85,63 @@ export default {
     }
   }
 }
+</style>
+
+
+<style lang="scss">
+// Includes non global styles for the slider.
+.photo-slider {
+  .swiper-wrapper {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    box-sizing: content-box;
+  }
+
+  &__pagination {
+    .swiper-pagination-bullet {
+      position: relative;
+      width: 70px;
+      height: 12px;
+      margin-left: 16px;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        content: '';
+        background-color: var(--color-secondary);
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        content: '';
+        background-color: var(--color-primary);
+        opacity: 0;
+        transition: $transition-base;
+        transform: translateY(-50%) scale3d(0, 1, 1);
+      }
+
+      &:focus {
+        outline: 0;
+      }
+
+      &-active::after,
+      &:focus::after,
+      &:hover::after {
+        opacity: 1;
+        transform: translateY(-50%) scale3d(1, 1, 1);
+      }
+    }
+  }
+}
+
 </style>

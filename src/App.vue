@@ -75,6 +75,7 @@
       ]"
     />
     <PhotoSlider
+      class="u-margin-bottom-xl"
       :slides="[
         {
           image: require('@/assets/images/Photo_slide.png'),
