@@ -7,11 +7,19 @@
       >
     </div>
     <div class="col-md-5 col-12 order-3 order-md-0 u-margin-top-xl">
-      <h2>{{ title }}</h2>
-      <p class="featured-single__paragraph">
+      <h2 v-if="title">
+        {{ title }}
+      </h2>
+      <p
+        v-if="body"
+        class="featured-single__paragraph"
+      >
         {{ body }}
       </p>
-      <Button v-bind="buttonProps">
+      <Button
+        v-if="buttonText"
+        v-bind="buttonProps"
+      >
         {{ buttonText }}
       </Button>
     </div>
