@@ -75,8 +75,8 @@ $slider-width: calc(50vw + 600px);
     display: flex;
     max-width: $slider-width;
     justify-content: center;
-    padding-right: var(--spacing-base);
-    padding-left: var(--spacing-base);
+    padding-right: var(--spacing-md);
+    padding-left: var(--spacing-md);
 
     @include media-breakpoint-up(md) {
       justify-content: flex-end;
