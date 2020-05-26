@@ -38,7 +38,7 @@
           </Button>
         </div>
       </div>
-      <div class="row u-margin-top-lg">
+      <div class="row u-margin-top-lg u-margin-bottom-xl">
         <FeaturedHeaderBlock
           title="a new model for companies"
           body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper aliquam iaculis. Pellentesque eu nisi euismod lorem malesuada aliquet."
