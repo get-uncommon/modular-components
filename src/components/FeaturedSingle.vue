@@ -1,21 +1,19 @@
 <template>
-  <div>
-    <div class="featured-single__wrapper">
-      <div class="col-md-6 col-11 offset-1 featured-single__img">
-        <img
-          :src="mainImage"
-          :alt="mainImageAlt"
-        >
-      </div>
-      <div class="col-md-5">
-        <h2>{{ title }}</h2>
-        <p class="featured-single__paragraph">
-          {{ body }}
-        </p>
-        <Button v-bind="buttonProps">
-          {{ buttonText }}
-        </Button>
-      </div>
+  <div class="featured-single">
+    <div class="col-md-6 col-11 offset-1 featured-single__img">
+      <img
+        :src="mainImage"
+        :alt="mainImageAlt"
+      >
+    </div>
+    <div class="col-md-5 col-12 order-3 order-md-0 u-margin-top-xl">
+      <h2>{{ title }}</h2>
+      <p class="featured-single__paragraph">
+        {{ body }}
+      </p>
+      <Button v-bind="buttonProps">
+        {{ buttonText }}
+      </Button>
     </div>
     <div class="col-md-4 col-6  featured-single__img featured-single__img--lower">
       <img
@@ -28,6 +26,11 @@
 
 <script>
 import Button from '@/components/Button.vue';
+import ScrollMagic from 'scrollmagic';
+import gsap, { TimelineMax } from 'gsap';
+import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+
+ScrollMagicPluginGsap(ScrollMagic, gsap);
 
 export default {
   name: 'FeaturedSingle',
@@ -69,11 +72,43 @@ export default {
     },
   },
 
+  mounted() {
+    const domNode = document.querySelector('.featured-single:not(.parallax)');
+
+    if (domNode) {
+      domNode.classList.add('parallax');
+
+      const childHigher = domNode.querySelector('.featured-single__img:not(.featured-single__img--lower)');
+      const childLower = domNode.querySelector('.featured-single__img--lower');
+      const controller = new ScrollMagic.Controller();
+      const timeline = new TimelineMax();
+
+      timeline
+        .to(childHigher, 2, { y: 200 })
+        .to(childLower, 2, { y: -250 }, 0)
+        .add('end', 2);
+
+      new ScrollMagic.Scene({
+        triggerElement: domNode,
+        duration: '200%',
+        triggerHook: 'onEnter',
+      })
+        .setTween(timeline)
+        .addTo(controller);
+    }
+  },
+
 };
 </script>
 
 <style scoped lang="scss">
 .featured-single {
+  @include media-breakpoint-up(sm) {
+    margin-bottom: calc(1px - var(--spacing-xl) - 1px);
+  }
+
+  padding-top: var(--spacing-lg);
+
   &__wrapper {
     display: flex;
     width: 100%;
@@ -83,6 +118,7 @@ export default {
   &__img {
     display: flex;
     position: relative;
+    margin-top: calc(1px - var(--spacing-xl) - 1px);
     overflow: hidden;
 
     img {
@@ -100,12 +136,18 @@ export default {
     }
 
     &--lower {
-      transform: translateY(-75%);
+      margin-top: var(--spacing-lg);
     }
   }
 
   &__paragraph {
     width: 75%;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .u-margin-top-xl {
+      margin-top: calc(1px - var(--spacing-lg) - 1px);
+    }
   }
 }
 </style>
