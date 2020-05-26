@@ -74,18 +74,21 @@
         },
       ]"
     />
+    <PhotoSlider />
   </div>
 </template>
 
 <script>
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
-import TextBlocks from './components/TextBlocks.vue';
+import TextBlocks from '@/components/TextBlocks.vue';
+import PhotoSlider from '@/components/PhotoSlider.vue';
 
 export default {
   name: 'App',
 
   components: {
+    PhotoSlider,
     Button,
     FeaturedHeaderBlock,
     TextBlocks,
