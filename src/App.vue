@@ -74,7 +74,26 @@
         },
       ]"
     />
-    <PhotoSlider />
+    <PhotoSlider
+      :slides="[
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '1'
+        },
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '2'
+        },
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '3'
+        },
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '4'
+        },
+      ]"
+    />
   </div>
 </template>
 
