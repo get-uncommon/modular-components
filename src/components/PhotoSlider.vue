@@ -53,11 +53,25 @@ export default {
   &__slide {
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    background-color: var(--color-dark);
+    transition: .5s;
+    transform: scale(.9);
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: .75;
+      transition: .5s;
+    }
+  }
+
+  .swiper-slide-active {
+    transform: scale(1);
+
+    img {
+      opacity: 1;
     }
   }
 }
