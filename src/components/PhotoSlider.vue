@@ -74,7 +74,18 @@ $slider-width: calc(50vw + 600px);
   &__pagination {
     display: flex;
     max-width: $slider-width;
-    justify-content: flex-end;
+    justify-content: center;
+    padding-right: var(--spacing-base);
+    padding-left: var(--spacing-base);
+
+    @include media-breakpoint-up(md) {
+      justify-content: flex-end;
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 
   .swiper-slide-active {
@@ -105,6 +116,10 @@ $slider-width: calc(50vw + 600px);
       height: 12px;
       margin-left: 16px;
       cursor: pointer;
+
+      &:first-child {
+        margin-left: 0;
+      }
 
       &::before {
         position: absolute;
