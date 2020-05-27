@@ -5,8 +5,15 @@
         ref="mySwiper"
         :options="swiperOptions"
       >
-        <swiper-slide v-for="slide in slides" :key="slide.alt" class="photo-slider__slide">
-          <img :src="slide.image" :alt="slide.alt" />
+        <swiper-slide
+          v-for="slide in slides"
+          :key="slide.alt"
+          class="photo-slider__slide"
+        >
+          <img
+            :src="slide.image"
+            :alt="slide.alt"
+          >
         </swiper-slide>
       </swiper>
     </div>
@@ -97,9 +104,8 @@ $slider-width: calc(50vw + 600px);
 }
 </style>
 
-
 <style lang="scss">
-// Includes non global styles for the slider.
+// Includes global styles for the slider.
 .photo-slider {
   .swiper-wrapper {
     display: flex;
