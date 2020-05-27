@@ -114,6 +114,7 @@ import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
+import FeaturedSingle from '@/components/FeaturedSingle.vue';
 
 export default {
   name: 'App',
@@ -123,6 +124,7 @@ export default {
     Button,
     FeaturedHeaderBlock,
     TextBlocks,
+    FeaturedSingle,
   },
 };
 </script>

@@ -3,7 +3,10 @@
     <h1 class="col-md-8 offset-md-2 header__title">
       {{ title }}
     </h1>
-    <div v-if="img" class="col-md-10 offset-md-1">
+    <div
+      v-if="img"
+      class="col-md-10 offset-md-1"
+    >
       <div class="header__image">
         <img
           :src="img"

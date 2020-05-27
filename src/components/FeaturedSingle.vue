@@ -1,6 +1,12 @@
 <template>
-  <div class="featured-single">
-    <div class="col-md-6 col-11 offset-1 featured-single__img">
+  <div
+    ref="parallaxContainer"
+    class="featured-single"
+  >
+    <div
+      ref="nodeHigher"
+      class="col-md-6 col-11 offset-1 featured-single__img"
+    >
       <img
         :src="mainImage"
         :alt="mainImageAlt"
@@ -23,7 +29,10 @@
         {{ buttonText }}
       </Button>
     </div>
-    <div class="col-md-4 col-6  featured-single__img featured-single__img--lower">
+    <div
+      ref="nodeLower"
+      class="col-md-4 col-6  featured-single__img featured-single__img--lower"
+    >
       <img
         :src="secondaryImage"
         :alt="secondaryImageAlt"
@@ -34,11 +43,8 @@
 
 <script>
 import Button from '@/components/Button.vue';
-import ScrollMagic from 'scrollmagic';
-import gsap, { TimelineMax } from 'gsap';
-import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
-
-ScrollMagicPluginGsap(ScrollMagic, gsap);
+import { ScrollScene } from 'scrollscene'; // use scrollscene instead https://www.npmjs.com/package/scrollscene
+import { gsap } from 'gsap';
 
 export default {
   name: 'FeaturedSingle',
@@ -80,32 +86,42 @@ export default {
     },
   },
 
-  mounted() {
-    const domNode = document.querySelector('.featured-single:not(.parallax)');
-
-    if (domNode) {
-      domNode.classList.add('parallax');
-
-      const childHigher = domNode.querySelector('.featured-single__img:not(.featured-single__img--lower)');
-      const childLower = domNode.querySelector('.featured-single__img--lower');
-      const controller = new ScrollMagic.Controller();
-      const timeline = new TimelineMax();
-
-      timeline
-        .to(childHigher, 2, { y: 200 })
-        .to(childLower, 2, { y: -250 }, 0)
-        .add('end', 2);
-
-      new ScrollMagic.Scene({
-        triggerElement: domNode,
-        duration: '200%',
-        triggerHook: 'onEnter',
-      })
-        .setTween(timeline)
-        .addTo(controller);
-    }
+  data() {
+    return {
+      scrollScene: null,
+    };
   },
 
+  mounted() {
+    const triggerElement = this.$refs.parallaxContainer;
+    const timeline = gsap.timeline({ paused: true });
+    const { nodeLower, nodeHigher } = this.$refs; // use ref="" as selector
+
+    timeline
+      .to(nodeHigher, {
+        y: 200,
+        force3D: true,
+      })
+      .to(nodeLower, {
+        y: -250,
+        force3D: true,
+      }, 0);
+
+    this.scrollScene = new ScrollScene({
+      triggerElement,
+      triggerHook: 'onEnter',
+      gsap: { timeline },
+      duration: '200%',
+      controller: {
+        addIndicators: false, // If you are in development mode you can set this to true
+      },
+    });
+  },
+
+  // Destroy the scene to avoid memory leaks
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
 
