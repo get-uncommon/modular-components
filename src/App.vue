@@ -74,18 +74,41 @@
         },
       ]"
     />
+    <PhotoSlider
+      class="u-margin-bottom-xl"
+      :slides="[
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '1'
+        },
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '2'
+        },
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '3'
+        },
+        {
+          image: require('@/assets/images/Photo_slide.png'),
+          alt: '4'
+        },
+      ]"
+    />
   </div>
 </template>
 
 <script>
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
-import TextBlocks from './components/TextBlocks.vue';
+import TextBlocks from '@/components/TextBlocks.vue';
+import PhotoSlider from '@/components/PhotoSlider.vue';
 
 export default {
   name: 'App',
 
   components: {
+    PhotoSlider,
     Button,
     FeaturedHeaderBlock,
     TextBlocks,
