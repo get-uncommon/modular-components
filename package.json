@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.1.0",
+  "version": "0.0.1-beta",
   "main": "dist/modular-components.umd.min.js",
   "unpkg": "dist/modular-components.umd.min.js",
   "jsdelivr": "dist/modular-components.umd.min.js",
@@ -11,14 +11,16 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
-    "src/*",
+    "src/components/*",
     "dist/*",
-    "package.json"
+    "package.json",
+    "README.md"
   ],
   "homepage": "https://getuncommon.digital/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:package": "vue-cli-service build --target lib --name modular-components src/lib.js",
     "lint": "vue-cli-service lint",
     "stylelint": "vue-cli-service lint:style --no-fix",
     "svg": "vsvg -s ./static/svg/src -t ./src/icons"
