@@ -38,7 +38,7 @@
           </Button>
         </div>
       </div>
-      <div class="row u-margin-top-lg">
+      <div class="row u-margin-top-lg u-margin-bottom-xl">
         <FeaturedHeaderBlock
           title="a new model for companies"
           body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper aliquam iaculis. Pellentesque eu nisi euismod lorem malesuada aliquet."
@@ -47,6 +47,17 @@
           :button-props="{icon: 'arrow'}"
         />
       </div>
+      <FeaturedSingle
+        :main-image="require('@/assets/images/business_fitlab.png')"
+        main-image-alt="Wow cool image"
+        :secondary-image="require('@/assets/images/training_for_her.png')"
+        secondary-image-alt="Wowowo what an image"
+        title="A new model for building companies"
+        body="This is going to be the paragraph text but it is quite long so I will just keep on typing for just a second in order to fill some more space on this paragraph."
+        button-text="lees verder"
+        :button-props="{type: 'anchor', icon: 'arrow'}"
+        class="row"
+      />
     </div>
     <TextBlocks
       class="u-margin-bottom-xl"
@@ -103,6 +114,7 @@ import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
+import FeaturedSingle from '@/components/FeaturedSingle.vue';
 
 export default {
   name: 'App',
@@ -112,6 +124,7 @@ export default {
     Button,
     FeaturedHeaderBlock,
     TextBlocks,
+    FeaturedSingle,
   },
 };
 </script>
