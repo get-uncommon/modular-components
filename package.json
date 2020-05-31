@@ -1,10 +1,26 @@
 {
-  "name": "modular-components",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@get-uncommon/modular-components",
+  "version": "0.0.2-beta",
+  "main": "dist/modular-components.umd.min.js",
+  "unpkg": "dist/modular-components.umd.min.js",
+  "jsdelivr": "dist/modular-components.umd.min.js",
+  "author": "Uncommon",
+  "license": "Can only be used with UNCOMMON's permissions",
+  "description": "Awesome Uncommon component library",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "src/components/*",
+    "dist/*",
+    "package.json",
+    "README.md"
+  ],
+  "homepage": "https://getuncommon.digital/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:package": "vue-cli-service build --target lib --name modular-components src/lib.js",
     "lint": "vue-cli-service lint",
     "stylelint": "vue-cli-service lint:style --no-fix",
     "svg": "vsvg -s ./static/svg/src -t ./src/icons"
@@ -15,9 +31,9 @@
     "gsap": "^3.2.6",
     "normalize.css": "^8.0.1",
     "rfs": "^9.0.3",
-    "swiper": "^5.4.1",
     "scrollmagic": "^2.0.7",
     "scrollscene": "^0.0.20",
+    "swiper": "^5.4.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-svgicon": "^3.2.6"
