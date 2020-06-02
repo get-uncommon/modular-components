@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.0.2-beta",
+  "version": "0.0.12-beta",
   "main": "dist/modular-components.umd.min.js",
   "unpkg": "dist/modular-components.umd.min.js",
   "jsdelivr": "dist/modular-components.umd.min.js",
@@ -21,7 +21,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "publish": "yarn run build:package && npm publish",
-    "publish:login": "npm login --registry=https://npm.pkg.github.com && yarn run build:package && npm publish",
+    "publish:login": "yarn run build:package && npm login --registry=https://npm.pkg.github.com && npm publish",
     "build:package": "vue-cli-service build --target lib --name modular-components src/lib.js",
     "lint": "vue-cli-service lint",
     "stylelint": "vue-cli-service lint:style --no-fix",
