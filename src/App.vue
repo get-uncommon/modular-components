@@ -106,7 +106,40 @@
         },
       ]"
     />
-    <static-cards />
+    <div class="container">
+      <StaticCards
+        class="row u-margin-bottom-lg"
+        title="wat ons bezighoudt"
+        button-text="bekijk meer nieuws"
+        :button-props="{
+          icon: 'arrow',
+          type: 'bordered'
+        }"
+        :cards="[
+          {
+            image: require('@/assets/images/Build_Office_3.png'),
+            imageAlt: 'Ladida',
+            subTitle: '4 november 2019',
+            title: 'Nempre porem facero eatibusae.',
+            url: '#',
+          },
+          {
+            image: require('@/assets/images/business_fitlab.png'),
+            imageAlt: 'Ladida',
+            subTitle: '4 november 2019',
+            title: 'Nempra porem facero eatibusae.',
+            url: '#',
+          },
+          {
+            image: require('@/assets/images/Training_Fitlab.jpg'),
+            imageAlt: 'Ladida',
+            subTitle: '4 november 2019',
+            title: 'Nempro porem facero eatibusae.',
+            url: '#',
+          },
+        ]"
+      />
+    </div>
   </div>
 </template>
 
