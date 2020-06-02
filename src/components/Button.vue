@@ -5,7 +5,7 @@
     :class="buttonClasses"
   >
     <slot />
-    <svgicon
+    <VueSVGIcon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -16,7 +16,7 @@
     :class="buttonClasses"
   >
     <slot />
-    <svgicon
+    <VueSVGIcon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -28,7 +28,7 @@
     :class="buttonClasses"
   >
     <slot />
-    <svgicon
+    <VueSVGIcon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -38,9 +38,14 @@
 
 <script>
 import '@/icons/arrow';
+import VueSVGIcon from 'vue-svgicon';
 
 export default {
   name: 'Button',
+
+  components: {
+    VueSVGIcon,
+  },
 
   props: {
     type: {
