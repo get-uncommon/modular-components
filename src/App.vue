@@ -94,6 +94,15 @@
         },
       ]"
     />
+    <div class="container">
+      <div class="row">
+        <TextBlock
+          class="u-margin-bottom-lg"
+          title="Nempre porem facero eatibusae."
+          body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum natoque penatibus et magnis parturient montes, nascetur ridiculus mus."
+        />
+      </div>
+    </div>
     <PhotoSlider
       class="u-margin-bottom-lg"
       :slides="[
@@ -219,6 +228,7 @@ import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
+import TextBlock from './components/TextBlock.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
 import FeaturedDouble from '@/components/FeaturedDouble.vue';
@@ -234,6 +244,7 @@ export default {
     ContactForm,
     VideoPlayer,
     ContentBlock,
+    TextBlock,
     StaticCards,
     PhotoSlider,
     Button,
