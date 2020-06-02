@@ -20,6 +20,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "publish": "yarn run build:package && npm publish",
+    "publish:login": "npm login --registry=https://npm.pkg.github.com && yarn run build:package && npm publish",
     "build:package": "vue-cli-service build --target lib --name modular-components src/lib.js",
     "lint": "vue-cli-service lint",
     "stylelint": "vue-cli-service lint:style --no-fix",
