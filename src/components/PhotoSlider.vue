@@ -28,10 +28,16 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'PhotoSlider',
+
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
 
   props: {
     slides: {
