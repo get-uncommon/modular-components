@@ -9,6 +9,12 @@ $open-sans: 'Open Sans', sans-serif;
   --font-family-monospace: 'Courier New', courier, monospace;
   --font-weight-bold: 600;
 
+  // Headings
+  --headings-margin-bottom: .5em;
+  --headings-font-family: $font-family-base;
+  --headings-font-weight: bold;
+  --headings-line-height: 1;
+
   // Margins and padding
   --spacing-sm: 12px;
   --spacing-md: 24px;
@@ -60,15 +66,15 @@ $rfs-minimum-font-size: $default-font-size;
 $rfs-base-font-size: $default-font-size;
 
 // Headings
-$headings-margin-bottom: .5em;
-$headings-font-family: $font-family-base;
-$headings-font-weight: bold;
-$headings-line-height: 1;
-$headings-color: theme-color(dark);
+$headings-margin-bottom: var(--headings-margin-bottom);
+$headings-font-family: var(--headings-font-family);
+$headings-font-weight: var(--headings-font-weight);
+$headings-line-height: var(--headings-line-height);
+$headings-color: var(--color-primary);
 
 // Body
-$body-bg: theme-color(tertiary);
-$body-color: theme-color(dark);
+$body-bg: var(--color-tertiary);
+$body-color: var(--color-primary);
 
 // Utils
 $u-spacer-max-value: 100px;
