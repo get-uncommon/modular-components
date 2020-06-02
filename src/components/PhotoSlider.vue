@@ -29,6 +29,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import '@/assets/scss/main.scss';
 import { ScrollScene } from 'scrollscene';
 
 export default {

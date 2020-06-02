@@ -39,6 +39,7 @@
 <script>
 import '@/icons/arrow';
 import VueSVGIcon from 'vue-svgicon';
+import '@/assets/scss/main.scss';
 
 export default {
   name: 'Button',

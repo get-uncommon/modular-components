@@ -45,6 +45,7 @@
 import Button from '@/components/Button.vue';
 import { ScrollScene } from 'scrollscene'; // use scrollscene instead https://www.npmjs.com/package/scrollscene
 import { gsap } from 'gsap';
+import '@/assets/scss/main.scss';
 
 export default {
   name: 'FeaturedSingle',
