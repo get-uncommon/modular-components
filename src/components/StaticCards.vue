@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="static-cards">
     <h1 class="col-md-8">
       {{ title }}
     </h1>
