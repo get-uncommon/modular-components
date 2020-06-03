@@ -228,6 +228,7 @@ import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
+import TextBlock from '@/components/TextBlock.vue';
 import TextBlock from './components/TextBlock.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
