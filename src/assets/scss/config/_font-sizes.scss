@@ -11,6 +11,7 @@ $h5: 20;
 $h6: 18;
 $button: 17;
 $base: 18;
+$input: 20;
 
 :root {
   // Regular font sizes
@@ -22,6 +23,7 @@ $base: 18;
   --font-size-h6: #{$h6 + 'px'};
   --font-size-button: #{$button + 'px'};
   --font-size-base: #{$base + 'px'};
+  --font-size-input: #{$input + 'px'};
 
   // Responsive font sizes
   --font-size-h1-responsive: calc(#{$h1 / 2 + px} + 100vw / 1200 * #{$h1} / 2);

@@ -5,6 +5,8 @@ $grey: #bfc1bd;
 $beige: #f6eee2;
 $white: #fff;
 $black: #000;
+$red: #ff4848;
+$green: #417505;
 
 :root {
   --color-primary: #{$kelp};
@@ -12,6 +14,8 @@ $black: #000;
   --color-tertiary: #{$beige};
   --color-light: #{$white};
   --color-dark: #{$black};
+  --color-danger: #{$red};
+  --color-success: #{$green};
 }
 
 $primary: var(--color-primary) !default;
