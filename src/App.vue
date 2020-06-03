@@ -150,6 +150,10 @@
       name-text="Naam"
       success-text="Hoera! Je bent aangemeld voor de nieuwsbrief"
       title="schrijf je in voor onze nieuwsbrief"
+      :button-props="{icon: 'arrow'}"
+      class="u-margin-bottom-xl"
+      body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      :submit-handler="handleNewsLetterSubmit"
     />
   </div>
 </template>
@@ -174,6 +178,12 @@ export default {
     TextBlocks,
     FeaturedSingle,
     NewsLetterForm,
+  },
+
+  methods: {
+    handleNewsLetterSubmit({ name, email }) {
+      alert(`${name} - ${email} - Subscribed to the news letter`);
+    },
   },
 };
 </script>
