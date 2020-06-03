@@ -5,7 +5,7 @@
     :class="buttonClasses"
   >
     <slot />
-    <VueSVGIcon
+    <svgicon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -16,7 +16,7 @@
     :class="buttonClasses"
   >
     <slot />
-    <VueSVGIcon
+    <svgicon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -28,7 +28,7 @@
     :class="buttonClasses"
   >
     <slot />
-    <VueSVGIcon
+    <svgicon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -45,7 +45,7 @@ export default {
   name: 'Button',
 
   components: {
-    VueSVGIcon,
+    svgicon: VueSVGIcon,
   },
 
   props: {
