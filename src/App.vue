@@ -140,6 +140,17 @@
         ]"
       />
     </div>
+    <NewsLetterForm
+      button-text="verstuur"
+      email-text="Email"
+      :fail-text="{
+        required: 'Je moet alle verplichte velden in vullen.',
+        email: 'Je moet een geldig email adres in vullen.'
+      }"
+      name-text="Naam"
+      success-text="Hoera! Je bent aangemeld voor de nieuwsbrief"
+      title="schrijf je in voor onze nieuwsbrief"
+    />
   </div>
 </template>
 
@@ -149,6 +160,7 @@ import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
+import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
 
 export default {
@@ -161,6 +173,7 @@ export default {
     FeaturedHeaderBlock,
     TextBlocks,
     FeaturedSingle,
+    NewsLetterForm,
   },
 };
 </script>
