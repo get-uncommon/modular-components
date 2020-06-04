@@ -1,7 +1,72 @@
 <template>
   <div>
-    <Menubar />
-    <div class="container u-margin-bottom-lg u-margin-top-lg">
+    <Menubar
+      :primary-links="[
+        {
+          text: 'home',
+          href: '#',
+          active: true,
+        },
+        {
+          text: 'over ons',
+          href: '#',
+        },
+        {
+          text: 'wat doen wij?',
+          href: '#',
+        },
+      ]"
+      :secondary-links="[
+        {
+          text: 'home1',
+          href: '#',
+          active: true,
+        },
+        {
+          text: 'over ons1',
+          href: '#',
+        },
+        {
+          text: 'wat doen wij?1',
+          href: '#',
+        },
+      ]"
+      :tertiary-links="[
+        {
+          text: 'home2',
+          href: '#',
+          active: true,
+        },
+        {
+          text: 'over ons2',
+          href: '#',
+        },
+        {
+          text: 'wat doen wij?2',
+          href: '#',
+        },
+      ]"
+      :social-links="[
+        {
+          alt: 'facebook',
+          src: require('@/assets/images/facebook.png'),
+          href: '#',
+          props: {
+            target: '_blank'
+          }
+        },
+        {
+          alt: 'instagram',
+          src: require('@/assets/images/instagram.png'),
+          href: '#',
+          props: {
+            target: '_blank'
+          }
+        }
+      ]"
+      :logo="{src: require('@/assets/images/logo.png'), alt: 'Logo'}"
+    />
+    <div class="container u-margin-bottom-lg u-margin-top-xl">
       <div class="row  u-margin-bottom-lg">
         <div class="col-md-6">
           <Button icon="arrow">
