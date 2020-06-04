@@ -182,6 +182,7 @@ export default {
 
   methods: {
     handleNewsLetterSubmit({ name, email }) {
+      // eslint-disable-next-line no-alert
       alert(`${name} - ${email} - Subscribed to the news letter`);
     },
   },
