@@ -1,9 +1,13 @@
 <template>
-  <div :class="`input ${error && 'error'}`">
+  <div
+    class="input"
+    :class="{ 'error' : error }"
+  >
     <label>
       <input
         v-model="value"
-        :class="`input__field ${inputActive && 'active'}`"
+        class="input__field"
+        :class="{active: inputActive}"
         v-bind="inputProps"
         @blur="blur"
       >

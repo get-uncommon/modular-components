@@ -124,7 +124,6 @@ export default {
       const name = this.$refs.nameInput.getValue();
       const email = this.$refs.emailInput.getValue();
 
-
       const validEmail = emailValidator.validate(email);
       if (name && email && validEmail) {
         this.success = this.successText;
