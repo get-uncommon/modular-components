@@ -9,6 +9,7 @@ import TextBlocks from './TextBlocks.vue';
 import NewsLetterForm from './NewsLetterForm.vue';
 import TextBlock from './TextBlock.vue';
 import StaticCards from './StaticCards.vue';
+import Menubar from './Menubar.vue';
 import FeaturedDouble from './FeaturedDouble.vue';
 import VideoPlayer from './VideoPlayer.vue';
 import ContactForm from './ContactForm.vue';
@@ -26,4 +27,5 @@ export {
   FeaturedDouble,
   ContentBlock,
   TextBlock,
+  Menubar,
 };

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Menubar />
     <div class="container u-margin-bottom-lg u-margin-top-lg">
       <div class="row  u-margin-bottom-lg">
         <div class="col-md-6">
@@ -228,10 +229,10 @@ import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
-import TextBlock from '@/components/TextBlock.vue';
 import TextBlock from './components/TextBlock.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
+import Menubar from '@/components/Menubar.vue';
 import FeaturedDouble from '@/components/FeaturedDouble.vue';
 import VideoPlayer from '@/components/VideoPlayer.vue';
 import ContactForm from '@/components/ContactForm.vue';
@@ -241,6 +242,7 @@ export default {
   name: 'App',
 
   components: {
+    Menubar,
     FeaturedDouble,
     ContactForm,
     VideoPlayer,
