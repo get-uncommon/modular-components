@@ -159,7 +159,6 @@ import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
 import TextBlock from '@/components/TextBlock.vue';
-import TextBlock from './components/TextBlock.vue';
 import StaticCards from '@/components/StaticCards.vue';
 
 export default {
