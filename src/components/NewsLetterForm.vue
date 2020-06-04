@@ -14,7 +14,7 @@
           </p>
           <form
             class="news-letter__form"
-            @submit="submit"
+            @submit.prevent="submit"
           >
             <Input
               ref="nameInput"
@@ -115,9 +115,7 @@ export default {
   },
 
   methods: {
-    submit(event) {
-      event.preventDefault();
-
+    submit() {
       this.success = null;
       this.errors = [];
       this.$refs.nameInput.setError(false);
