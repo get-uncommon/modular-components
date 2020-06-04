@@ -59,9 +59,9 @@
 
 <script>
 import emailValidator from 'email-validator';
-import Button from './Button.vue';
-import Input from './Input.vue';
-import Message from './Message.vue';
+import Button from '@/components/Button.vue';
+import Input from '@/components/Input.vue';
+import Message from '@/components/Message.vue';
 
 export default {
   name: 'NewsLetterForm',
