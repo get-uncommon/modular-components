@@ -148,7 +148,27 @@
           },
         ]"
       />
-      <FeaturedDouble class="u-margin-bottom-xl" />
+      <FeaturedDouble
+        :items="[
+          {
+            title: 'Onderwerp title',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+          },
+          {
+            title: 'Onderwerp title2',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+            image: require('@/assets/images/TRAINING_Fitlab_Pull.png'),
+            imageAlt: 'Pull ups'
+          },
+        ]"
+        class="u-margin-bottom-xl row"
+      />
     </div>
     <ContactForm
       button-text="verstuur"
