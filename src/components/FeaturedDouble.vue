@@ -27,6 +27,7 @@
               type="bordered"
               :light="true"
               v-bind="item.buttonProps"
+              :href="item.href"
             >
               {{ item.buttonText }}
             </Button>
@@ -120,7 +121,10 @@ export default {
       color: var(--color-light);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: 0;
+
       .featured-double__item {
         &__title {
           opacity: 1;
