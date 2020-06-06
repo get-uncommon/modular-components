@@ -38,6 +38,7 @@
     "swiper": "^5.4.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-fullscreen": "^2.1.6",
     "vue-svgicon": "^3.2.6"
   },
   "devDependencies": {

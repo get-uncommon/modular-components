@@ -1,59 +1,65 @@
 <template>
-  <div class="video">
-    <div
-      ref="player"
-      class="video__player"
-      :data-vimeo-id="videoId"
-      data-vimeo-controls="false"
-      data-vimeo-allowfullscreen="true"
-    />
-    <div class="video__controls">
-      <button
-        class="video__controls__icon video__controls__icon--play"
-        @click="togglePlay"
-      >
-        <svg-icon
-          icon="play"
-          height="24"
-          width="12"
-        />
-      </button>
-
+  <Fullscreen ref="fullscreen">
+    <div class="video">
       <div
-        class="video__controls__progress"
-        @click="updateProgress"
-      >
-        <div
-          class="video__controls__progress__indicator"
-          :style="indicatorStyle"
-        />
-      </div>
+        ref="player"
+        class="video__player"
+        :data-vimeo-id="videoId"
+        data-vimeo-controls="false"
+        data-vimeo-allowfullscreen="true"
+      />
+      <div class="video__controls">
+        <button
+          class="video__controls__icon video__controls__icon--play"
+          @click="togglePlay"
+        >
+          <svg-icon
+            :icon="playing ? 'pause' : 'play'"
+            height="24"
+            width="12"
+          />
+        </button>
 
-      <button
-        class=" video__controls__icon video__controls__icon--fullscreen"
-        @click="toggleFullscreen"
-      >
-        <svg-icon
-          icon="fullscreen"
-          height="24"
-          width="24"
-        />
-      </button>
+        <div
+          class="video__controls__progress"
+          @click="updateProgress"
+        >
+          <div
+            class="video__controls__progress__indicator"
+            :style="indicatorStyle"
+          />
+        </div>
+
+        <button
+          class=" video__controls__icon video__controls__icon--fullscreen"
+          @click="toggleFullscreen"
+        >
+          <svg-icon
+            icon="fullscreen"
+            height="24"
+            width="24"
+          />
+        </button>
+      </div>
     </div>
-  </div>
+  </Fullscreen>
 </template>
 
 <script>
 import Player from '@vimeo/player';
 import VueSvgIcon from 'vue-svgicon';
+import Fullscreen from 'vue-fullscreen/src/component.vue';
 import '@/icons/play';
 import '@/icons/fullscreen';
+import '@/icons/pause';
+
 
 export default {
   name: 'VideoPlayer',
 
   components: {
     svgIcon: VueSvgIcon,
+    Fullscreen,
   },
 
   props: {
@@ -66,7 +72,7 @@ export default {
   data() {
     return {
       player: {},
-      paused: true,
+      playing: false,
       indicatorStyle: { width: 0 },
     };
   },
@@ -74,35 +80,35 @@ export default {
   mounted() {
     const videoPlayer = this.$refs.player;
     this.player = new Player(videoPlayer);
-    this.player.controls = false;
 
     this.player.on('timeupdate', this.progressHasBeenUpdated);
+    this.player.on('play', () => this.setPlaying(true));
+    this.player.on('pause', () => this.setPlaying(false));
   },
 
   methods: {
+    setPlaying(value) {
+      this.playing = value;
+    },
     async updateProgress(event) {
       const duration = await this.player.getDuration();
-      const newTime = (event.offsetX / event.target.offsetWidth) * duration;
+      const percent = event.offsetX / event.target.offsetWidth;
+      const newTime = percent * duration;
       this.player.setCurrentTime(newTime);
+      this.progressHasBeenUpdated({ percent });
     },
     progressHasBeenUpdated(progress) {
       this.indicatorStyle.width = `${progress.percent * 100}%`;
     },
     async togglePlay() {
-      this.paused = await this.player.getPaused();
-      if (this.paused) {
+      if (await this.player.getPaused()) {
         this.player.play();
       } else {
         this.player.pause();
       }
     },
-    async toggleFullscreen() {
-      const fullscreen = await this.player.getFullscreen();
-      if (fullscreen) {
-        await this.player.exitFullscreen();
-      } else {
-        await this.player.requestFullscreen();
-      }
+    toggleFullscreen() {
+      this.$refs.fullscreen.toggle();
     },
   },
 };
@@ -170,6 +176,12 @@ export default {
       }
     }
   }
+}
+
+.fullscreen .video {
+  height: 100%;
+  padding-bottom: 0;
+  background-color: var(--color-dark);
 }
 </style>
 
