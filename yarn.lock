@@ -983,6 +983,14 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@vimeo/player@^2.12.0":
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/@vimeo/player/-/player-2.12.0.tgz#5d7c8447938326ec8e0d1b65c7ca0b1160eb8d64"
+  integrity sha512-SrlwZxeZvoFBEdbxrEg7eheevaMey7bYbip+IoTvRVsmW7JC98ulL1qDAcwAOHMWfTvFtAG6oLl6/spccJiI6w==
+  dependencies:
+    native-promise-only "0.8.1"
+    weakmap-polyfill "2.0.1"
+
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@vue/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-1.0.0.tgz#048fe579958da408fb7a8b2a3ec050b50a661040"
@@ -6260,6 +6268,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+native-promise-only@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/native-promise-only/-/native-promise-only-0.8.1.tgz#20a318c30cb45f71fe7adfbf7b21c99c1472ef11"
+  integrity sha1-IKMYwwy0X3H+et+/eyHJnBRy7xE=
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
@@ -10051,6 +10064,11 @@ wcwidth@^1.0.1:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+weakmap-polyfill@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/weakmap-polyfill/-/weakmap-polyfill-2.0.1.tgz#ff0278c7f75bb0c492fc3343257f3e87114d709a"
+  integrity sha512-Jy177Lvb1LCrPQDWJsXyyqf4eOhcdvQHFGoCqSv921kVF5i42MVbr4e2WEwetuTLBn1NX0IhPzTmMu0N3cURqQ==
 
 webpack-bundle-analyzer@^3.6.1:
   version "3.7.0"

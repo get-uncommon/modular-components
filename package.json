@@ -26,6 +26,7 @@
     "svg": "vsvg -s ./static/svg/src -t ./src/icons"
   },
   "dependencies": {
+    "@vimeo/player": "^2.12.0",
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.4",
     "email-validator": "^2.0.4",
