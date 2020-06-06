@@ -11,6 +11,7 @@ import StaticCards from './StaticCards.vue';
 import FeaturedDouble from './FeaturedDouble.vue';
 import VideoPlayer from './VideoPlayer.vue';
 import ContactForm from './ContactForm.vue';
+import ContentBlock from './ContentBlock.vue';
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   VideoPlayer,
   ContactForm,
   FeaturedDouble,
+  ContentBlock,
 };
