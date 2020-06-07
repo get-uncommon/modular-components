@@ -58,6 +58,15 @@
         :button-props="{type: 'anchor', icon: 'arrow'}"
         class="row"
       />
+      <div class="row">
+        <div
+          class="col-md-10 offset-md-1 u-margin-top-xl"
+        >
+          <VideoPlayer
+            video-id="https://player.vimeo.com/video/415136952"
+          />
+        </div>
+      </div>
     </div>
     <TextBlocks
       class="u-margin-bottom-xl"
@@ -86,7 +95,7 @@
       ]"
     />
     <PhotoSlider
-      class="u-margin-bottom-xl"
+      class="u-margin-bottom-lg"
       :slides="[
         {
           image: require('@/assets/images/Photo_slide.png'),
@@ -166,11 +175,13 @@ import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
+import VideoPlayer from '@/components/VideoPlayer.vue';
 
 export default {
   name: 'App',
 
   components: {
+    VideoPlayer,
     StaticCards,
     PhotoSlider,
     Button,

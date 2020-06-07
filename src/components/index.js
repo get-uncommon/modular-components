@@ -8,6 +8,7 @@ import PhotoSlider from './PhotoSlider.vue';
 import TextBlocks from './TextBlocks.vue';
 import NewsLetterForm from './NewsLetterForm.vue';
 import StaticCards from './StaticCards.vue';
+import VideoPlayer from './VideoPlayer.vue';
 
 export {
   Button,
@@ -16,4 +17,5 @@ export {
   TextBlocks,
   StaticCards,
   NewsLetterForm,
+  VideoPlayer,
 };
