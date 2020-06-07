@@ -22,6 +22,16 @@ $open-sans: 'Open Sans', sans-serif;
   --button-background-color: #{$kelp};
   --button-hover-color: #{$black};
 
+  // messages
+  --message-height: var(--button-height);
+  --message-border-radius: var(--button-border-radius);
+  --message-padding: var(--button-padding);
+
+  // Inputs
+  --input-padding: 4px 6px;
+  --input-color: var(--color-secondary);
+  --input-color-active: var(--color-primary);
+
   // anchors
   --anchor-color: $kelp;
 

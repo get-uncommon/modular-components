@@ -28,6 +28,7 @@
   "dependencies": {
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.4",
+    "email-validator": "^2.0.4",
     "gsap": "^3.2.6",
     "normalize.css": "^8.0.1",
     "rfs": "^9.0.3",
