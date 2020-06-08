@@ -70,16 +70,26 @@ export default {
     },
   },
 
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
   mounted() {
-    const scrollScene = new ScrollScene({
+    this.scrollScene = new ScrollScene({
       triggerElement: this.$refs.component,
     });
 
-    scrollScene.Scene.on('enter', () => {
+    this.scrollScene.Scene.on('enter', () => {
       if (!this.$refs.component.classList.contains('show')) {
         this.$refs.component.classList += ' show';
       }
     });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>
