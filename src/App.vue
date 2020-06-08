@@ -148,6 +148,14 @@
           },
         ]"
       />
+      <ContentBlock
+        class="row"
+        title="Nempe porem facero eatibusae."
+        intro="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque et magnis dis parturient montes, nascetur ridiculus mus."
+        :img="require('@/assets/images/Photo_slide.png')"
+        img-alt="cooleimagewoowow"
+        body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque et magnis dis parturient montes, nascetur ridiculus mus."
+      />
       <FeaturedDouble
         :items="[
           {
@@ -216,6 +224,7 @@ import StaticCards from '@/components/StaticCards.vue';
 import FeaturedDouble from '@/components/FeaturedDouble.vue';
 import VideoPlayer from '@/components/VideoPlayer.vue';
 import ContactForm from '@/components/ContactForm.vue';
+import ContentBlock from '@/components/ContentBlock.vue';
 
 export default {
   name: 'App',
@@ -224,6 +233,7 @@ export default {
     FeaturedDouble,
     ContactForm,
     VideoPlayer,
+    ContentBlock,
     StaticCards,
     PhotoSlider,
     Button,
