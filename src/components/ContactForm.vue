@@ -86,7 +86,6 @@ import Button from '@/components/Button.vue';
 import Input from '@/components/Input.vue';
 import Message from '@/components/Message.vue';
 import { ScrollScene } from 'scrollscene';
-import 'gsap';
 
 export default {
   name: 'ContactForm',
