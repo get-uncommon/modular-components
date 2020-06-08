@@ -2,7 +2,7 @@
   <component
     :is="as"
     v-if="as"
-    :class="`c-button c-button--${type} ${icon && `c-button--${type}--with-icon`}`"
+    :class="buttonClasses"
   >
     <slot />
     <svgicon
@@ -13,7 +13,7 @@
   </component>
   <button
     v-else-if="!href"
-    :class="`c-button c-button--${type}  ${icon && `c-button--${type}--with-icon`}`"
+    :class="buttonClasses"
   >
     <slot />
     <svgicon
@@ -25,7 +25,7 @@
   <a
     v-else
     :href="href"
-    :class="`c-button c-button--${type} ${icon && `c-button--${type}--with-icon`}`"
+    :class="buttonClasses"
   >
     <slot />
     <svgicon
@@ -58,6 +58,16 @@ export default {
     as: {
       type: String,
       default: null,
+    },
+    light: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  computed: {
+    buttonClasses() {
+      return `c-button c-button--${this.type}  ${this.icon && `c-button--${this.type}--with-icon`} ${this.light && `c-button--${this.type}--light`}`;
     },
   },
 };
@@ -114,7 +124,14 @@ export default {
     right: 16px;
     fill: var(--color-primary);
   }
-  &--anchor .c-button__icon { right: -4px; }
+
+  &--bordered--light .c-button__icon {
+    fill: var(--color-light);
+  }
+
+  &--anchor .c-button__icon {
+    right: -4px;
+  }
 
   &:focus,
   &:hover {
@@ -148,6 +165,24 @@ export default {
 
       .c-button__icon {
         fill: var(--color-light);
+      }
+    }
+
+    &--light {
+      color: var(--color-light);
+      border: 1px solid var(--color-light);
+
+      &::after {
+        background-color: var(--color-light);
+      }
+
+      &:focus,
+      &:hover {
+        color: $button-background-color;
+
+        .c-button__icon {
+          fill: $button-background-color;
+        }
       }
     }
   }

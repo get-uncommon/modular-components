@@ -148,6 +148,27 @@
           },
         ]"
       />
+      <FeaturedDouble
+        :items="[
+          {
+            title: 'Onderwerp title',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+          },
+          {
+            title: 'Onderwerp title2',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+            image: require('@/assets/images/TRAINING_Fitlab_Pull.png'),
+            imageAlt: 'Pull ups'
+          },
+        ]"
+        class="u-margin-bottom-xl row"
+      />
     </div>
     <ContactForm
       button-text="verstuur"
@@ -192,6 +213,7 @@ import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
+import FeaturedDouble from '@/components/FeaturedDouble.vue';
 import VideoPlayer from '@/components/VideoPlayer.vue';
 import ContactForm from '@/components/ContactForm.vue';
 
@@ -199,6 +221,7 @@ export default {
   name: 'App',
 
   components: {
+    FeaturedDouble,
     ContactForm,
     VideoPlayer,
     StaticCards,
