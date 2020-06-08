@@ -1,5 +1,8 @@
 <template>
-  <div class="menubar">
+  <div
+    class="menubar"
+    :class="showMenubar && 'menubar--show'"
+  >
     <div class="menubar__container">
       <div class="menubar__left">
         <img
@@ -126,12 +129,30 @@ export default {
   data() {
     return {
       menuActive: false,
+      showMenubar: true,
+      lastScrollPosition: 0,
     };
+  },
+
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll);
   },
 
   methods: {
     toggleMenu() {
       this.menuActive = !this.menuActive;
+    },
+    onScroll() {
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScrollPosition >= 0) {
+        this.showMenubar = currentScrollPosition < this.lastScrollPosition;
+        this.lastScrollPosition = currentScrollPosition;
+      }
     },
   },
 };
@@ -146,6 +167,12 @@ export default {
   height: var(--menu-bar-height);
   justify-content: stretch;
   background-color: var(--color-tertiary);
+  transition: $transition-base;
+  transform: translateY(-100%);
+
+  &--show {
+    transform: translateY(0);
+  }
 
   &__container {
     display: flex;
