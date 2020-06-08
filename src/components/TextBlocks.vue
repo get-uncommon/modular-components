@@ -1,6 +1,11 @@
 <template>
-  <div class="services">
-    <div class="services__bg">
+  <div
+    class="services"
+  >
+    <div
+      ref="component"
+      class="services__bg"
+    >
       <div class="container">
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
@@ -31,6 +36,7 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 
 export default {
@@ -48,6 +54,28 @@ export default {
       required: true,
     },
   },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
 
@@ -64,8 +92,31 @@ $offset-mob: 72px;
   }
 
   &__bg {
+    position: relative;
     width: 100%;
-    background-color: var(--color-light);
+    opacity: 0;
+    transition: var(--transition-page);
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: var(--color-light);
+      transition: var(--transition-page);
+      transform: scaleY(0);
+    }
+
+    &.show {
+      opacity: 1;
+
+      &::after {
+        transform: scaleY(1);
+      }
+    }
   }
 
   &__title {
