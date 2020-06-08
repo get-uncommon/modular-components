@@ -116,6 +116,11 @@ export default {
         addIndicators: false, // If you are in development mode you can set this to true
       },
     });
+    this.scrollScene.Scene.on('enter', () => {
+      if (!triggerElement.classList.contains('show')) {
+        triggerElement.classList += ' show';
+      }
+    });
   },
 
   // Destroy the scene to avoid memory leaks
@@ -132,6 +137,14 @@ export default {
   }
 
   padding-top: var(--spacing-lg);
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateX(var(--spacing-lg));
+
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   &__wrapper {
     display: flex;
