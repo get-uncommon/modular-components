@@ -39,46 +39,49 @@
             v-for="link in primaryLinks"
             :key="link.text"
           >
-            <a
-              :href="link.alt"
+            <component
+              :is="link.as ? link.as : 'a'"
+              :href="link.href"
               class="h2 menubar__link menubar__link--dropdown menubar__link--dropdown--primary menubar__link--big"
               :class="{active: link.active}"
               v-bind="link.props"
             >
               {{ link.text }}
-            </a>
+            </component>
           </div>
           <div
             v-for="link in secondaryLinks"
             :key="link.text"
           >
-            <a
-              :href="link.alt"
+            <component
+              :is="link.as ? link.as : 'a'"
+              :href="link.href"
               class="h2 menubar__link menubar__link--dropdown menubar__link--big"
               :class="{active: link.active}"
               v-bind="link.props"
             >
               {{ link.text }}
-            </a>
+            </component>
           </div>
         </div>
         <div
           v-for="link in tertiaryLinks"
           :key="link.text"
         >
-          <a
-
+          <component
+            :is="link.as ? link.as : 'a'"
             :href="link.href"
             class="h4 menubar__link menubar__link--dropdown"
             :class="{active: link.active}"
             v-bind="link.props"
           >
             {{ link.text }}
-          </a>
+          </component>
         </div>
         <a
+          :is="link.as ? link.as : 'a'"
           v-for="link in socialLinks"
-          :key="link.href"
+          :key="link.alt"
           :href="link.href"
           v-bind="link.props"
           class="menubar__dropdown__social"
