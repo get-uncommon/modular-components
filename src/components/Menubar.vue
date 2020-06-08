@@ -1,4 +1,4 @@
-<template>
+1<template>
   <div
     class="menubar"
     :class="showMenubar && 'menubar--show'"
@@ -28,9 +28,9 @@
           </a>
         </div>
         <button
+          id="hamburger"
           class="menubar__hamburger"
           :class="{active: menuActive}"
-          @click="toggleMenu"
         />
       </div>
       <div
@@ -136,15 +136,21 @@ export default {
 
   mounted() {
     window.addEventListener('scroll', this.onScroll);
+    document.body.addEventListener('click', this.toggleMenu);
   },
 
   beforeDestroy() {
     window.removeEventListener('scroll', this.onScroll);
+    document.body.removeEventListener('click', this.toggleMenu);
   },
 
   methods: {
-    toggleMenu() {
-      this.menuActive = !this.menuActive;
+    toggleMenu(event) {
+      if (event.target.id === 'hamburger') {
+        this.menuActive = !this.menuActive;
+      } else {
+        this.menuActive = false;
+      }
     },
     onScroll() {
       const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
