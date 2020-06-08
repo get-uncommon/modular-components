@@ -1,6 +1,73 @@
 <template>
   <div>
-    <div class="container u-margin-bottom-lg u-margin-top-lg">
+    <Menubar
+      :primary-links="[
+        {
+          text: 'home',
+          props: {href: '#1'},
+          active: true,
+        },
+        {
+          text: 'over ons',
+          props: {href: '#2'},
+        },
+        {
+          text: 'wat doen wij?',
+          props: {href: '#3'},
+        },
+      ]"
+      :secondary-links="[
+        {
+          text: 'home1',
+          props: {href: '#4'},
+          active: true,
+        },
+        {
+          text: 'over ons1',
+          props: {href: '#5'},
+        },
+        {
+          text: 'wat doen wij?1',
+          props: {href: '#6'},
+          as: 'div',
+        },
+      ]"
+      :tertiary-links="[
+        {
+          text: 'home2',
+          props: {href: '#7'},
+          active: true,
+        },
+        {
+          text: 'over ons2',
+          props: {href: '#8'},
+        },
+        {
+          text: 'wat doen wij?2',
+          props: {href: '#9'},
+        },
+      ]"
+      :social-links="[
+        {
+          alt: 'facebook',
+          src: require('@/assets/images/facebook.png'),
+          href: '#10',
+          props: {
+            target: '_blank'
+          }
+        },
+        {
+          alt: 'instagram',
+          src: require('@/assets/images/instagram.png'),
+          href: '#11',
+          props: {
+            target: '_blank',
+          }
+        }
+      ]"
+      :logo="{src: require('@/assets/images/logo.png'), alt: 'Logo'}"
+    />
+    <div class="container u-margin-bottom-lg u-margin-top-xl">
       <div class="row  u-margin-bottom-lg">
         <div class="col-md-6">
           <Button icon="arrow">
@@ -94,6 +161,15 @@
         },
       ]"
     />
+    <div class="container">
+      <div class="row">
+        <TextBlock
+          class="u-margin-bottom-lg"
+          title="Nempre porem facero eatibusae."
+          body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum natoque penatibus et magnis parturient montes, nascetur ridiculus mus."
+        />
+      </div>
+    </div>
     <PhotoSlider
       class="u-margin-bottom-lg"
       :slides="[
@@ -219,8 +295,10 @@ import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
 import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
+import TextBlock from './components/TextBlock.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
+import Menubar from '@/components/Menubar.vue';
 import FeaturedDouble from '@/components/FeaturedDouble.vue';
 import VideoPlayer from '@/components/VideoPlayer.vue';
 import ContactForm from '@/components/ContactForm.vue';
@@ -230,10 +308,12 @@ export default {
   name: 'App',
 
   components: {
+    Menubar,
     FeaturedDouble,
     ContactForm,
     VideoPlayer,
     ContentBlock,
+    TextBlock,
     StaticCards,
     PhotoSlider,
     Button,
