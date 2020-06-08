@@ -1,5 +1,8 @@
 <template>
-  <div class="news-letter">
+  <div
+    ref="component"
+    class="news-letter"
+  >
     <div class="container">
       <div class="row">
         <div class="col-md-8 offset-md-1">
@@ -62,6 +65,7 @@ import emailValidator from 'email-validator';
 import Button from '@/components/Button.vue';
 import Input from '@/components/Input.vue';
 import Message from '@/components/Message.vue';
+import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'NewsLetterForm',
@@ -111,7 +115,24 @@ export default {
     return {
       errors: [],
       success: null,
+      scrollScene: null,
     };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 
   methods: {
@@ -150,7 +171,22 @@ $offset-mob: 72px;
 .news-letter {
   margin-top: $offset-mob;
   padding-bottom: var(--spacing-xl);
-  background-color: var(--color-light);
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: var(--color-light);
+    transition: var(--transition-page);
+    transform: scaleX(0);
+  }
 
   @include media-breakpoint-up(lg) {
     margin-top: calc(#{$offset} + var(--spacing-lg));
@@ -161,6 +197,15 @@ $offset-mob: 72px;
 
     @include media-breakpoint-up(lg) {
       margin-top: -#{$offset};
+    }
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+
+    &::after {
+      transform: scaleX(1);
     }
   }
 }
