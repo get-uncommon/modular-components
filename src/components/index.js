@@ -9,6 +9,7 @@ import TextBlocks from './TextBlocks.vue';
 import NewsLetterForm from './NewsLetterForm.vue';
 import StaticCards from './StaticCards.vue';
 import VideoPlayer from './VideoPlayer.vue';
+import ContactForm from './ContactForm.vue';
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   StaticCards,
   NewsLetterForm,
   VideoPlayer,
+  ContactForm,
 };

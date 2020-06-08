@@ -149,6 +149,23 @@
         ]"
       />
     </div>
+    <ContactForm
+      button-text="verstuur"
+      :button-props="{icon: 'arrow'}"
+      email-text="Email"
+      :fail-text="{
+        required: 'Je moet alle verplichte velden in vullen.',
+        email: 'Je moet een geldig email adres in vullen.'
+      }"
+      name-text="Naam"
+      phone-text="Telefoonnummer"
+      message-text="Bericht"
+      success-text="Hoera! Je bent aangemeld voor de nieuwsbrief"
+      title="Contact us for more information"
+      class="u-margin-bottom-xl"
+      body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      :submit-handler="handleContactSubmit"
+    />
     <NewsLetterForm
       button-text="verstuur"
       email-text="Email"
@@ -176,11 +193,13 @@ import FeaturedSingle from '@/components/FeaturedSingle.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
 import VideoPlayer from '@/components/VideoPlayer.vue';
+import ContactForm from '@/components/ContactForm.vue';
 
 export default {
   name: 'App',
 
   components: {
+    ContactForm,
     VideoPlayer,
     StaticCards,
     PhotoSlider,
@@ -195,6 +214,12 @@ export default {
     handleNewsLetterSubmit({ name, email }) {
       // eslint-disable-next-line no-alert
       alert(`${name} - ${email} - Subscribed to the news letter`);
+    },
+    handleContactSubmit({
+      name, email, phone, message,
+    }) {
+      // eslint-disable-next-line no-alert
+      alert(`${name} - ${email} - ${phone} \nMessage: ${message}`);
     },
   },
 };
