@@ -1,4 +1,4 @@
-1<template>
+<template>
   <div
     class="menubar"
     :class="showMenubar && 'menubar--show'"
