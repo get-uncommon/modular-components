@@ -12,89 +12,85 @@
         >
       </div>
       <div class="menubar__right">
-        <div
+        <nav
           v-if="primaryLinks"
           class="menubar__link--primary__wrapper"
         >
-          <a
-            v-for="link in primaryLinks"
-            :key="link.text"
-            :href="link.href"
-            v-bind="link.props"
-            class="menubar__link menubar__link--primary"
-            :class="{active: link.active}"
-          >
-            {{ link.text }}
-          </a>
-        </div>
+          <ul class="menubar__links">
+            <li
+              v-for="link in primaryLinks"
+              :key="link.text"
+              class="menubar__link__wrapper"
+            >
+              <component
+                :is="link.as ? link.as : 'a'"
+                v-bind="link.props"
+                class="menubar__link menubar__link--primary"
+                :class="{active: link.active}"
+              >
+                {{ link.text }}
+              </component>
+            </li>
+          </ul>
+        </nav>
         <button
           id="hamburger"
           class="menubar__hamburger"
           :class="{active: menuActive}"
         />
       </div>
-      <div
+      <nav
         class="menubar__dropdown"
         :class="{show: menuActive}"
       >
-        <div class="u-margin-bottom-md">
-          <div
-            v-for="link in primaryLinks"
-            :key="link.text"
-          >
-            <component
-              :is="link.as ? link.as : 'a'"
-              :href="link.href"
-              class="h2 menubar__link menubar__link--dropdown menubar__link--dropdown--primary menubar__link--big"
-              :class="{active: link.active}"
-              v-bind="link.props"
-            >
-              {{ link.text }}
-            </component>
-          </div>
-          <div
+        <ul class="menubar__links u-margin-bottom-md">
+          <li
             v-for="link in secondaryLinks"
             :key="link.text"
           >
             <component
               :is="link.as ? link.as : 'a'"
-              :href="link.href"
               class="h2 menubar__link menubar__link--dropdown menubar__link--big"
               :class="{active: link.active}"
               v-bind="link.props"
             >
               {{ link.text }}
             </component>
-          </div>
-        </div>
-        <div
-          v-for="link in tertiaryLinks"
-          :key="link.text"
-        >
-          <component
-            :is="link.as ? link.as : 'a'"
-            :href="link.href"
-            class="h4 menubar__link menubar__link--dropdown"
-            :class="{active: link.active}"
-            v-bind="link.props"
+          </li>
+        </ul>
+        <ul class="menubar__links">
+          <li
+            v-for="link in tertiaryLinks"
+            :key="link.text"
           >
-            {{ link.text }}
-          </component>
-        </div>
-        <a
-          :is="link.as ? link.as : 'a'"
-          v-for="link in socialLinks"
-          :key="link.alt"
-          :href="link.href"
-          v-bind="link.props"
-          class="menubar__dropdown__social"
-        >
-          <img
-            :src="link.src"
-            :alt="link.alt"
-          >
-        </a>
-      </div>
+            <component
+              :is="link.as ? link.as : 'a'"
+              class="h4 menubar__link menubar__link--dropdown"
+              :class="{active: link.active}"
+              v-bind="link.props"
+            >
+              {{ link.text }}
+            </component>
+          </li>
+        </ul>
+        <ul class="menubar__links">
+          <li>
+            <a
+              :is="link.as ? link.as : 'a'"
+              v-for="link in socialLinks"
+              :key="link.alt"
+              :href="link.href"
+              v-bind="link.props"
+              class="menubar__dropdown__social"
+            >
+              <img
+                :src="link.src"
+                :alt="link.alt"
+              >
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
@@ -302,7 +298,17 @@ export default {
     }
   }
 
+  &__links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
   &__link {
+    &__wrapper {
+      display: inline-block;
+    }
+
     display: inline-block;
     position: relative;
     color: var(--color-primary);

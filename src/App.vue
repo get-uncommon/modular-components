@@ -4,53 +4,54 @@
       :primary-links="[
         {
           text: 'home',
-          href: '#',
+          props: {href: '#1'},
           active: true,
         },
         {
           text: 'over ons',
-          href: '#',
+          props: {href: '#2'},
         },
         {
           text: 'wat doen wij?',
-          href: '#',
+          props: {href: '#3'},
         },
       ]"
       :secondary-links="[
         {
           text: 'home1',
-          href: '#',
+          props: {href: '#4'},
           active: true,
         },
         {
           text: 'over ons1',
-          href: '#',
+          props: {href: '#5'},
         },
         {
           text: 'wat doen wij?1',
-          href: '#',
+          props: {href: '#6'},
+          as: 'div',
         },
       ]"
       :tertiary-links="[
         {
           text: 'home2',
-          href: '#',
+          props: {href: '#7'},
           active: true,
         },
         {
           text: 'over ons2',
-          href: '#',
+          props: {href: '#8'},
         },
         {
           text: 'wat doen wij?2',
-          href: '#',
+          props: {href: '#9'},
         },
       ]"
       :social-links="[
         {
           alt: 'facebook',
           src: require('@/assets/images/facebook.png'),
-          href: '#',
+          href: '#10',
           props: {
             target: '_blank'
           }
@@ -58,9 +59,9 @@
         {
           alt: 'instagram',
           src: require('@/assets/images/instagram.png'),
-          href: '#',
+          href: '#11',
           props: {
-            target: '_blank'
+            target: '_blank',
           }
         }
       ]"
