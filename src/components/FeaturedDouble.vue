@@ -1,5 +1,8 @@
 <template>
-  <div class="featured-double">
+  <div
+    ref="component"
+    class="featured-double"
+  >
     <div
       v-for="item in items"
       :key="item.title"
@@ -39,22 +42,40 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 
 export default {
   name: 'FeaturedDouble',
+
   components: { Button },
+
   props: {
     items: {
       type: Array,
       required: true,
     },
   },
+
+  mounted() {
+    const scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .featured-double {
+  opacity: 0;
+  transition: var(--transition-page);
+
   &__wrapper:last-child {
     margin-top: var(--spacing-xl);
   }
@@ -68,6 +89,8 @@ export default {
     color: var(--color-light);
     cursor: pointer;
     background-color: var(--color-primary);
+    transition: var(--transition-page);
+    transform: translateX(-30%);
 
     &::after {
       position: absolute;
@@ -144,6 +167,14 @@ export default {
         opacity: 1;
         transform: translate(-50%, -50%) scale(.95);
       }
+    }
+  }
+
+  &.show {
+    opacity: 1;
+
+    .featured-double__item {
+      transform: translateX(0);
     }
   }
 }
