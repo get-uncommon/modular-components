@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div
+    ref="component"
+    class="header"
+  >
     <h1 class="col-md-8 offset-md-2 header__title">
       {{ title }}
     </h1>
@@ -33,6 +36,7 @@
 
 <script>
 import Button from '@/components/Button.vue';
+import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'FeaturedHeaderBlock',
@@ -65,11 +69,33 @@ export default {
       default: () => {},
     },
   },
+
+  mounted() {
+    const scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .header {
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
+
+  &.show {
+    opacity: 1;
+    transition: var(--transition-page);
+    transform: translateY(0);
+  }
+
   &__title {
     position: relative;
     z-index: 1;
