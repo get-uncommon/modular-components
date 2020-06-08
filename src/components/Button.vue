@@ -2,7 +2,7 @@
   <component
     :is="as"
     v-if="as"
-    :class="`c-button c-button--${type} ${icon && `c-button--${type}--with-icon ${light && `c-button--${type}--light`}`}`"
+    :class="buttonClasses"
   >
     <slot />
     <svgicon
@@ -13,7 +13,7 @@
   </component>
   <button
     v-else-if="!href"
-    :class="`c-button c-button--${type}  ${icon && `c-button--${type}--with-icon`} ${light && `c-button--${type}--light`}`"
+    :class="buttonClasses"
   >
     <slot />
     <svgicon
@@ -25,7 +25,7 @@
   <a
     v-else
     :href="href"
-    :class="`c-button c-button--${type} ${icon && `c-button--${type}--with-icon`} ${light && `c-button--${type}--light`}`"
+    :class="buttonClasses"
   >
     <slot />
     <svgicon
@@ -62,6 +62,12 @@ export default {
     light: {
       type: Boolean,
       default: false,
+    },
+  },
+
+  computed: {
+    buttonClasses() {
+      return `c-button c-button--${this.type}  ${this.icon && `c-button--${this.type}--with-icon`} ${this.light && `c-button--${this.type}--light`}`;
     },
   },
 };
