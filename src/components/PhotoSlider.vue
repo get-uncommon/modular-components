@@ -83,11 +83,11 @@ $slider-width: calc(50vw + 600px);
   cursor: grab;
   opacity: 0;
   transition: var(--transition-page);
-  transform: translateX(-50px);
+  transform: translateY(var(--spacing-lg));
 
   &.show {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 
   &__slide {

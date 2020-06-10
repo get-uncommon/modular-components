@@ -57,11 +57,11 @@ export default {
   .text-block {
     opacity: 0;
     transition: var(--transition-page);
-    transform: translateX(-50px);
+    transform: translateY(var(--spacing-lg));
 
     &.show {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
 </style>

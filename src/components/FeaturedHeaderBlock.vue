@@ -100,12 +100,6 @@ export default {
   transition: var(--transition-page);
   transform: translateY(var(--spacing-lg));
 
-  &.show {
-    opacity: 1;
-    transition: var(--transition-page);
-    transform: translateY(0);
-  }
-
   &__title {
     position: relative;
     z-index: 1;
@@ -134,6 +128,20 @@ export default {
 
   &__bottom {
     text-align: center;
+    opacity: 0;
+    transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
+    transform: translateY(var(--spacing-lg));
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+
+    .header__bottom {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 </style>

@@ -100,7 +100,7 @@ export default {
     cursor: pointer;
     background-color: var(--color-primary);
     transition: var(--transition-page);
-    transform: translateX(-30%);
+    transform: translateY(var(--spacing-lg));
 
     &::after {
       position: absolute;
@@ -184,7 +184,7 @@ export default {
     opacity: 1;
 
     .featured-double__item {
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
 }

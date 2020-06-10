@@ -107,10 +107,6 @@ export default {
     &.show {
       opacity: 1;
       transform: translateY(0);
-
-      .content-block__image {
-        transform: scale(1);
-      }
     }
   }
 </style>

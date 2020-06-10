@@ -85,6 +85,10 @@ export default {
 
 <style scoped lang="scss">
 .static-cards {
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
+
   &__button {
     &__wrapper {
       height: 100%;
@@ -92,9 +96,6 @@ export default {
       align-items: center;
       order: 2;
       margin-right: 0;
-      opacity: 0;
-      transition: var(--transition-page);
-      transform: translateY(-50px);
 
       @include media-breakpoint-down(sm) {
         align-items: baseline;
@@ -104,16 +105,11 @@ export default {
     }
   }
 
-  &__title {
-    opacity: 0;
-    transition: var(--transition-page);
-    transform: translateY(-50px);
-  }
-
   &__card {
     text-decoration: none;
     opacity: 0;
     transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
     transform: translateY(var(--spacing-lg));
 
     @include media-breakpoint-down(sm) {
@@ -180,8 +176,9 @@ export default {
   }
 
   &.show {
-    .static-cards__title,
-    .static-cards__button__wrapper,
+    opacity: 1;
+    transform: translateY(0);
+
     .static-cards__card {
       opacity: 1;
       transform: translateY(0);

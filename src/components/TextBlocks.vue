@@ -12,7 +12,7 @@
             <h1 class="services__title u-margin-bottom-xl">
               {{ title }}
             </h1>
-            <div class="row">
+            <div class="row services__blocks">
               <div
                 v-for="service in services"
                 :key="service.title"
@@ -91,11 +91,19 @@ $offset-mob: 72px;
     padding-top: $offset;
   }
 
+  &__blocks {
+    opacity: 0;
+    transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
+    transform: translateY(var(--spacing-lg));
+  }
+
   &__bg {
     position: relative;
     width: 100%;
     opacity: 0;
     transition: var(--transition-page);
+    transform: translateY(var(--spacing-lg));
 
     &::after {
       position: absolute;
@@ -107,14 +115,20 @@ $offset-mob: 72px;
       content: '';
       background-color: var(--color-light);
       transition: var(--transition-page);
-      transform: scaleY(0);
+      transform: translateX(-100%);
     }
 
     &.show {
       opacity: 1;
+      transform: translateY(0);
+
+      .services__blocks {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       &::after {
-        transform: scaleY(1);
+        transform: translateX(0);
       }
     }
   }

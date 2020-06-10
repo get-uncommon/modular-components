@@ -185,7 +185,7 @@ $offset-mob: 72px;
     content: '';
     background-color: var(--color-light);
     transition: var(--transition-page);
-    transform: scaleX(0);
+    transform: translateX(-100%);
   }
 
   @include media-breakpoint-up(lg) {
@@ -205,7 +205,7 @@ $offset-mob: 72px;
     transform: translateY(0);
 
     &::after {
-      transform: scaleX(1);
+      transform: translateX(0);
     }
   }
 }
