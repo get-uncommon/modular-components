@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div
+    ref="component"
+    class="header"
+  >
     <h1 class="col-md-8 offset-md-2 header__title">
       {{ title }}
     </h1>
@@ -33,6 +36,7 @@
 
 <script>
 import Button from '@/components/Button.vue';
+import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'FeaturedHeaderBlock',
@@ -65,11 +69,37 @@ export default {
       default: () => {},
     },
   },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .header {
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
+
   &__title {
     position: relative;
     z-index: 1;
@@ -98,6 +128,20 @@ export default {
 
   &__bottom {
     text-align: center;
+    opacity: 0;
+    transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
+    transform: translateY(var(--spacing-lg));
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+
+    .header__bottom {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 </style>

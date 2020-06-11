@@ -1,6 +1,9 @@
 <template>
-  <div class="static-cards">
-    <h1 class="col-md-8">
+  <div
+    ref="component"
+    class="static-cards"
+  >
+    <h1 class="static-cards__title col-md-8">
       {{ title }}
     </h1>
     <div
@@ -35,6 +38,7 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 
 export default {
@@ -60,11 +64,31 @@ export default {
       required: true,
     },
   },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
 
 <style scoped lang="scss">
 .static-cards {
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
+
   &__button {
     &__wrapper {
       height: 100%;
@@ -83,6 +107,10 @@ export default {
 
   &__card {
     text-decoration: none;
+    opacity: 0;
+    transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
+    transform: translateY(var(--spacing-lg));
 
     @include media-breakpoint-down(sm) {
       margin-bottom: var(--spacing-md);
@@ -144,6 +172,16 @@ export default {
           transform: translate(-50%, -50%) scale(.9);
         }
       }
+    }
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+
+    .static-cards__card {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

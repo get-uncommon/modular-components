@@ -12,7 +12,7 @@
         :alt="mainImageAlt"
       >
     </div>
-    <div class="col-md-5 col-12 order-3 order-md-0 u-margin-top-xl">
+    <div class="col-md-5 col-12 order-3 order-md-0 u-margin-top-xl featured-single__content">
       <h2 v-if="title">
         {{ title }}
       </h2>
@@ -116,6 +116,11 @@ export default {
         addIndicators: false, // If you are in development mode you can set this to true
       },
     });
+    this.scrollScene.Scene.on('enter', () => {
+      if (!triggerElement.classList.contains('show')) {
+        triggerElement.classList += ' show';
+      }
+    });
   },
 
   // Destroy the scene to avoid memory leaks
@@ -132,6 +137,9 @@ export default {
   }
 
   padding-top: var(--spacing-lg);
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
 
   &__wrapper {
     display: flex;
@@ -158,19 +166,32 @@ export default {
       padding-bottom: 100%;
       content: '';
     }
-
-    &--lower {
-      margin-top: var(--spacing-lg);
-    }
   }
 
   &__paragraph {
     width: 75%;
   }
 
+  &__content {
+    opacity: 0;
+    transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
+    transform: translateY(var(--spacing-lg));
+  }
+
   @include media-breakpoint-down(sm) {
     .u-margin-top-xl {
       margin-top: calc(1px - var(--spacing-lg) - 1px);
+    }
+  }
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+
+    .featured-single__content {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

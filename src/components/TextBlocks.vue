@@ -1,13 +1,18 @@
 <template>
-  <div class="services">
-    <div class="services__bg">
+  <div
+    class="services"
+  >
+    <div
+      ref="component"
+      class="services__bg"
+    >
       <div class="container">
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <h1 class="services__title u-margin-bottom-xl">
               {{ title }}
             </h1>
-            <div class="row">
+            <div class="row services__blocks">
               <div
                 v-for="service in services"
                 :key="service.title"
@@ -31,6 +36,7 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 
 export default {
@@ -48,6 +54,28 @@ export default {
       required: true,
     },
   },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
 
@@ -63,9 +91,46 @@ $offset-mob: 72px;
     padding-top: $offset;
   }
 
+  &__blocks {
+    opacity: 0;
+    transition: var(--transition-page);
+    transition-delay: var(--transition-page-fast);
+    transform: translateY(var(--spacing-lg));
+  }
+
   &__bg {
+    position: relative;
     width: 100%;
-    background-color: var(--color-light);
+    opacity: 0;
+    transition: var(--transition-page);
+    transform: translateY(var(--spacing-lg));
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background-color: var(--color-light);
+      transition: var(--transition-page);
+      transform: translateX(-100%);
+    }
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+
+      .services__blocks {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      &::after {
+        transform: translateX(0);
+      }
+    }
   }
 
   &__title {
