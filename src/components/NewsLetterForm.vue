@@ -149,15 +149,16 @@ export default {
       if (name && email && validEmail) {
         this.success = this.successText;
         this.submitHandler({ name, email });
-      } else {
-        if (!validEmail) {
-          this.errors.push(this.failText.email);
-          this.$refs.emailInput.setError(true);
-        }
-        if (!(name && email)) {
-          this.errors.push(this.failText.required);
-          this.$refs.nameInput.setError(!name);
-        }
+        this.$refs.nameInput.setValue('');
+        this.$refs.emailInput.setValue('');
+      } else if (!(name && email)) {
+        this.errors.push(this.failText.required);
+        this.$refs.nameInput.setError(!name);
+        this.$refs.emailInput.setError(!email);
+      }
+      if (!validEmail && email !== '') {
+        this.errors.push(this.failText.email);
+        this.$refs.emailInput.setError(true);
       }
     },
   },

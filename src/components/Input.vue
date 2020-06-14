@@ -46,6 +46,10 @@ export default {
     getValue() {
       return this.value;
     },
+    setValue(newValue) {
+      this.value = newValue;
+      this.$data.inputActive = newValue !== '';
+    },
     setError(errorValue) {
       this.error = errorValue;
     },
