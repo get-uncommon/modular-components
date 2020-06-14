@@ -11,6 +11,10 @@
         data-vimeo-controls="false"
         data-vimeo-allowfullscreen="true"
       />
+      <div
+        class="video__overlay"
+        @click="togglePlay"
+      />
       <div class="video__controls">
         <button
           class="video__controls__icon video__controls__icon--play"
@@ -147,6 +151,13 @@ export default {
     transform: translateY(0);
   }
 
+  &__overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+
   &__controls {
     display: flex;
     position: absolute;
@@ -199,7 +210,7 @@ export default {
 
     &:hover {
       .video__controls__progress {
-        transform: scaleY(3);
+        height: 6px;
       }
     }
   }
