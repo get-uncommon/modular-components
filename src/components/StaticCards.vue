@@ -143,20 +143,6 @@ export default {
           padding-bottom: 100%;
           content: '';
         }
-
-        &::before {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          z-index: 1;
-          width: 100%;
-          height: 100%;
-          content: '';
-          border: 1px solid var(--color-light);
-          opacity: 0;
-          transition: $transition-base;
-          transform: translate(-50%, -50%) scale(1);
-        }
       }
     }
 
@@ -166,11 +152,6 @@ export default {
 
       .static-cards__card__image {
         transform: translate(-50%, -50%) scale(1);
-
-        &__wrapper::before {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(.9);
-        }
       }
     }
   }
