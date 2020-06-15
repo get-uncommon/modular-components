@@ -150,6 +150,7 @@ $slider-width: calc(50vw + 600px);
       width: 70px;
       height: 12px;
       margin-left: 16px;
+      overflow: hidden;
       cursor: pointer;
 
       &:first-child {
@@ -177,7 +178,7 @@ $slider-width: calc(50vw + 600px);
         background-color: var(--color-primary);
         opacity: 0;
         transition: $transition-base;
-        transform: translateY(-50%) scale3d(0, 1, 1);
+        transform: translate(-100%, -50%);
       }
 
       &:focus {
@@ -188,7 +189,7 @@ $slider-width: calc(50vw + 600px);
       &:focus::after,
       &:hover::after {
         opacity: 1;
-        transform: translateY(-50%) scale3d(1, 1, 1);
+        transform: translate(0, -50%);
       }
     }
   }

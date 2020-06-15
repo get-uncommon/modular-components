@@ -301,15 +301,16 @@ export default {
   &__links {
     margin: 0;
     padding: 0;
+    overflow: hidden;
     list-style: none;
   }
 
   &__link {
     &__wrapper {
       display: inline-block;
+      overflow: hidden;
     }
 
-    display: inline-block;
     position: relative;
     color: var(--color-primary);
     text-decoration: none;
@@ -337,7 +338,7 @@ export default {
 
     &::after {
       position: absolute;
-      bottom: 5px;
+      bottom: 0;
       left: 0;
       z-index: -1;
       width: 100%;
@@ -346,7 +347,7 @@ export default {
       background-color: currentColor;
       opacity: 0;
       transition: $transition-base;
-      transform: scale3d(0, 1, 1);
+      transform: translateX(-100%);
     }
 
     &.active,
@@ -356,7 +357,7 @@ export default {
 
       &::after {
         opacity: 1;
-        transform: scale3d(1, 1, 1);
+        transform: translateX(0);
       }
     }
 

@@ -106,31 +106,24 @@ export default {
     background-color: $button-hover-color;
     opacity: 0;
     transition: $transition-base;
-    transform: scale3d(0, 1, 1);
+    transform: translateX(-100%);
   }
 
   &__icon {
-    position: absolute;
-    top: 50%;
-    right: 21px;
     width: 16px;
     height: 12px;
+    margin-left: var(--spacing-sm);
     transition: $transition-base;
-    transform: translate(-50%, -50%) translateX(0);
+    transform: translateX(0);
   }
 
   /* Setting button icon positions */
   &--bordered .c-button__icon {
-    right: 16px;
     fill: var(--color-primary);
   }
 
   &--bordered--light .c-button__icon {
     fill: var(--color-light);
-  }
-
-  &--anchor .c-button__icon {
-    right: -4px;
   }
 
   &:focus,
@@ -139,11 +132,11 @@ export default {
 
     &::after {
       opacity: 1;
-      transform: scale3d(1, 1, 1);
+      transform: translateX(0);
     }
 
     .c-button__icon {
-      transform: translate(-50%, -50%) translateX(8px);
+      transform: translateX(8px);
     }
   }
 
@@ -191,7 +184,7 @@ export default {
   &--anchor {
     height: auto;
     padding: 0;
-    overflow: visible;
+    overflow: hidden;
     color: $anchor-color;
     background-color: transparent;
     border-radius: 0;
@@ -204,10 +197,10 @@ export default {
     }
 
     &--with-icon {
-      padding: 0 28px 0 0;
+      padding: 0 var(--spacing-sm) 0 0;
 
       &::after {
-        width: calc(100% - 28px);
+        width: calc(100% - 28px - var(--spacing-sm));
       }
     }
   }
