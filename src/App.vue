@@ -49,16 +49,14 @@
       ]"
       :social-links="[
         {
-          alt: 'facebook',
-          src: require('@/assets/images/facebook.png'),
+          icon: 'facebook',
           href: '#10',
           props: {
             target: '_blank'
           }
         },
         {
-          alt: 'instagram',
-          src: require('@/assets/images/instagram.png'),
+          icon: 'instagram',
           href: '#11',
           props: {
             target: '_blank',

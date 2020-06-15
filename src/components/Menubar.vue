@@ -77,15 +77,16 @@
             <a
               :is="link.as ? link.as : 'a'"
               v-for="link in socialLinks"
-              :key="link.alt"
+              :key="link.icon"
               :href="link.href"
               v-bind="link.props"
               class="menubar__dropdown__social"
             >
-              <img
-                :src="link.src"
-                :alt="link.alt"
-              >
+              <svgicon
+                :icon="link.icon"
+                height="20"
+                width="20"
+              />
             </a>
           </li>
         </ul>
@@ -95,6 +96,9 @@
 </template>
 
 <script>
+import '@/icons/facebook';
+import '@/icons/instagram';
+
 export default {
   name: 'Menubar',
 
@@ -304,6 +308,10 @@ export default {
       display: inline-block;
       margin-top: var(--spacing-md);
       margin-right: var(--spacing-md);
+
+      svg {
+        fill: var(--color-light);
+      }
     }
   }
 
