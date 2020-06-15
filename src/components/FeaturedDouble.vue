@@ -102,21 +102,6 @@ export default {
     transition: var(--transition-page);
     transform: translateY(var(--spacing-lg));
 
-    &::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      content: '';
-      border: 2px solid var(--color-light);
-      opacity: 0;
-      transition: $transition-base;
-      transform: translate(-50%, -50%) scale(1);
-    }
-
     &__content {
       display: flex;
       position: absolute;
@@ -171,11 +156,6 @@ export default {
         &__header {
           text-decoration: underline;
         }
-      }
-
-      &::after {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(.95);
       }
     }
   }

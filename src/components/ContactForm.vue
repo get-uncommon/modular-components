@@ -169,6 +169,7 @@ export default {
       this.errors = [];
       this.$refs.nameInput.setError(false);
       this.$refs.emailInput.setError(false);
+      this.$refs.messageInput.setError(false);
 
       const name = this.$refs.nameInput.getValue();
       const email = this.$refs.emailInput.getValue();
@@ -181,16 +182,20 @@ export default {
         this.submitHandler({
           name, email, phone, message,
         });
-      } else {
-        if (!validEmail) {
-          this.errors.push(this.failText.email);
-          this.$refs.emailInput.setError(true);
-        }
-        if (!(name && email && message)) {
-          this.errors.push(this.failText.required);
-          this.$refs.nameInput.setError(!name);
-          this.$refs.messageInput.setError(!message);
-        }
+
+        this.$refs.nameInput.setValue('');
+        this.$refs.emailInput.setValue('');
+        this.$refs.phoneInput.setValue('');
+        this.$refs.messageInput.setValue('');
+      } else if (!(name && email && message)) {
+        this.errors.push(this.failText.required);
+        this.$refs.nameInput.setError(!name);
+        this.$refs.messageInput.setError(!message);
+        this.$refs.emailInput.setError(!email);
+      }
+      if (!validEmail && email !== '') {
+        this.errors.push(this.failText.email);
+        this.$refs.emailInput.setError(true);
       }
     },
   },

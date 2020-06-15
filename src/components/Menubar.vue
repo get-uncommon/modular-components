@@ -11,37 +11,36 @@
           :alt="logo.alt"
         >
       </div>
-      <div class="menubar__right">
-        <nav
-          v-if="primaryLinks"
-          class="menubar__link--primary__wrapper"
-        >
-          <ul class="menubar__links">
-            <li
-              v-for="link in primaryLinks"
-              :key="link.text"
-              class="menubar__link__wrapper"
+      <nav
+        v-if="primaryLinks"
+        class="menubar__link--primary__wrapper"
+        :class="{'hide--mobile': !menuActive}"
+      >
+        <ul class="menubar__links">
+          <li
+            v-for="link in primaryLinks"
+            :key="link.text"
+            class="menubar__link__wrapper"
+          >
+            <component
+              :is="link.as ? link.as : 'a'"
+              v-bind="link.props"
+              class="menubar__link menubar__link--primary"
+              :class="{active: link.active}"
             >
-              <component
-                :is="link.as ? link.as : 'a'"
-                v-bind="link.props"
-                class="menubar__link menubar__link--primary"
-                :class="{active: link.active}"
-              >
-                {{ link.text }}
-              </component>
-            </li>
-          </ul>
-        </nav>
-        <button
-          id="hamburger"
-          class="menubar__hamburger"
-          :class="{active: menuActive}"
-        />
-      </div>
+              {{ link.text }}
+            </component>
+          </li>
+        </ul>
+      </nav>
+      <button
+        id="hamburger"
+        class="menubar__hamburger"
+        :class="{active: menuActive}"
+      />
       <nav
         class="menubar__dropdown"
-        :class="{show: menuActive}"
+        :class="{'show': menuActive}"
       >
         <ul class="menubar__links u-margin-bottom-md">
           <li
@@ -78,15 +77,16 @@
             <a
               :is="link.as ? link.as : 'a'"
               v-for="link in socialLinks"
-              :key="link.alt"
+              :key="link.icon"
               :href="link.href"
               v-bind="link.props"
               class="menubar__dropdown__social"
             >
-              <img
-                :src="link.src"
-                :alt="link.alt"
-              >
+              <svgicon
+                :icon="link.icon"
+                height="20"
+                width="20"
+              />
             </a>
           </li>
         </ul>
@@ -96,6 +96,9 @@
 </template>
 
 <script>
+import '@/icons/facebook';
+import '@/icons/instagram';
+
 export default {
   name: 'Menubar',
 
@@ -170,7 +173,16 @@ export default {
   justify-content: stretch;
   background-color: var(--color-tertiary);
   transition: $transition-base;
-  transform: translateY(-100%);
+  transform: translateY(calc(1px - (var(--menu-bar-height) + 1px)));
+
+  @include media-breakpoint-down(sm) {
+    height: auto;
+    min-height: var(--menu-bar-height);
+  }
+
+  &__left {
+    margin-right: auto;
+  }
 
   &--show {
     transform: translateY(0);
@@ -180,18 +192,15 @@ export default {
     display: flex;
     position: relative;
     width: 100%;
-    max-width: var(--menu-container-width);
     height: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
-  }
 
-  &__right {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-end;
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+    }
   }
 
   &__hamburger {
@@ -249,17 +258,15 @@ export default {
 
       &::before,
       &::after {
-        background-color: var(--color-light);
         opacity: 1;
-        transform: translate(-50%, 19px) translateY(0) rotate(45deg);
+        transform: translate(-50%, 19px) translateY(0) rotate(30deg);
       }
 
       &::after {
-        transform: translate(-50%, -18px) translateY(0) rotate(-45deg);
+        transform: translate(-50%, -18px) translateY(0) rotate(-30deg);
       }
 
-      &:hover,
-      &:focus {
+      &:hover {
         &::before,
         &::after {
           transform: translateY(18px) translateX(-50%);
@@ -274,8 +281,8 @@ export default {
 
   &__dropdown {
     position: absolute;
-    top: 0;
-    right: 0;
+    right: var(--spacing-md);
+    bottom: 0;
     width: 100%;
     max-width: var(--menu-overlay-width);
     padding: var(--menu-bar-height) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
@@ -283,33 +290,48 @@ export default {
     background-color: var(--color-primary);
     opacity: 0;
     transition: $transition-base;
-    transform: translateY(-50px);
+    transform: translateY(110%);
+
+    @include media-breakpoint-down(sm) {
+      right: 0;
+      max-width: 100%;
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
 
     &.show {
       pointer-events: all;
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(100%);
     }
 
     &__social {
       display: inline-block;
       margin-top: var(--spacing-md);
       margin-right: var(--spacing-md);
+
+      svg {
+        fill: var(--color-light);
+      }
     }
   }
 
   &__links {
     margin: 0;
     padding: 0;
+    overflow: hidden;
     list-style: none;
   }
 
   &__link {
     &__wrapper {
       display: inline-block;
+      overflow: hidden;
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
     }
 
-    display: inline-block;
     position: relative;
     color: var(--color-primary);
     text-decoration: none;
@@ -319,25 +341,37 @@ export default {
       font-weight: var(--font-weight-bold);
 
       @include media-breakpoint-down(sm) {
-        display: none;
+        @include get-responsive-font-size(h2);
+
+        display: inline-block;
+        margin-bottom: var(--spacing-md);
+        line-height: var(--line-height-h2);
+
+        &__wrapper {
+          width: 100%;
+          max-height: 300px;
+          order: 3;
+          padding: var(--spacing-md) 0;
+          overflow: hidden;
+          opacity: 1;
+          transition: $transition-base;
+        }
+
+        &__wrapper.hide--mobile {
+          max-height: 0;
+          padding: 0;
+          opacity: 0;
+        }
       }
     }
 
     &--dropdown {
       color: var(--color-light);
-
-      &--primary {
-        display: none;
-
-        @include media-breakpoint-down(sm) {
-          display: inline-block;
-        }
-      }
     }
 
     &::after {
       position: absolute;
-      bottom: 5px;
+      bottom: 0;
       left: 0;
       z-index: -1;
       width: 100%;
@@ -346,7 +380,7 @@ export default {
       background-color: currentColor;
       opacity: 0;
       transition: $transition-base;
-      transform: scale3d(0, 1, 1);
+      transform: translateX(-100%);
     }
 
     &.active,
@@ -356,11 +390,12 @@ export default {
 
       &::after {
         opacity: 1;
-        transform: scale3d(1, 1, 1);
+        transform: translateX(0);
       }
     }
 
     &--big {
+      display: inline-block;
       margin-bottom: var(--spacing-md);
     }
   }
