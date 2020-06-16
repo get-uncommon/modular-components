@@ -14,6 +14,7 @@ import FeaturedDouble from './FeaturedDouble.vue';
 import VideoPlayer from './VideoPlayer.vue';
 import ContactForm from './ContactForm.vue';
 import ContentBlock from './ContentBlock.vue';
+import Footer from './Footer.vue';
 import CardSlider from './CardSlider.vue';
 
 export {
@@ -29,5 +30,6 @@ export {
   ContentBlock,
   TextBlock,
   Menubar,
+  Footer,
   CardSlider,
 };

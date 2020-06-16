@@ -319,6 +319,7 @@
       body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       :submit-handler="handleNewsLetterSubmit"
     />
+    <Footer />
   </div>
 </template>
 
@@ -337,11 +338,13 @@ import CardSlider from '@/components/CardSlider.vue';
 import ContactForm from '@/components/ContactForm.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import TextBlock from '@/components/TextBlock.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
 
   components: {
+    Footer,
     CardSlider,
     Menubar,
     FeaturedDouble,
