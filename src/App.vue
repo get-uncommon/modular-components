@@ -400,7 +400,7 @@ import CardSlider from '@/components/CardSlider.vue';
 import ContactForm from '@/components/ContactForm.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import TextBlock from '@/components/TextBlock.vue';
-import Footer from './components/Footer.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'App',
