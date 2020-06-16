@@ -355,28 +355,31 @@
         },
       ]"
       :tertiary-links="[
-        {
-          text: 'straatnaam 12',
-        },
-        {
-          text: '989 AA Amsterdam',
-        },
-        {
-          text: '0800 90 90 2019',
-          props: {href: 'tel:080090902019'},
-        },
-        {
-          text: 'info@website.nl',
-          props: {href: 'mailTo:info@website.nl'},
-        },
-        {
-          text: 'Algemene voorwaarden',
-          props: {href: '#8'},
-        },
-        {
-          text: 'Privacyverklaring',
-          props: {href: '#9'},
-        },
+        [
+          {
+            text: 'straatnaam 12',
+          },
+          {
+            text: '989 AA Amsterdam',
+          },
+        ],[
+          {
+            text: '0800 90 90 2019',
+            href: 'tel:080090902019',
+          },
+          {
+            text: 'info@website.nl',
+            href: 'mailTo:info@website.nl',
+          },],
+        [{
+           text: 'Algemene voorwaarden',
+           href: '#8',
+         },
+         {
+           text: 'Privacyverklaring',
+           href: '#9',
+         },
+        ]
       ]"
     />
   </div>

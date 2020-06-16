@@ -1,40 +1,67 @@
 <template>
   <footer class="footer">
-    <div class="container">
-      <nav
-        v-if="primaryLinks"
-        class="footer__menu footer__menu--primary"
-      >
-        <ul>
-          <li
-            v-for="link in primaryLinks"
-            :key="link.href"
-          >
-            <component
-              :is="link.as ? link.as : 'a'"
-              class="footer__menu__item h2"
-              :class="link.active && 'active'"
-              v-bind="link.props"
+    <div class="container footer__container">
+      <div>
+        <nav
+          v-if="primaryLinks"
+          class="footer__menu footer__menu--primary"
+        >
+          <ul>
+            <li
+              v-for="link in primaryLinks"
+              :key="link.href"
             >
-              {{ link.text }}
-            </component>
-          </li>
-        </ul>
-      </nav>
+              <component
+                :is="link.as ? link.as : 'a'"
+                class="footer__menu__item h2"
+                :class="link.active && 'active'"
+                v-bind="link.props"
+              >
+                {{ link.text }}
+              </component>
+            </li>
+          </ul>
+        </nav>
+        <nav
+          v-if="secondaryLinks"
+          class="footer__menu"
+        >
+          <ul>
+            <li
+              v-for="link in secondaryLinks"
+              :key="link.href"
+            >
+              <component
+                :is="link.as ? link.as : 'a'"
+                class="footer__menu__item footer__menu__item--secondary h4"
+                :class="link.active && 'active'"
+                v-bind="link.props"
+              >
+                {{ link.text }}
+              </component>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <nav
-        v-if="secondaryLinks"
-        class="footer__menu footer__menu--primary"
+        v-if="tertiaryLinks"
+        class="footer__menu footer__menu--tertiary"
       >
-        <ul>
+        <ul
+          v-for="(linkGroup, index) in tertiaryLinks"
+          :key="index"
+          class="footer__menu__group"
+        >
           <li
-            v-for="link in secondaryLinks"
-            :key="link.href"
+            v-for="link in linkGroup"
+            :key="link.text"
           >
             <component
-              :is="link.as ? link.as : 'a'"
-              class="footer__menu__item footer__menu__item--secondary h4"
+              :is="link.href ? 'a' : 'span'"
+              class="footer__menu__item footer__menu__item--tertiary"
               :class="link.active && 'active'"
               v-bind="link.props"
+              :href="link.href"
             >
               {{ link.text }}
             </component>
@@ -58,6 +85,10 @@ export default {
       type: Array,
       default: null,
     },
+    tertiaryLinks: {
+      type: Array,
+      default: null,
+    },
   },
 };
 </script>
@@ -70,6 +101,11 @@ export default {
   color: var(--color-light);
   background-color: var(--color-primary);
 
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   ul {
     padding: 0;
     list-style: none;
@@ -77,6 +113,19 @@ export default {
 
   &__menu {
     margin-top: var(--spacing-lg);
+
+    &--tertiary {
+      align-self: flex-end;
+    }
+
+    &__group {
+      display: inline-block;
+      margin-right: var(--spacing-md);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
 
     &__item {
       display: inline-block;
@@ -88,7 +137,8 @@ export default {
       opacity: .5;
       transition: $transition-base;
 
-      &--secondary {
+      &--secondary,
+      &--tertiary {
         margin-bottom: 0;
       }
 
@@ -106,9 +156,19 @@ export default {
         transform: translateX(-100%);
       }
 
-      &:hover,
-      &:focus,
-      &.active {
+      &--tertiary {
+        &[href] {
+          text-decoration: underline;
+        }
+
+        &::after {
+          content: none;
+        }
+      }
+
+      &[href]:hover,
+      &[href]:focus,
+      &[href].active {
         outline: 0;
         opacity: 1;
 
