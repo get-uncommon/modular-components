@@ -13,6 +13,27 @@
             <component
               :is="link.as ? link.as : 'a'"
               class="footer__menu__item h2"
+              :class="link.active && 'active'"
+              v-bind="link.props"
+            >
+              {{ link.text }}
+            </component>
+          </li>
+        </ul>
+      </nav>
+      <nav
+        v-if="secondaryLinks"
+        class="footer__menu footer__menu--primary"
+      >
+        <ul>
+          <li
+            v-for="link in secondaryLinks"
+            :key="link.href"
+          >
+            <component
+              :is="link.as ? link.as : 'a'"
+              class="footer__menu__item footer__menu__item--secondary h4"
+              :class="link.active && 'active'"
               v-bind="link.props"
             >
               {{ link.text }}
@@ -30,6 +51,10 @@ export default {
 
   props: {
     primaryLinks: {
+      type: Array,
+      default: null,
+    },
+    secondaryLinks: {
       type: Array,
       default: null,
     },
@@ -62,6 +87,10 @@ export default {
       text-decoration: none;
       opacity: .5;
       transition: $transition-base;
+
+      &--secondary {
+        margin-bottom: 0;
+      }
 
       &::after {
         position: absolute;
