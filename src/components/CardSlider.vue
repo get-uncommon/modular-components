@@ -1,34 +1,32 @@
 <template>
-  <div>
-    <div class="card-slider">
-      <swiper
-        ref="mySwiper"
-        :options="swiperOptions"
+  <div
+    ref="component"
+    class="card-slider"
+  >
+    <swiper
+      ref="mySwiper"
+      :options="swiperOptions"
+    >
+      <swiper-slide
+        v-for="slide in slides"
+        :key="slide.alt"
+        class="card-slider__slide"
       >
-        <swiper-slide
-          v-for="slide in slides"
-          :key="slide.alt"
-          class="card-slider__slide"
-        >
-          <PhotoCard
-            :image="slide.image"
-            :image-alt="slide.alt"
-            :title="slide.title"
-            :sub-title="slide.description"
-            :link="slide.linkText"
-            :link-props="slide.linkProps"
-          />
-        </swiper-slide>
-      </swiper>
-    </div>
-    <div
-      slot="pagination"
-      class="card-slider__pagination u-margin-top-md"
-    />
+        <PhotoCard
+          :image="slide.image"
+          :image-alt="slide.alt"
+          :title="slide.title"
+          :sub-title="slide.description"
+          :link="slide.linkText"
+          :link-props="slide.linkProps"
+        />
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import PhotoCard from './PhotoCards.vue';
 
 export default {
@@ -44,10 +42,6 @@ export default {
   data() {
     return {
       swiperOptions: {
-        pagination: {
-          el: '.photo-slider__pagination',
-          clickable: true,
-        },
         slidesPerView: 1,
         spaceBetween: 30,
         breakpoints: {
@@ -59,25 +53,49 @@ export default {
           },
         },
       },
+      scrollScene: null,
     };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>
 
 <style scoped lang="scss">
+.card-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: url(../assets/images/slider-cursor.svg) 50 25, auto;
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
 
-  .card-slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    cursor: url(../assets/images/slider-cursor.svg) 50 25, auto;
-
-    &__slide {
-      position: relative;
-      height: 100%;
-      overflow: hidden;
-    }
+  &.show {
+    opacity: 1;
+    transform: translateX(0);
   }
+
+  &__slide {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+}
 </style>
 
 <style lang="scss">
