@@ -1,6 +1,9 @@
 <template>
   <footer class="footer">
-    <div class="container footer__container">
+    <div
+      ref="component"
+      class="container footer__container"
+    >
       <div>
         <nav
           v-if="primaryLinks"
@@ -73,6 +76,8 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
+
 export default {
   name: 'Footer',
 
@@ -90,6 +95,28 @@ export default {
       default: null,
     },
   },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
 
@@ -100,16 +127,6 @@ export default {
   padding-bottom: var(--spacing-lg);
   color: var(--color-light);
   background-color: var(--color-primary);
-
-  &__container {
-    display: flex;
-    justify-content: space-between;
-
-    @include media-breakpoint-down(sm) {
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-  }
 
   ul {
     margin-bottom: 0;
@@ -191,6 +208,25 @@ export default {
           transform: translateX(0);
         }
       }
+    }
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    overflow-y: hidden;
+    opacity: 0;
+    transition: var(--transition-page);
+    transform: translateY(var(--spacing-lg));
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
