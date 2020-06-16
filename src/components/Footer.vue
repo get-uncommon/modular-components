@@ -104,9 +104,15 @@ export default {
   &__container {
     display: flex;
     justify-content: space-between;
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
   }
 
   ul {
+    margin-bottom: 0;
     padding: 0;
     list-style: none;
   }
@@ -116,11 +122,19 @@ export default {
 
     &--tertiary {
       align-self: flex-end;
+
+      @include media-breakpoint-down(sm) {
+        align-self: flex-start;
+      }
     }
 
     &__group {
       display: inline-block;
       margin-right: var(--spacing-md);
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
 
       &:last-child {
         margin-right: 0;
