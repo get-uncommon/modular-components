@@ -31,7 +31,9 @@ import PhotoCard from './PhotoCards.vue';
 
 export default {
   name: 'CardSlider',
+
   components: { PhotoCard },
+
   props: {
     slides: {
       type: Array,
