@@ -27,7 +27,7 @@
 
 <script>
 import { ScrollScene } from 'scrollscene';
-import PhotoCard from './PhotoCards.vue';
+import PhotoCard from './PhotoCard.vue';
 
 export default {
   name: 'CardSlider',

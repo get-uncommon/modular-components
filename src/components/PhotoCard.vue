@@ -70,6 +70,8 @@ export default {
 .card {
   width: 100%;
   padding-bottom: var(--spacing-md);
+  color: var(--color-primary);
+  text-decoration: none;
 
   &__image {
     position: relative;
@@ -83,6 +85,14 @@ export default {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: $transition-base;
+      transform: scale(1.05);
+    }
+  }
+
+  &[href]:hover {
+    .card__image img {
+      transform: scale(1);
     }
   }
 
