@@ -319,6 +319,69 @@
       body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       :submit-handler="handleNewsLetterSubmit"
     />
+    <Footer
+      :primary-links="[
+        {
+          text: 'home',
+          props: {href: '#1'},
+          active: true,
+        },
+        {
+          text: 'over ons',
+          props: {href: '#2'},
+        },
+        {
+          text: 'wat doen wij?',
+          props: {href: '#3'},
+        },
+      ]"
+      :secondary-links="[
+        {
+          text: 'Ons team',
+          props: {href: '#4'},
+          active: true,
+        },
+        {
+          text: 'nieuws',
+          props: {href: '#5'},
+        },
+        {
+          text: 'afspraak maken',
+          props: {href: '#6'},
+        },
+        {
+          text: 'contact',
+          props: {href: '#7'},
+        },
+      ]"
+      :tertiary-links="[
+        [
+          {
+            text: 'straatnaam 12',
+          },
+          {
+            text: '989 AA Amsterdam',
+          },
+        ],[
+          {
+            text: '0800 90 90 2019',
+            href: 'tel:080090902019',
+          },
+          {
+            text: 'info@website.nl',
+            href: 'mailTo:info@website.nl',
+          },],
+        [{
+           text: 'Algemene voorwaarden',
+           href: '#8',
+         },
+         {
+           text: 'Privacyverklaring',
+           href: '#9',
+         },
+        ]
+      ]"
+    />
   </div>
 </template>
 
@@ -337,11 +400,13 @@ import CardSlider from '@/components/CardSlider.vue';
 import ContactForm from '@/components/ContactForm.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import TextBlock from '@/components/TextBlock.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'App',
 
   components: {
+    Footer,
     CardSlider,
     Menubar,
     FeaturedDouble,
