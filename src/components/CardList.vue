@@ -59,14 +59,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .card-list {
-    opacity: 0;
-    transition: var(--transition-page);
-    transform: translateY(var(--spacing-lg));
+.card-list {
+  opacity: 0;
+  transition: var(--transition-page);
+  transform: translateY(var(--spacing-lg));
 
-    &.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 </style>
