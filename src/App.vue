@@ -319,6 +319,39 @@
       body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis penatibus et magnis dis parturient montes, nascetur ridiculus mus."
       :submit-handler="handleNewsLetterSubmit"
     />
+    <CardList
+      class="u-margin-bottom-xl"
+      :slides="[
+        {
+          linkText: 'email',
+          linkProps: {
+            href: 'mailto:someone@example.com'
+          },
+          title: 'Lisa Janssen1',
+          description: 'Marketing manager',
+          image: require('@/assets/images/Eliza.png'),
+          alt: '1'
+        },
+        {
+          title: 'Lisa Janssen2',
+          description: 'Marketing manager',
+          image: require('@/assets/images/Eliza.png'),
+          alt: '2'
+        },
+        {
+          title: 'Lisa Janssen3',
+          description: 'Marketing manager',
+          image: require('@/assets/images/Eliza.png'),
+          alt: '3'
+        },
+        {
+          title: 'Lisa Janssen4',
+          description: 'Marketing manager',
+          image: require('@/assets/images/Eliza.png'),
+          alt: '4'
+        },
+      ]"
+    />
     <Footer
       :primary-links="[
         {
@@ -400,6 +433,7 @@ import CardSlider from '@/components/CardSlider.vue';
 import ContactForm from '@/components/ContactForm.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import TextBlock from '@/components/TextBlock.vue';
+import CardList from './components/CardList.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
@@ -407,6 +441,7 @@ export default {
 
   components: {
     Footer,
+    CardList,
     CardSlider,
     Menubar,
     FeaturedDouble,

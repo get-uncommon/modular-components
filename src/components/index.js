@@ -16,6 +16,7 @@ import ContactForm from './ContactForm.vue';
 import ContentBlock from './ContentBlock.vue';
 import Footer from './Footer.vue';
 import CardSlider from './CardSlider.vue';
+import CardList from './CardList.vue';
 
 export {
   Button,
@@ -32,4 +33,5 @@ export {
   Menubar,
   Footer,
   CardSlider,
+  CardList,
 };
