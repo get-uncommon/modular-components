@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div
+    ref="component"
+    class="card-list"
+  >
     <PhotoCard
       v-for="card in cards"
       :key="card.alt"
@@ -16,6 +19,7 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import PhotoCard from './PhotoCard.vue';
 
 export default {
@@ -29,5 +33,40 @@ export default {
       default: () => [],
     },
   },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$refs.component,
+    });
+
+    this.scrollScene.Scene.on('enter', () => {
+      if (!this.$refs.component.classList.contains('show')) {
+        this.$refs.component.classList += ' show';
+      }
+    });
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+  .card-list {
+    opacity: 0;
+    transition: var(--transition-page);
+    transform: translateY(var(--spacing-lg));
+
+    &.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
