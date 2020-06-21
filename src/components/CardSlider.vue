@@ -27,12 +27,17 @@
 
 <script>
 import { ScrollScene } from 'scrollscene';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import PhotoCard from './PhotoCard.vue';
 
 export default {
   name: 'CardSlider',
 
-  components: { PhotoCard },
+  components: {
+    Swiper,
+    SwiperSlide,
+    PhotoCard,
+  },
 
   props: {
     slides: {
