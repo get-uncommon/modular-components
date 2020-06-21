@@ -36,7 +36,6 @@
 
 <script>
 import Button from '@/components/Button.vue';
-import '@/assets/scss/main.scss';
 import { ScrollScene } from 'scrollscene';
 
 export default {
