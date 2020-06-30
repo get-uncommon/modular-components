@@ -1,8 +1,8 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.0.12-beta",
-  "main": "dist/modular-components.umd.min.js",
-  "unpkg": "dist/modular-components.umd.min.js",
+  "version": "0.0.41-beta",
+  "main": "src/components/index.js",
+  "unpkg": "src/components/index.js",
   "jsdelivr": "dist/modular-components.umd.min.js",
   "author": "Uncommon",
   "license": "Can only be used with UNCOMMON's permissions",
@@ -11,8 +11,10 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
+    "src/assets/scss/*",
+    "src/assets/images/slider-cursor.svg",
+    "src/icons/*",
     "src/components/*",
-    "dist/*",
     "package.json",
     "README.md"
   ],
@@ -20,8 +22,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "publish": "yarn run build:package && npm publish",
-    "publish:login": "yarn run build:package && npm login --registry=https://npm.pkg.github.com && npm publish",
+    "publish:login": "npm login --registry=https://npm.pkg.github.com && npm publish",
     "build:package": "vue-cli-service build --target lib --name modular-components src/lib.js",
     "lint": "vue-cli-service lint",
     "stylelint": "vue-cli-service lint:style --no-fix",
