@@ -21,6 +21,7 @@
 <script>
 import { ScrollScene } from 'scrollscene';
 import PhotoCard from './PhotoCard.vue';
+import '../assets/scss/main.scss';
 
 export default {
   name: 'CardList',

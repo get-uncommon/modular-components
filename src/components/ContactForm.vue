@@ -82,10 +82,11 @@
 
 <script>
 import emailValidator from 'email-validator';
-import Button from '@/components/Button.vue';
-import Input from '@/components/Input.vue';
-import Message from '@/components/Message.vue';
 import { ScrollScene } from 'scrollscene';
+import Button from './Button.vue';
+import Input from './Input.vue';
+import Message from './Message.vue';
+import '../assets/scss/main.scss';
 
 export default {
   name: 'ContactForm',

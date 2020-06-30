@@ -40,6 +40,7 @@
 <script>
 import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
+import '../assets/scss/main.scss';
 
 export default {
   name: 'StaticCards',

@@ -29,7 +29,8 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import '@/assets/scss/main.scss';
+import { ScrollScene } from 'scrollscene';
+import '../assets/scss/main.scss';
 
 export default {
   name: 'PhotoSlider',

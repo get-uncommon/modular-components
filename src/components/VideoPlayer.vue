@@ -56,11 +56,11 @@
 import Player from '@vimeo/player';
 import VueSvgIcon from 'vue-svgicon';
 import Fullscreen from 'vue-fullscreen/src/component.vue';
-import '@/icons/play';
-import '@/icons/fullscreen';
-import '@/icons/pause';
+import '../icons/play';
+import '../icons/fullscreen';
+import '../icons/pause';
 import { ScrollScene } from 'scrollscene';
-
+import '../assets/scss/main.scss';
 
 export default {
   name: 'VideoPlayer',

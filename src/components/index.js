@@ -17,6 +17,7 @@ import ContentBlock from './ContentBlock.vue';
 import Footer from './Footer.vue';
 import CardSlider from './CardSlider.vue';
 import CardList from './CardList.vue';
+import '../assets/scss/main.scss';
 
 export {
   Button,

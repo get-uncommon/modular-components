@@ -35,8 +35,9 @@
 </template>
 
 <script>
-import Button from '@/components/Button.vue';
+import '../assets/scss/main.scss';
 import { ScrollScene } from 'scrollscene';
+import Button from './Button.vue';
 
 export default {
   name: 'FeaturedHeaderBlock',

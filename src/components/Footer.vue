@@ -77,6 +77,7 @@
 
 <script>
 import { ScrollScene } from 'scrollscene';
+import '../assets/scss/main.scss';
 
 export default {
   name: 'Footer',

@@ -96,11 +96,17 @@
 </template>
 
 <script>
-import '@/icons/facebook';
-import '@/icons/instagram';
+import '../icons/facebook';
+import '../icons/instagram';
+import '../assets/scss/main.scss';
+import VueSVGIcon from 'vue-svgicon';
 
 export default {
   name: 'Menubar',
+
+  components: {
+    svgicon: VueSVGIcon,
+  },
 
   props: {
     logo: {
@@ -341,10 +347,9 @@ export default {
       font-weight: var(--font-weight-bold);
 
       @include media-breakpoint-down(sm) {
-        @include get-responsive-font-size(h2);
-
         display: inline-block;
         margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-h2-responsive);
         line-height: var(--line-height-h2);
 
         &__wrapper {

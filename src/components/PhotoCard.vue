@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import '../assets/scss/main.scss';
 
 export default {
   name: 'PhotoCard',
