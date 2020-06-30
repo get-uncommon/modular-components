@@ -11,6 +11,7 @@ import TextBlock from './TextBlock.vue';
 import StaticCards from './StaticCards.vue';
 import Menubar from './Menubar.vue';
 import FeaturedDouble from './FeaturedDouble.vue';
+import FeaturedSingle from './FeaturedSingle.vue';
 import VideoPlayer from './VideoPlayer.vue';
 import ContactForm from './ContactForm.vue';
 import ContentBlock from './ContentBlock.vue';
@@ -29,6 +30,7 @@ export {
   VideoPlayer,
   ContactForm,
   FeaturedDouble,
+  FeaturedSingle,
   ContentBlock,
   TextBlock,
   Menubar,

@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.0.41-beta",
+  "version": "0.0.42-beta",
   "main": "src/components/index.js",
   "unpkg": "src/components/index.js",
   "jsdelivr": "dist/modular-components.umd.min.js",
