@@ -1,11 +1,11 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.0.42-beta",
-  "main": "src/components/index.js",
-  "unpkg": "src/components/index.js",
+  "version": "0.0.46-beta",
+  "main": "src/components/index.vue",
+  "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
   "author": "Uncommon",
-  "license": "Can only be used with UNCOMMON's permissions",
+  "license": "UNLICENSED",
   "description": "Awesome Uncommon component library",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
@@ -31,7 +31,6 @@
   "dependencies": {
     "@vimeo/player": "^2.12.0",
     "bootstrap": "^4.5.0",
-    "core-js": "^3.6.4",
     "email-validator": "^2.0.4",
     "gsap": "^3.2.6",
     "normalize.css": "^8.0.1",
