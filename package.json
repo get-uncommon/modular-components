@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.0.47-beta",
+  "version": "0.0.48-beta",
   "main": "src/components/index.vue",
   "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
