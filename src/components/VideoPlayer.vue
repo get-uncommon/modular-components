@@ -60,7 +60,6 @@ import '../icons/play';
 import '../icons/fullscreen';
 import '../icons/pause';
 import { ScrollScene } from 'scrollscene';
-import '../assets/scss/main.scss';
 
 export default {
   name: 'VideoPlayer',
@@ -175,7 +174,7 @@ export default {
       height: 2px;
       margin: 0 var(--spacing-sm);
       cursor: pointer;
-      transition: $transition-base;
+      transition: var(--transition-base);
 
       &__indicator {
         height: 100%;
@@ -198,7 +197,7 @@ export default {
 
     &__icon {
       cursor: pointer;
-      transition: $transition-base;
+      transition: var(--transition-base);
       transform: scale(1);
 
       &:focus,

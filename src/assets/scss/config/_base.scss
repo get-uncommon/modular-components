@@ -51,6 +51,7 @@ $open-sans: 'Open Sans', sans-serif;
   --menu-overlay-width: 650px;
 
   // Transitions
+  --transition-base: all .2s ease-in-out;
   --transition-page: 1s;
   --transition-page-fast: .5s;
 }
@@ -92,3 +93,12 @@ $action-font-weight: var(--action-font-weight);
 
 // Anchor
 $anchor-color: var(--anchor-color);
+
+// Breakpoints
+$grid-breakpoints: (
+  xs: var(--breakpoint-xs),
+  sm: var(--breakpoint-sm),
+  md: var(--breakpoint-md),
+  lg: var(--breakpoint-lg),
+  xl: var(--breakpoint-xl),
+);

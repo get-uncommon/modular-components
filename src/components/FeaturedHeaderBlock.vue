@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import '../assets/scss/main.scss';
 import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 
@@ -96,6 +95,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/config/breakpoints';
+
 .header {
   opacity: 0;
   transition: var(--transition-page);
@@ -107,7 +108,7 @@ export default {
     margin-bottom: -4px;
     text-align: center;
 
-    @include media-breakpoint-up(xl) {
+    @media (min-width: $breakpoint-xl) {
       margin-bottom: -12px;
     }
   }

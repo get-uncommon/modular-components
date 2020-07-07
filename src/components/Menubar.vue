@@ -98,7 +98,6 @@
 <script>
 import '../icons/facebook';
 import '../icons/instagram';
-import '../assets/scss/main.scss';
 import VueSVGIcon from 'vue-svgicon';
 
 export default {
@@ -170,6 +169,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/config/breakpoints';
+
 .menubar {
   position: fixed;
   top: 0;
@@ -178,10 +179,10 @@ export default {
   height: var(--menu-bar-height);
   justify-content: stretch;
   background-color: var(--color-tertiary);
-  transition: $transition-base;
+  transition: var(--transition-base);
   transform: translateY(calc(1px - (var(--menu-bar-height) + 1px)));
 
-  @include media-breakpoint-down(sm) {
+  @media screen and  (max-width: $breakpoint-sm) {
     height: auto;
     min-height: var(--menu-bar-height);
   }
@@ -204,7 +205,7 @@ export default {
     margin: 0 auto;
     padding: 0 var(--spacing-md);
 
-    @include media-breakpoint-down(sm) {
+    @media screen and (max-width: $breakpoint-sm) {
       flex-wrap: wrap;
     }
   }
@@ -217,7 +218,7 @@ export default {
     cursor: pointer;
     border-top: 2px solid var(--color-primary);
     border-bottom: 2px solid var(--color-primary);
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: scaleY(.5);
 
     &::after,
@@ -230,7 +231,7 @@ export default {
       content: '';
       background-color: var(--color-primary);
       opacity: 0;
-      transition: $transition-base;
+      transition: var(--transition-base);
       transform: translateX(-50%);
     }
 
@@ -295,10 +296,10 @@ export default {
     pointer-events: none;
     background-color: var(--color-primary);
     opacity: 0;
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: translateY(110%);
 
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $breakpoint-sm) {
       right: 0;
       max-width: 100%;
       padding: var(--spacing-lg) var(--spacing-md);
@@ -333,7 +334,7 @@ export default {
       display: inline-block;
       overflow: hidden;
 
-      @include media-breakpoint-down(sm) {
+      @media (max-width: $breakpoint-sm) {
         display: block;
       }
     }
@@ -346,7 +347,7 @@ export default {
       margin-right: var(--spacing-lg);
       font-weight: var(--font-weight-bold);
 
-      @include media-breakpoint-down(sm) {
+      @media (max-width: $breakpoint-sm) {
         display: inline-block;
         margin-bottom: var(--spacing-md);
         font-size: var(--font-size-h2-responsive);
@@ -359,7 +360,7 @@ export default {
           padding: var(--spacing-md) 0;
           overflow: hidden;
           opacity: 1;
-          transition: $transition-base;
+          transition: var(--transition-base);
         }
 
         &__wrapper.hide--mobile {
@@ -384,7 +385,7 @@ export default {
       content: '';
       background-color: currentColor;
       opacity: 0;
-      transition: $transition-base;
+      transition: var(--transition-base);
       transform: translateX(-100%);
     }
 

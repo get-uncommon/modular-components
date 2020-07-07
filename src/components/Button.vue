@@ -38,7 +38,6 @@
 
 <script>
 import '../icons/arrow';
-import '../assets/scss/main.scss';
 import VueSVGIcon from 'vue-svgicon';
 
 export default {
@@ -110,7 +109,7 @@ export default {
     content: '';
     background-color: var(--button-background-color);
     opacity: 0;
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: translateX(-100%);
   }
 
@@ -118,7 +117,7 @@ export default {
     width: 16px;
     height: 12px;
     margin-left: var(--spacing-sm);
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: translateX(0);
   }
 
@@ -151,7 +150,7 @@ export default {
     color: var(--button-background-color);
     background-color: transparent;
     border: 1px solid var(--button-background-color);
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &::after {
       background-color: var(--color-primary);

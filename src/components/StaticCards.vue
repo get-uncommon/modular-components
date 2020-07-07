@@ -40,7 +40,6 @@
 <script>
 import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
-import '../assets/scss/main.scss';
 
 export default {
   name: 'StaticCards',
@@ -85,6 +84,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/config/breakpoints';
+
 .static-cards {
   opacity: 0;
   transition: var(--transition-page);
@@ -98,7 +99,7 @@ export default {
       order: 2;
       margin-right: 0;
 
-      @include media-breakpoint-down(sm) {
+      @media (max-width: $breakpoint-sm) {
         align-items: baseline;
         justify-content: center;
         padding-bottom: var(--spacing-md);
@@ -113,7 +114,7 @@ export default {
     transition-delay: var(--transition-page-fast);
     transform: translateY(var(--spacing-lg));
 
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $breakpoint-sm) {
       margin-bottom: var(--spacing-md);
     }
 
@@ -129,7 +130,7 @@ export default {
       min-width: 100%;
       height: auto;
       min-height: 100%;
-      transition: $transition-base;
+      transition: var(--transition-base);
       transform: translate(-50%, -50%) scale(1.05);
       object-fit: cover;
 

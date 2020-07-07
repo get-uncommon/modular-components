@@ -426,6 +426,8 @@
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.css';
+
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';

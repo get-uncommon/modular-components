@@ -29,7 +29,6 @@
 import { ScrollScene } from 'scrollscene';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import PhotoCard from './PhotoCard.vue';
-import '../assets/scss/main.scss';
 
 export default {
   name: 'CardSlider',

@@ -38,7 +38,6 @@
 <script>
 import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
-import '../assets/scss/main.scss';
 
 export default {
   name: 'TextBlocks',
@@ -81,6 +80,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/config/breakpoints';
+
 $offset: 89px;
 $offset-mob: 72px;
 
@@ -88,7 +89,7 @@ $offset-mob: 72px;
   display: grid;
   padding-top: $offset-mob;
 
-  @include media-breakpoint-up(lg) {
+  @media (min-width: $breakpoint-lg) {
     padding-top: $offset;
   }
 
@@ -137,14 +138,14 @@ $offset-mob: 72px;
   &__title {
     margin-top: -#{$offset-mob};
 
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       margin-top: -#{$offset};
     }
   }
 }
 
 .u-margin-bottom-xl {
-  @include media-breakpoint-down(sm) {
+  @media (max-width: $breakpoint-sm) {
     margin-bottom: var(--spacing-lg);
   }
 }
