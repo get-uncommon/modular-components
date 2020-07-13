@@ -82,10 +82,10 @@
 
 <script>
 import emailValidator from 'email-validator';
-import Button from '@/components/Button.vue';
-import Input from '@/components/Input.vue';
-import Message from '@/components/Message.vue';
 import { ScrollScene } from 'scrollscene';
+import Button from './Button.vue';
+import Input from './Input.vue';
+import Message from './Message.vue';
 
 export default {
   name: 'ContactForm',
@@ -203,6 +203,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/config/breakpoints';
+
 $offset: 89px;
 $offset-mob: 72px;
 
@@ -227,14 +229,14 @@ $offset-mob: 72px;
     transform: translateX(-100%);
   }
 
-  @include media-breakpoint-up(lg) {
+  @media (min-width: $breakpoint-lg) {
     margin-top: calc(#{$offset} + var(--spacing-lg));
   }
 
   &__title {
     margin-top: -#{$offset-mob};
 
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       margin-top: -#{$offset};
     }
   }

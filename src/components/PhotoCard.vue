@@ -1,9 +1,9 @@
 <template>
   <a
     :href="href"
-    class="card"
+    class="photo-card"
   >
-    <div class="card__image">
+    <div class="photo-card__image">
       <img
         :src="image"
         :alt="imageAlt"
@@ -11,7 +11,7 @@
     </div>
     <div
       v-if="title"
-      class="card__title"
+      class="photo-card__title"
     >
       {{ title }}
     </div>
@@ -21,7 +21,7 @@
     <a
       v-if="link"
       v-bind="linkProps"
-      class="card__link"
+      class="photo-card__link"
     >
       {{ link }}
     </a>
@@ -29,7 +29,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'PhotoCard',
 
@@ -67,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
+.photo-card {
   width: 100%;
   padding-bottom: var(--spacing-md);
   color: var(--color-primary);
@@ -85,7 +84,7 @@ export default {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: $transition-base;
+      transition: var(--transition-base);
       transform: scale(1.05);
     }
   }

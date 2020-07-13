@@ -426,6 +426,8 @@
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.css';
+
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
@@ -440,8 +442,8 @@ import CardSlider from '@/components/CardSlider.vue';
 import ContactForm from '@/components/ContactForm.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import TextBlock from '@/components/TextBlock.vue';
-import CardList from './components/CardList.vue';
 import Footer from '@/components/Footer.vue';
+import CardList from '@/components/CardList.vue';
 
 export default {
   name: 'App',

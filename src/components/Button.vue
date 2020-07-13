@@ -37,10 +37,15 @@
 </template>
 
 <script>
-import '@/icons/arrow';
+import '../icons/arrow';
+import VueSVGIcon from 'vue-svgicon';
 
 export default {
   name: 'Button',
+
+  components: {
+    svgicon: VueSVGIcon,
+  },
 
   props: {
     type: {
@@ -79,21 +84,20 @@ export default {
   display: inline-flex;
   position: relative;
   z-index: 1;
-  height: $button-height;
+  height: var(--button-height);
   align-items: center;
-  padding-right: $button-padding;
-  padding-left: $button-padding;
+  padding-right: var(--button-padding);
+  padding-left: var(--button-padding);
   overflow: hidden;
+  font-size: var(--font-size-button);
   font-style: normal;
-  font-weight: $action-font-weight;
+  font-weight: var(--action-font-weight);
   line-height: 1;
-  color: $button-color;
+  color: var(--button-color);
   text-decoration: none;
   cursor: pointer;
-  background-color: $button-background-color;
-  border-radius: $button-border-radius;
-
-  @include get-font-size(button);
+  background-color: var(--button-background-color);
+  border-radius: var(--button-border-radius);
 
   &::after {
     position: absolute;
@@ -103,9 +107,9 @@ export default {
     width: 100%;
     height: 100%;
     content: '';
-    background-color: $button-hover-color;
+    background-color: var(--button-background-color);
     opacity: 0;
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: translateX(-100%);
   }
 
@@ -113,7 +117,7 @@ export default {
     width: 16px;
     height: 12px;
     margin-left: var(--spacing-sm);
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: translateX(0);
   }
 
@@ -143,10 +147,10 @@ export default {
   /* Bordered button */
   &--bordered {
     padding: 22px 48px;
-    color: $button-background-color;
+    color: var(--button-background-color);
     background-color: transparent;
-    border: 1px solid $button-background-color;
-    transition: $transition-base;
+    border: 1px solid var(--button-background-color);
+    transition: var(--transition-base);
 
     &::after {
       background-color: var(--color-primary);
@@ -171,10 +175,10 @@ export default {
 
       &:focus,
       &:hover {
-        color: $button-background-color;
+        color: var(--button-background-color);
 
         .c-button__icon {
-          fill: $button-background-color;
+          fill: var(--button-background-color);
         }
       }
     }
@@ -185,7 +189,7 @@ export default {
     height: auto;
     padding: 0;
     overflow: hidden;
-    color: $anchor-color;
+    color: var(--anchor-color);
     background-color: transparent;
     border-radius: 0;
 

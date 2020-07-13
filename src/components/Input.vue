@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'Input',
 
@@ -66,7 +67,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 0;
-    transition: $transition-base;
+    transition: var(--transition-base);
     transform: translateY(-50%) scale(1);
   }
 
@@ -77,7 +78,7 @@ export default {
     background-color: transparent;
     border: 0;
     border-bottom: 1px solid var(--input-color);
-    transition: $transition-base;
+    transition: var(--transition-base);
 
     &:focus,
     &.active {

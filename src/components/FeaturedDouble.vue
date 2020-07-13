@@ -123,14 +123,14 @@ export default {
       height: 100%;
       object-fit: cover;
       opacity: .8;
-      transition: $transition-base;
+      transition: var(--transition-base);
       transform: translate(-50%, -50%) scale(1.05);
     }
 
     &__title {
       font-weight: var(--font-weight-bold);
       opacity: .5;
-      transition: $transition-base;
+      transition: var(--transition-base);
     }
 
     &__header {

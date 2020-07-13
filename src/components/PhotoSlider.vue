@@ -28,10 +28,16 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'PhotoSlider',
+
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
 
   props: {
     slides: {
@@ -71,6 +77,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/config/breakpoints';
+
 $slider-width: calc(50vw + 600px);
 
 .photo-slider {
@@ -114,11 +122,11 @@ $slider-width: calc(50vw + 600px);
     padding-right: var(--spacing-md);
     padding-left: var(--spacing-md);
 
-    @include media-breakpoint-up(md) {
+    @media (min-width: $breakpoint-md) {
       justify-content: flex-end;
     }
 
-    @include media-breakpoint-up(xl) {
+    @media (min-width: $breakpoint-xl) {
       padding-right: 0;
       padding-left: 0;
     }
@@ -177,7 +185,7 @@ $slider-width: calc(50vw + 600px);
         content: '';
         background-color: var(--color-primary);
         opacity: 0;
-        transition: $transition-base;
+        transition: var(--transition-base);
         transform: translate(-100%, -50%);
       }
 

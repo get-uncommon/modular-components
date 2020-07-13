@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import Button from '@/components/Button.vue';
 import { ScrollScene } from 'scrollscene'; // use scrollscene instead https://www.npmjs.com/package/scrollscene
 import { gsap } from 'gsap';
+import Button from './Button.vue';
 
 export default {
   name: 'FeaturedSingle',
@@ -131,8 +131,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/scss/config/breakpoints';
+
 .featured-single {
-  @include media-breakpoint-up(sm) {
+  @media (min-width: $breakpoint-sm) {
     margin-bottom: calc(1px - var(--spacing-xl) - 1px);
   }
 
@@ -179,7 +181,7 @@ export default {
     transform: translateY(var(--spacing-lg));
   }
 
-  @include media-breakpoint-down(sm) {
+  @media (max-width: $breakpoint-sm) {
     .u-margin-top-xl {
       margin-top: calc(1px - var(--spacing-lg) - 1px);
     }

@@ -121,6 +121,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/config/breakpoints';
+
 .footer {
   width: 100%;
   padding-top: var(--spacing-xl);
@@ -140,7 +142,7 @@ export default {
     &--tertiary {
       align-self: flex-end;
 
-      @include media-breakpoint-down(sm) {
+      @media (max-width: $breakpoint-sm) {
         align-self: flex-start;
       }
     }
@@ -149,7 +151,7 @@ export default {
       display: inline-block;
       margin-right: var(--spacing-md);
 
-      @include media-breakpoint-down(sm) {
+      @media (max-width: $breakpoint-sm) {
         display: block;
       }
 
@@ -166,7 +168,7 @@ export default {
       color: var(--color-light);
       text-decoration: none;
       opacity: .5;
-      transition: $transition-base;
+      transition: var(--transition-base);
 
       &--secondary,
       &--tertiary {
@@ -183,7 +185,7 @@ export default {
         content: '';
         background-color: var(--color-light);
         opacity: 0;
-        transition: $transition-base;
+        transition: var(--transition-base);
         transform: translateX(-100%);
       }
 
@@ -219,7 +221,7 @@ export default {
     transition: var(--transition-page);
     transform: translateY(var(--spacing-lg));
 
-    @include media-breakpoint-down(sm) {
+    @media (max-width: $breakpoint-sm) {
       flex-direction: column;
       justify-content: flex-start;
     }
