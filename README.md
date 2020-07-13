@@ -14,7 +14,7 @@ In your `config.js` add the following code to the default export
 ```javascript
 export default {
   css: [
-    '~node_modules/@get-uncommon/modular-components/src/assets/scss/main.scss',
+    '@get-uncommon/modular-components/src/assets/scss/main.scss',
     '~assets/scss/[YOUR_OWN_PROJECT_STYLING]',
   ]
 }
