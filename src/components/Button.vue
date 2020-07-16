@@ -123,11 +123,11 @@ export default {
 
   /* Setting button icon positions */
   &--bordered .c-button__icon {
-    fill: var(--color-primary);
+    fill: var(--button-background-color);
   }
 
   &--bordered--light .c-button__icon {
-    fill: var(--color-light);
+    fill: var(--button-color);
   }
 
   &:focus,
@@ -153,24 +153,24 @@ export default {
     transition: var(--transition-base);
 
     &::after {
-      background-color: var(--color-primary);
+      background-color: var(--button-background-color);
     }
 
     &:focus,
     &:hover {
-      color: var(--color-light);
+      color: var(--button-color);
 
       .c-button__icon {
-        fill: var(--color-light);
+        fill: var(--button-color);
       }
     }
 
     &--light {
-      color: var(--color-light);
-      border: 1px solid var(--color-light);
+      color: var(--button-color);
+      border: 1px solid var(--button-color);
 
       &::after {
-        background-color: var(--color-light);
+        background-color: var(--button-color);
       }
 
       &:focus,
