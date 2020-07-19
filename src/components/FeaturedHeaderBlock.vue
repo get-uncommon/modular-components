@@ -3,7 +3,7 @@
     ref="component"
     class="header"
   >
-    <h1 class="col-md-8 offset-md-2 header__title">
+    <h1 class="col-md-8 mx-auto header__title">
       {{ title }}
     </h1>
     <div
@@ -20,7 +20,7 @@
     <div class="header__bottom">
       <p
         v-if="body"
-        class="col-md-8 offset-md-2 h4 u-margin-top-lg u-margin-bottom-lg"
+        class="col-md-8 mx-auto h4 u-margin-top-lg u-margin-bottom-lg"
       >
         {{ body }}
       </p>
