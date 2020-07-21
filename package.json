@@ -57,7 +57,7 @@
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
-    "stylelint-order": "^4.0.0",
+    "stylelint-order": "^4.1.0",
     "stylelint-processor-html": "^1.0.0",
     "stylelint-scss": "^3.18.0",
     "vue-template-compiler": "^2.6.11"
