@@ -107,7 +107,7 @@ export default {
     width: 100%;
     height: 100%;
     content: '';
-    background-color: var(--button-background-color);
+    background-color: var(--button-hover-color);
     opacity: 0;
     transition: var(--transition-base);
     transform: translateX(-100%);

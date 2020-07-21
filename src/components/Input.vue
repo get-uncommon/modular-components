@@ -3,7 +3,7 @@
     class="input"
     :class="{ 'error' : error }"
   >
-    <label>
+    <label class="input__field--label">
       <input
         v-model="value"
         class="input__field"
@@ -67,8 +67,10 @@ export default {
     position: absolute;
     top: 50%;
     left: 0;
+    padding: var(--input-padding);
     transition: var(--transition-base);
     transform: translateY(-50%) scale(1);
+    -webkit-transform-origin-x: 0;
   }
 
   &__field {
@@ -79,6 +81,10 @@ export default {
     border: 0;
     border-bottom: 1px solid var(--input-color);
     transition: var(--transition-base);
+
+    &--label {
+      width: 100%;
+    }
 
     &:focus,
     &.active {
