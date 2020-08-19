@@ -11,12 +11,11 @@
           <h1 class="contact__title">
             {{ title }}
           </h1>
-          <p
+          <div
             v-if="body"
             class="h5 u-margin-bottom-md"
-          >
-            {{ body }}
-          </p>
+            v-html="body"
+          />
           <form
             class="contact__form"
             @submit.prevent="submit"
