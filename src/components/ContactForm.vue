@@ -49,9 +49,11 @@
             />
             <Input
               ref="messageInput"
+              :as="messageType"
               :input-props="{
                 type: 'text',
-                'v-model': 'message'
+                'v-model': 'message',
+                ...messageProps
               }"
               :label="messageText"
               class="u-margin-bottom-md"
@@ -115,6 +117,14 @@ export default {
     messageText: {
       type: String,
       required: true,
+    },
+    messageProps: {
+      type: Object,
+      default: () => null,
+    },
+    messageType: {
+      type: String,
+      default: 'input',
     },
     phoneText: {
       type: String,

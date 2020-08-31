@@ -274,6 +274,8 @@
       name-text="Naam"
       phone-text="Telefoonnummer"
       message-text="Bericht"
+      :message-props="{rows: 5}"
+      message-type="textarea"
       success-text="Hoera! Je bent aangemeld voor de nieuwsbrief"
       title="Contact us for more information"
       class="u-margin-bottom-xl"
