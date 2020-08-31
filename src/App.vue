@@ -63,7 +63,14 @@
           }
         }
       ]"
-      :logo="{src: require('@/assets/images/logo.png'), alt: 'Logo'}"
+      :logo="{
+        src: require('@/assets/images/logo.png'),
+        alt: 'Logo',
+        as: 'a',
+        props: {
+          href: '/',
+        }
+      }"
     />
     <div class="container u-margin-bottom-lg u-margin-top-xl">
       <div class="row  u-margin-bottom-lg">
