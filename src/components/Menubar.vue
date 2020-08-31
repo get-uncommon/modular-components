@@ -39,10 +39,12 @@
         </ul>
       </nav>
       <button
-        v-if="secondaryLinks || tertiaryLinks"
         id="hamburger"
         class="menubar__hamburger"
-        :class="{active: menuActive}"
+        :class="{
+          active: menuActive,
+          'hide-desktop': !(secondaryLinks || tertiaryLinks),
+        }"
       />
       <nav
         v-if="secondaryLinks || tertiaryLinks"
@@ -295,6 +297,14 @@ export default {
         &::after {
           transform: translateY(-19px) translateX(-50%);
         }
+      }
+    }
+
+    &.hide-desktop {
+      display: none;
+
+      @media (max-width: $breakpoint-sm) {
+        display: block;
       }
     }
   }
