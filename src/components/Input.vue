@@ -84,6 +84,7 @@ export default {
 
     &--textarea {
       top: 0;
+      transform: translateY(0) scale(1);
     }
   }
 
@@ -115,7 +116,7 @@ export default {
         transform: translateY(-115%) scale(.75);
 
         &.input__label--textarea {
-          transform: translateY(-85%) scale(.75);
+          transform: translateY(-60%) scale(.75);
         }
       }
     }
