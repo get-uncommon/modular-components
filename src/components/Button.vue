@@ -100,9 +100,12 @@ export default {
   line-height: 1;
   color: var(--button-color);
   text-decoration: none;
-  cursor: pointer;
   background-color: var(--button-background-color);
   border-radius: var(--button-border-radius);
+
+  &:enabled {
+    cursor: pointer;
+  }
 
   &::after {
     position: absolute;
@@ -135,8 +138,8 @@ export default {
     fill: var(--button-color);
   }
 
-  &:focus,
-  &:hover {
+  &:focus:enabled,
+  &:hover:enabled {
     outline: 0;
 
     &::after {
@@ -161,8 +164,8 @@ export default {
       background-color: var(--button-background-color);
     }
 
-    &:focus,
-    &:hover {
+    &:focus:enabled,
+    &:hover:enabled {
       color: var(--button-color);
 
       .c-button__icon {
@@ -178,8 +181,8 @@ export default {
         background-color: var(--button-color);
       }
 
-      &:focus,
-      &:hover {
+      &:focus:enabled,
+      &:hover:enabled {
         color: var(--button-background-color);
 
         .c-button__icon {
