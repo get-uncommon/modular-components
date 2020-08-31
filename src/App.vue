@@ -483,11 +483,13 @@ export default {
       // eslint-disable-next-line no-alert
       alert(`${name} - ${email} - Subscribed to the news letter`);
     },
-    handleContactSubmit({
+    async handleContactSubmit({
       name, email, phone, message,
     }) {
-      // eslint-disable-next-line no-alert
-      alert(`${name} - ${email} - ${phone} \nMessage: ${message}`);
+      // eslint-disable-next-line no-restricted-globals
+      const success = confirm(`${name} - ${email} - ${phone} \nMessage: ${message} \nWhould you like the send to fail or succeed?`);
+
+      return { success, error: 'Oops, something whent wrong' };
     },
   },
 };

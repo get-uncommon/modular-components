@@ -18,6 +18,7 @@
           />
           <form
             class="contact__form"
+            :class="waiting && 'contact__form--waiting'"
             @submit.prevent="submit"
           >
             <Input
@@ -56,7 +57,10 @@
               class="u-margin-bottom-md"
             />
             <Button
-              v-bind="buttonProps"
+              v-bind="{
+                disabled: waiting,
+                ...buttonProps
+              }"
               class="u-margin-right-md u-margin-bottom-md"
             >
               {{ buttonText }}
@@ -134,7 +138,7 @@ export default {
     },
     submitHandler: {
       type: Function,
-      default: () => null,
+      default: async () => null,
     },
   },
 
@@ -143,6 +147,7 @@ export default {
       errors: [],
       success: null,
       scrollScene: null,
+      waiting: false,
     };
   },
 
@@ -163,7 +168,7 @@ export default {
   },
 
   methods: {
-    submit() {
+    async submit() {
       this.success = null;
       this.errors = [];
       this.$refs.nameInput.setError(false);
@@ -177,15 +182,24 @@ export default {
 
       const validEmail = emailValidator.validate(email);
       if (name && email && validEmail) {
-        this.success = this.successText;
-        this.submitHandler({
+        this.waiting = true;
+
+        const { success, error } = await this.submitHandler({
           name, email, phone, message,
         });
 
-        this.$refs.nameInput.setValue('');
-        this.$refs.emailInput.setValue('');
-        this.$refs.phoneInput.setValue('');
-        this.$refs.messageInput.setValue('');
+        this.waiting = false;
+
+        if (success) {
+          this.$refs.nameInput.setValue('');
+          this.$refs.emailInput.setValue('');
+          this.$refs.phoneInput.setValue('');
+          this.$refs.messageInput.setValue('');
+          this.success = this.successText;
+        } else {
+          this.success = null;
+          this.errors.push(error);
+        }
       } else if (!(name && email && message)) {
         this.errors.push(this.failText.required);
         this.$refs.nameInput.setError(!name);
@@ -238,6 +252,10 @@ $offset-mob: 72px;
     @media (min-width: $breakpoint-lg) {
       margin-top: -#{$offset};
     }
+  }
+
+  &__form--waiting {
+    opacity: .5;
   }
 
   &.show {
