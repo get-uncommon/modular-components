@@ -109,8 +109,11 @@ These are the variables that you can override, and their default values
 
   // Menubar
   --menu-bar-height: 100px;
+  --menu-bar-color: var(--color-tertiary);
+  --menu-bar-link-color: var(--color-primary);
   --menu-container-width: 1370px;
   --menu-overlay-width: 650px;
+  --menu-logo-height: 100px;
 
   // Transitions
   --transition-base: all .2s ease-in-out;
@@ -153,6 +156,10 @@ These are the variables that you can override, and their default values
   --line-height-h5: 1.9;
   --line-height-h6: #{$line-height-base};
   --line-height-base: #{$line-height-base};
+  
+  // Footer
+  --footer-color: var(--color-primary);
+  --footer-link-color: var(--color-light);
 }
 ```
 
