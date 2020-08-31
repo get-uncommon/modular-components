@@ -3,6 +3,7 @@
     :is="as"
     v-if="as"
     :class="buttonClasses"
+    v-bind="props"
   >
     <slot />
     <svgicon
@@ -67,6 +68,10 @@ export default {
     light: {
       type: Boolean,
       default: false,
+    },
+    props: {
+      type: Object,
+      default: () => null,
     },
   },
 

@@ -10,12 +10,10 @@
       <h2 v-if="title">
         {{ title }}
       </h2>
-      <p
+      <div
         v-if="intro"
-        class="h4"
-      >
-        {{ intro }}
-      </p>
+        v-html="intro"
+      />
     </div>
     <div
       v-if="img"
@@ -27,12 +25,11 @@
         :alt="imgAlt"
       >
     </div>
-    <p
+    <div
       v-if="body"
-      class="col-md-8  offset-md-2 h5 u-margin-top-lg"
-    >
-      {{ body }}
-    </p>
+      class="col-md-8  offset-md-2 u-margin-top-lg"
+      v-html="body"
+    />
   </div>
 </template>
 

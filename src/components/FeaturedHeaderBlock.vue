@@ -21,9 +21,8 @@
       <p
         v-if="body"
         class="col-md-8 mx-auto h4 u-margin-top-lg u-margin-bottom-lg"
-      >
-        {{ body }}
-      </p>
+        v-html="body"
+      />
       <Button
         v-if="buttonText"
         v-bind="buttonProps"

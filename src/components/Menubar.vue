@@ -4,13 +4,18 @@
     :class="showMenubar && 'menubar--show'"
   >
     <div class="menubar__container">
-      <div class="menubar__left">
+      <component
+        :is="logo.as ? logo.as : 'div'"
+        v-bind="logo.props"
+        class="menubar__left"
+      >
         <img
           v-if="logo"
           :src="logo.src"
           :alt="logo.alt"
+          class="menubar__logo"
         >
-      </div>
+      </component>
       <nav
         v-if="primaryLinks"
         class="menubar__link--primary__wrapper"
@@ -36,9 +41,13 @@
       <button
         id="hamburger"
         class="menubar__hamburger"
-        :class="{active: menuActive}"
+        :class="{
+          active: menuActive,
+          'hide-desktop': !(secondaryLinks || tertiaryLinks),
+        }"
       />
       <nav
+        v-if="secondaryLinks || tertiaryLinks"
         class="menubar__dropdown"
         :class="{'show': menuActive}"
       >
@@ -178,7 +187,8 @@ export default {
   width: 100%;
   height: var(--menu-bar-height);
   justify-content: stretch;
-  background-color: var(--color-tertiary);
+  color: var(--menu-bar-link-color);
+  background-color: var(--menu-bar-color);
   transition: var(--transition-base);
   transform: translateY(calc(1px - (var(--menu-bar-height) + 1px)));
 
@@ -208,6 +218,11 @@ export default {
     @media screen and (max-width: $breakpoint-sm) {
       flex-wrap: wrap;
     }
+  }
+
+  &__logo {
+    width: auto;
+    height: var(--menu-logo-height);
   }
 
   &__hamburger {
@@ -282,6 +297,14 @@ export default {
         &::after {
           transform: translateY(-19px) translateX(-50%);
         }
+      }
+    }
+
+    &.hide-desktop {
+      display: none;
+
+      @media (max-width: $breakpoint-sm) {
+        display: block;
       }
     }
   }

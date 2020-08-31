@@ -63,7 +63,14 @@
           }
         }
       ]"
-      :logo="{src: require('@/assets/images/logo.png'), alt: 'Logo'}"
+      :logo="{
+        src: require('@/assets/images/logo.png'),
+        alt: 'Logo',
+        as: 'a',
+        props: {
+          href: '/',
+        }
+      }"
     />
     <div class="container u-margin-bottom-lg u-margin-top-xl">
       <div class="row  u-margin-bottom-lg">
@@ -225,10 +232,14 @@
       <ContentBlock
         class="row"
         title="Nempe porem facero eatibusae."
-        intro="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque et magnis dis parturient montes, nascetur ridiculus mus."
+        intro="<p class='h4'>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque et magnis dis parturient montes, nascetur ridiculus mus.
+        </p>"
         :img="require('@/assets/images/Photo_slide.png')"
         img-alt="cooleimagewoowow"
-        body="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque et magnis dis parturient montes, nascetur ridiculus mus."
+        body="<p class='h5'>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque et magnis dis parturient montes, nascetur ridiculus mus.
+        </p>"
       />
       <FeaturedDouble
         :items="[
@@ -263,6 +274,8 @@
       name-text="Naam"
       phone-text="Telefoonnummer"
       message-text="Bericht"
+      :message-props="{rows: 5}"
+      message-type="textarea"
       success-text="Hoera! Je bent aangemeld voor de nieuwsbrief"
       title="Contact us for more information"
       class="u-margin-bottom-xl"
@@ -472,11 +485,13 @@ export default {
       // eslint-disable-next-line no-alert
       alert(`${name} - ${email} - Subscribed to the news letter`);
     },
-    handleContactSubmit({
+    async handleContactSubmit({
       name, email, phone, message,
     }) {
-      // eslint-disable-next-line no-alert
-      alert(`${name} - ${email} - ${phone} \nMessage: ${message}`);
+      // eslint-disable-next-line no-restricted-globals
+      const success = confirm(`${name} - ${email} - ${phone} \nMessage: ${message} \nWhould you like the send to fail or succeed?`);
+
+      return { success, error: 'Oops, something whent wrong' };
     },
   },
 };

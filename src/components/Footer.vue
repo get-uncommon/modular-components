@@ -127,8 +127,8 @@ export default {
   width: 100%;
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  color: var(--color-light);
-  background-color: var(--color-primary);
+  color: var(--footer-link-color);
+  background-color: var(--footer-color);
 
   ul {
     margin-bottom: 0;
@@ -165,7 +165,7 @@ export default {
       position: relative;
       margin-bottom: var(--spacing-md);
       overflow: hidden;
-      color: var(--color-light);
+      color: var(--footer-link-color);
       text-decoration: none;
       opacity: .5;
       transition: var(--transition-base);
@@ -183,7 +183,7 @@ export default {
         width: 100%;
         height: 2px;
         content: '';
-        background-color: var(--color-light);
+        background-color: var(--footer-link-color);
         opacity: 0;
         transition: var(--transition-base);
         transform: translateX(-100%);
