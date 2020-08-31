@@ -3,15 +3,21 @@
     class="input"
     :class="{ 'error' : error }"
   >
-    <label class="input__field--label">
-      <input
+    <label
+      class="input__field--label"
+    >
+      <component
+        :is="as"
         v-model="value"
         class="input__field"
         :class="{active: inputActive}"
         v-bind="inputProps"
         @blur="blur"
-      >
-      <span class="input__label">{{ label }}</span>
+      />
+      <span
+        class="input__label"
+        :class="{'input__label--textarea': as === 'textarea',}"
+      >{{ label }}</span>
     </label>
   </div>
 </template>
@@ -22,6 +28,10 @@ export default {
   name: 'Input',
 
   props: {
+    as: {
+      type: String,
+      default: 'input',
+    },
     inputProps: {
       type: Object,
       default: () => {},
@@ -71,6 +81,10 @@ export default {
     transition: var(--transition-base);
     transform: translateY(-50%) scale(1);
     -webkit-transform-origin-x: 0;
+
+    &--textarea {
+      top: 0;
+    }
   }
 
   &__field {
@@ -86,6 +100,12 @@ export default {
       width: 100%;
     }
 
+    &--textarea {
+      .input__label {
+        display: none;
+      }
+    }
+
     &:focus,
     &.active {
       border-bottom: 1px solid var(--input-color-active);
@@ -93,6 +113,10 @@ export default {
 
       + span {
         transform: translateY(-115%) scale(.75);
+
+        &.input__label--textarea {
+          transform: translateY(-85%) scale(.75);
+        }
       }
     }
   }
