@@ -6,8 +6,16 @@
     <label
       class="input__field--label"
     >
-      <component
-        :is="as"
+      <input
+        v-if="as === 'input'"
+        v-model="value"
+        class="input__field"
+        :class="{active: inputActive}"
+        v-bind="inputProps"
+        @blur="blur"
+      >
+      <textarea
+        v-else-if="as === 'textarea'"
         v-model="value"
         class="input__field"
         :class="{active: inputActive}"
@@ -69,70 +77,70 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.input {
-  position: relative;
-  font-size: var(--font-size-input);
-
-  &__label {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    padding: var(--input-padding);
-    transition: var(--transition-base);
-    transform: translateY(-50%) scale(1);
-    -webkit-transform-origin-x: 0;
-
-    &--textarea {
-      top: 0;
-      transform: translateY(0) scale(1);
-    }
-  }
-
-  &__field {
-    width: 100%;
-    padding: var(--input-padding);
+  .input {
+    position: relative;
     font-size: var(--font-size-input);
-    background-color: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--input-color);
-    transition: var(--transition-base);
 
-    &--label {
-      width: 100%;
-    }
+    &__label {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      padding: var(--input-padding);
+      transition: var(--transition-base);
+      transform: translateY(-50%) scale(1);
+      -webkit-transform-origin-x: 0;
 
-    &--textarea {
-      .input__label {
-        display: none;
+      &--textarea {
+        top: 0;
+        transform: translateY(0) scale(1);
       }
     }
 
-    &:focus,
-    &.active {
-      border-bottom: 1px solid var(--input-color-active);
-      outline: 0;
+    &__field {
+      width: 100%;
+      padding: var(--input-padding);
+      font-size: var(--font-size-input);
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--input-color);
+      transition: var(--transition-base);
 
-      + span {
-        transform: translateY(-115%) scale(.75);
+      &--label {
+        width: 100%;
+      }
 
-        &.input__label--textarea {
-          transform: translateY(-60%) scale(.75);
+      &--textarea {
+        .input__label {
+          display: none;
+        }
+      }
+
+      &:focus,
+      &.active {
+        border-bottom: 1px solid var(--input-color-active);
+        outline: 0;
+
+        + span {
+          transform: translateY(-115%) scale(.75);
+
+          &.input__label--textarea {
+            transform: translateY(-60%) scale(.75);
+          }
+        }
+      }
+    }
+
+    &.error {
+      .input {
+        &__field {
+          color: var(--color-danger);
+          border-bottom: 1px solid var(--color-danger);
+        }
+
+        &__label {
+          color: var(--color-danger);
         }
       }
     }
   }
-
-  &.error {
-    .input {
-      &__field {
-        color: var(--color-danger);
-        border-bottom: 1px solid var(--color-danger);
-      }
-
-      &__label {
-        color: var(--color-danger);
-      }
-    }
-  }
-}
 </style>
