@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="parallaxContainer"
-    class="featured-single"
-  >
+  <div class="featured-single">
     <div
       ref="nodeHigher"
       class="col-md-6 col-11 offset-1 featured-single__img"
@@ -42,14 +39,19 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene'; // use scrollscene instead https://www.npmjs.com/package/scrollscene
+import { ScrollScene } from 'scrollscene';
+
 import { gsap } from 'gsap';
 import Button from './Button.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'FeaturedSingle',
 
   components: { Button },
+
+  mixins: [Scrollmagic],
 
   props: {
     mainImage: {
@@ -88,12 +90,11 @@ export default {
 
   data() {
     return {
-      scrollScene: null,
+      scrollTimeline: null,
     };
   },
 
   mounted() {
-    const triggerElement = this.$refs.parallaxContainer;
     const timeline = gsap.timeline({ paused: true });
     const { nodeLower, nodeHigher } = this.$refs; // use ref="" as selector
 
@@ -107,8 +108,8 @@ export default {
         force3D: true,
       }, 0);
 
-    this.scrollScene = new ScrollScene({
-      triggerElement,
+    this.scrollTimeline = new ScrollScene({
+      triggerElement: this.$el,
       triggerHook: 'onEnter',
       gsap: { timeline },
       duration: '200%',
@@ -116,16 +117,11 @@ export default {
         addIndicators: false, // If you are in development mode you can set this to true
       },
     });
-    this.scrollScene.Scene.on('enter', () => {
-      if (!triggerElement.classList.contains('show')) {
-        triggerElement.classList += ' show';
-      }
-    });
   },
 
   // Destroy the scene to avoid memory leaks
   beforeDestroy() {
-    this.scrollScene.destroy();
+    this.scrollTimeline.destroy();
   },
 };
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="featured-double"
-  >
+  <div class="featured-double">
     <div
       v-for="item in items"
       :key="item.title"
@@ -42,41 +39,22 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'FeaturedDouble',
 
   components: { Button },
 
+  mixins: [Scrollmagic],
+
   props: {
     items: {
       type: Array,
       required: true,
     },
-  },
-
-  data() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>

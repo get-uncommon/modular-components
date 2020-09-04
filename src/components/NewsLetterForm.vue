@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="news-letter"
-  >
+  <div class="news-letter">
     <div class="container">
       <div class="row">
         <div class="col-md-8 offset-md-1">
@@ -62,15 +59,18 @@
 
 <script>
 import emailValidator from 'email-validator';
-import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 import Input from './Input.vue';
 import Message from './Message.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'NewsLetterForm',
 
   components: { Message, Input, Button },
+
+  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -115,24 +115,7 @@ export default {
     return {
       errors: [],
       success: null,
-      scrollScene: null,
     };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 
   methods: {

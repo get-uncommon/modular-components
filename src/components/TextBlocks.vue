@@ -1,18 +1,16 @@
 <template>
-  <div
-    class="services"
-  >
+  <div class="text-block">
     <div
       ref="component"
-      class="services__bg"
+      class="text-block__bg"
     >
       <div class="container">
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <h1 class="services__title u-margin-bottom-xl">
+            <h1 class="text-block__title u-margin-bottom-xl">
               {{ title }}
             </h1>
-            <div class="row services__blocks">
+            <div class="row text-block__blocks">
               <div
                 v-for="service in services"
                 :key="service.title"
@@ -36,13 +34,16 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'TextBlocks',
 
   components: { Button },
+
+  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -54,28 +55,6 @@ export default {
       required: true,
     },
   },
-
-  data() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
-  },
 };
 </script>
 
@@ -85,7 +64,7 @@ export default {
 $offset: 89px;
 $offset-mob: 72px;
 
-.services {
+.text-block {
   display: grid;
   padding-top: $offset-mob;
 
@@ -120,11 +99,11 @@ $offset-mob: 72px;
       transform: translateX(-100%);
     }
 
-    &.show {
+    .text-block.show & {
       opacity: 1;
       transform: translateY(0);
 
-      .services__blocks {
+      .text-block__blocks {
         opacity: 1;
         transform: translateY(0);
       }

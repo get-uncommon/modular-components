@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="content-block"
-  >
+  <div class="content-block">
     <div
       v-if="title || intro"
       class="col-md-8 offset-md-2"
@@ -34,10 +31,12 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'ContentBlock',
+
+  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -60,28 +59,6 @@ export default {
       type: String,
       default: null,
     },
-  },
-
-  date() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>

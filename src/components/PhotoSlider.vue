@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      ref="component"
-      class="photo-slider"
-    >
+    <div class="photo-slider">
       <swiper
         ref="mySwiper"
         :options="swiperOptions"
@@ -29,7 +26,8 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { ScrollScene } from 'scrollscene';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'PhotoSlider',
@@ -38,6 +36,8 @@ export default {
     Swiper,
     SwiperSlide,
   },
+
+  mixins: [Scrollmagic],
 
   props: {
     slides: {
@@ -48,7 +48,6 @@ export default {
 
   data() {
     return {
-      scrollScene: null,
       swiperOptions: {
         pagination: {
           el: '.photo-slider__pagination',
@@ -56,22 +55,6 @@ export default {
         },
       },
     };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>
@@ -93,7 +76,7 @@ $slider-width: calc(50vw + 600px);
   transition: var(--transition-page);
   transform: translateY(var(--spacing-lg));
 
-  &.show {
+  .show & {
     opacity: 1;
     transform: translateY(0);
   }

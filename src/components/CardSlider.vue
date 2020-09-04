@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="card-slider"
-  >
+  <div class="card-slider">
     <swiper
       ref="mySwiper"
       :options="swiperOptions"
@@ -26,9 +23,10 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import PhotoCard from './PhotoCard.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'CardSlider',
@@ -38,6 +36,8 @@ export default {
     SwiperSlide,
     PhotoCard,
   },
+
+  mixins: [Scrollmagic],
 
   props: {
     slides: {
@@ -60,24 +60,7 @@ export default {
           },
         },
       },
-      scrollScene: null,
     };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>
@@ -87,7 +70,7 @@ export default {
   position: relative;
   width: 100%;
   overflow: hidden;
-  cursor: url(../assets/images/slider-cursor.svg) 50 25, auto;
+  cursor: url('../assets/images/slider-cursor.svg') 50 25, auto;
   opacity: 0;
   transition: var(--transition-page);
   transform: translateY(var(--spacing-lg));

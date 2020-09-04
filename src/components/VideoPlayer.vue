@@ -1,9 +1,6 @@
 <template>
   <Fullscreen ref="fullscreen">
-    <div
-      ref="component"
-      class="video"
-    >
+    <div class="video">
       <div
         ref="player"
         class="video__player"
@@ -59,7 +56,8 @@ import Fullscreen from 'vue-fullscreen/src/component.vue';
 import '../icons/play';
 import '../icons/fullscreen';
 import '../icons/pause';
-import { ScrollScene } from 'scrollscene';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'VideoPlayer',
@@ -68,6 +66,8 @@ export default {
     svgIcon: VueSvgIcon,
     Fullscreen,
   },
+
+  mixins: [Scrollmagic],
 
   props: {
     videoId: {
@@ -81,7 +81,6 @@ export default {
       player: {},
       playing: false,
       indicatorStyle: { width: 0 },
-      scrollScene: null,
     };
   },
 
@@ -92,20 +91,6 @@ export default {
     this.player.on('timeupdate', this.progressHasBeenUpdated);
     this.player.on('play', () => this.setPlaying(true));
     this.player.on('pause', () => this.setPlaying(false));
-
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 
   methods: {
@@ -145,7 +130,7 @@ export default {
   transition: var(--transition-page);
   transform: translateY(var(--spacing-lg));
 
-  &.show {
+  .show & {
     opacity: 1;
     transform: translateY(0);
   }

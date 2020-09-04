@@ -76,10 +76,12 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'Footer',
+
+  mixins: [Scrollmagic],
 
   props: {
     primaryLinks: {
@@ -94,28 +96,6 @@ export default {
       type: Array,
       default: null,
     },
-  },
-
-  data() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>
@@ -226,7 +206,7 @@ export default {
       justify-content: flex-start;
     }
 
-    &.show {
+    .footer.show & {
       opacity: 1;
       transform: translateY(0);
     }

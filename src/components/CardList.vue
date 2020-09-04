@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="card-list"
-  >
+  <div class="card-list">
     <PhotoCard
       v-for="card in cards"
       :key="card.alt"
@@ -19,41 +16,22 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
 import PhotoCard from './PhotoCard.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'CardList',
 
   components: { PhotoCard },
 
+  mixins: [Scrollmagic],
+
   props: {
     cards: {
       type: Array,
       default: () => [],
     },
-  },
-
-  data() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>

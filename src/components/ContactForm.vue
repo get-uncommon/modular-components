@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="contact"
-  >
+  <div class="contact">
     <div class="container">
       <div
         class="row"
@@ -87,15 +84,18 @@
 
 <script>
 import emailValidator from 'email-validator';
-import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 import Input from './Input.vue';
 import Message from './Message.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'ContactForm',
 
   components: { Message, Input, Button },
+
+  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -156,25 +156,8 @@ export default {
     return {
       errors: [],
       success: null,
-      scrollScene: null,
       waiting: false,
     };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 
   methods: {

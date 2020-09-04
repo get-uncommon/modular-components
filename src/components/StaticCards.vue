@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="static-cards"
-  >
+  <div class="static-cards">
     <h1 class="static-cards__title col-md-8">
       {{ title }}
     </h1>
@@ -38,13 +35,16 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'StaticCards',
 
   components: { Button },
+
+  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -63,22 +63,6 @@ export default {
       type: Array,
       required: true,
     },
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>

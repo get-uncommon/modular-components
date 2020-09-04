@@ -1,8 +1,5 @@
 <template>
-  <div
-    ref="component"
-    class="header"
-  >
+  <div class="header">
     <h1 class="col-md-8 mx-auto header__title">
       {{ title }}
     </h1>
@@ -34,13 +31,16 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
+
+import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'FeaturedHeaderBlock',
 
   components: { Button },
+
+  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -67,28 +67,6 @@ export default {
       type: Object,
       default: () => {},
     },
-  },
-
-  data() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
-    });
-  },
-
-  beforeDestroy() {
-    this.scrollScene.destroy();
   },
 };
 </script>

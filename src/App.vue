@@ -175,7 +175,7 @@
         />
       </div>
     </div>
-    <PhotoSlider
+    <!-- <PhotoSlider
       class="u-margin-bottom-lg"
       :slides="[
         {
@@ -195,7 +195,7 @@
           alt: '4'
         },
       ]"
-    />
+    /> -->
     <div class="container">
       <StaticCards
         class="row u-margin-bottom-lg"
@@ -283,7 +283,7 @@
       :submit-handler="handleContactSubmit"
     />
     <div class="container">
-      <CardSlider
+      <!-- <CardSlider
         class="u-margin-bottom-xl"
         :slides="[
           {
@@ -315,7 +315,7 @@
             alt: '4'
           },
         ]"
-      />
+      /> -->
     </div>
     <NewsLetterForm
       button-text="verstuur"
@@ -444,14 +444,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Button from '@/components/Button.vue';
 import FeaturedHeaderBlock from '@/components/FeaturedHeaderBlock.vue';
 import TextBlocks from '@/components/TextBlocks.vue';
-import PhotoSlider from '@/components/PhotoSlider.vue';
+// import PhotoSlider from '@/components/PhotoSlider.vue';
 import FeaturedSingle from '@/components/FeaturedSingle.vue';
 import NewsLetterForm from '@/components/NewsLetterForm.vue';
 import StaticCards from '@/components/StaticCards.vue';
 import Menubar from '@/components/Menubar.vue';
 import FeaturedDouble from '@/components/FeaturedDouble.vue';
 import VideoPlayer from '@/components/VideoPlayer.vue';
-import CardSlider from '@/components/CardSlider.vue';
+// import CardSlider from '@/components/CardSlider.vue';
 import ContactForm from '@/components/ContactForm.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import TextBlock from '@/components/TextBlock.vue';
@@ -464,7 +464,7 @@ export default {
   components: {
     Footer,
     CardList,
-    CardSlider,
+    // CardSlider,
     Menubar,
     FeaturedDouble,
     ContactForm,
@@ -472,7 +472,7 @@ export default {
     ContentBlock,
     TextBlock,
     StaticCards,
-    PhotoSlider,
+    // PhotoSlider,
     Button,
     FeaturedHeaderBlock,
     TextBlocks,
@@ -488,10 +488,10 @@ export default {
     async handleContactSubmit({
       name, email, phone, message,
     }) {
-      // eslint-disable-next-line no-restricted-globals
+      // eslint-disable-next-line
       const success = confirm(`${name} - ${email} - ${phone} \nMessage: ${message} \nWhould you like the send to fail or succeed?`);
 
-      return { success, error: 'Oops, something whent wrong' };
+      return { success, error: 'Oops, something went wrong' };
     },
   },
 };
