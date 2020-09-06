@@ -82,6 +82,7 @@ $slider-width: calc(50vw + 600px);
   }
 
   &__slide {
+    display: table;
     width: 100%;
     height: 100%;
     overflow: hidden;

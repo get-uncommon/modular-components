@@ -81,6 +81,7 @@ export default {
   }
 
   &__slide {
+    display: table;
     position: relative;
     height: 100%;
     overflow: hidden;
