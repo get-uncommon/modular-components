@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "0.0.70-beta",
+  "version": "0.0.71-beta",
   "main": "src/components/index.vue",
   "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
@@ -30,7 +30,7 @@
   "dependencies": {
     "@vimeo/player": "^2.12.2",
     "bootstrap": "^4.5.0",
-    "core-js": "^2.5.7",
+    "core-js": "^3.6.5",
     "css-vars-ponyfill": "^2.3.2",
     "email-validator": "^2.0.4",
     "gsap": "^3.4.1",
