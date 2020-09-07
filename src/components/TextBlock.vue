@@ -11,12 +11,11 @@
 </template>
 
 <script>
-import Scrollmagic from '../mixins/scrollscene';
+
+import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'TextBlock',
-
-  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -27,6 +26,29 @@ export default {
       type: String,
       default: null,
     },
+  },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>

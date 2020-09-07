@@ -84,18 +84,15 @@
 
 <script>
 import emailValidator from 'email-validator';
+import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 import Input from './Input.vue';
 import Message from './Message.vue';
-
-import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'ContactForm',
 
   components: { Message, Input, Button },
-
-  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -154,10 +151,28 @@ export default {
 
   data() {
     return {
+      scrollScene: null,
       errors: [],
       success: null,
       waiting: false,
     };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 
   methods: {

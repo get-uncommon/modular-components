@@ -76,12 +76,10 @@
 </template>
 
 <script>
-import Scrollmagic from '../mixins/scrollscene';
+import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'Footer',
-
-  mixins: [Scrollmagic],
 
   props: {
     primaryLinks: {
@@ -96,6 +94,29 @@ export default {
       type: Array,
       default: null,
     },
+  },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>

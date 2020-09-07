@@ -40,18 +40,13 @@
 
 <script>
 import { ScrollScene } from 'scrollscene';
-
 import { gsap } from 'gsap';
 import Button from './Button.vue';
-
-import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'FeaturedSingle',
 
   components: { Button },
-
-  mixins: [Scrollmagic],
 
   props: {
     mainImage: {
@@ -91,6 +86,7 @@ export default {
   data() {
     return {
       scrollTimeline: null,
+      scrollScene: null,
     };
   },
 
@@ -117,11 +113,23 @@ export default {
         addIndicators: false, // If you are in development mode you can set this to true
       },
     });
+
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
   },
 
   // Destroy the scene to avoid memory leaks
   beforeDestroy() {
     this.scrollTimeline.destroy();
+    this.scrollScene.destroy();
   },
 };
 </script>

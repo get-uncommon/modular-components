@@ -56,8 +56,7 @@ import Fullscreen from 'vue-fullscreen/src/component.vue';
 import '../icons/play';
 import '../icons/fullscreen';
 import '../icons/pause';
-
-import Scrollmagic from '../mixins/scrollscene';
+import { ScrollScene } from 'scrollscene';
 
 export default {
   name: 'VideoPlayer',
@@ -66,8 +65,6 @@ export default {
     svgIcon: VueSvgIcon,
     Fullscreen,
   },
-
-  mixins: [Scrollmagic],
 
   props: {
     videoId: {
@@ -78,10 +75,15 @@ export default {
 
   data() {
     return {
+      scrollScene: null,
       player: {},
       playing: false,
       indicatorStyle: { width: 0 },
     };
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 
   mounted() {
@@ -91,6 +93,17 @@ export default {
     this.player.on('timeupdate', this.progressHasBeenUpdated);
     this.player.on('play', () => this.setPlaying(true));
     this.player.on('pause', () => this.setPlaying(false));
+
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
   },
 
   methods: {

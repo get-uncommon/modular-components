@@ -24,9 +24,9 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { ScrollScene } from 'scrollscene';
 import PhotoCard from './PhotoCard.vue';
-
-import Scrollmagic from '../mixins/scrollscene';
+import 'core-js/es/number';
 
 export default {
   name: 'CardSlider',
@@ -37,8 +37,6 @@ export default {
     PhotoCard,
   },
 
-  mixins: [Scrollmagic],
-
   props: {
     slides: {
       type: Array,
@@ -48,6 +46,7 @@ export default {
 
   data() {
     return {
+      scrollScene: null,
       swiperOptions: {
         slidesPerView: 1,
         spaceBetween: 30,
@@ -61,6 +60,23 @@ export default {
         },
       },
     };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>

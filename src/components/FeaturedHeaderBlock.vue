@@ -31,16 +31,14 @@
 </template>
 
 <script>
+import { ScrollScene } from 'scrollscene';
 import Button from './Button.vue';
 
-import Scrollmagic from '../mixins/scrollscene';
 
 export default {
   name: 'FeaturedHeaderBlock',
 
   components: { Button },
-
-  mixins: [Scrollmagic],
 
   props: {
     title: {
@@ -67,6 +65,29 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+
+  data() {
+    return {
+      scrollScene: null,
+    };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>

@@ -26,8 +26,8 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-
-import Scrollmagic from '../mixins/scrollscene';
+import { ScrollScene } from 'scrollscene';
+import 'core-js/es/number';
 
 export default {
   name: 'PhotoSlider',
@@ -36,8 +36,6 @@ export default {
     Swiper,
     SwiperSlide,
   },
-
-  mixins: [Scrollmagic],
 
   props: {
     slides: {
@@ -48,6 +46,7 @@ export default {
 
   data() {
     return {
+      scrollScene: null,
       swiperOptions: {
         pagination: {
           el: '.photo-slider__pagination',
@@ -55,6 +54,23 @@ export default {
         },
       },
     };
+  },
+
+  mounted() {
+    this.scrollScene = new ScrollScene({
+      triggerElement: this.$el,
+      toggle: {
+        element: this.$el,
+        className: 'show',
+      },
+    });
+
+    // Play animation only once
+    this.scrollScene.Scene.reverse(false);
+  },
+
+  beforeDestroy() {
+    this.scrollScene.destroy();
   },
 };
 </script>
