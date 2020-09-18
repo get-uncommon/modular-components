@@ -6,8 +6,16 @@
     <label
       class="input__field--label"
     >
-      <component
-        :is="as"
+      <input
+        v-if="as === 'input'"
+        v-model="value"
+        class="input__field"
+        :class="{active: inputActive}"
+        v-bind="inputProps"
+        @blur="blur"
+      >
+      <textarea
+        v-else-if="as === 'textarea'"
         v-model="value"
         class="input__field"
         :class="{active: inputActive}"
