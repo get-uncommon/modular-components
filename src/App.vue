@@ -259,6 +259,22 @@
             image: require('@/assets/images/TRAINING_Fitlab_Pull.png'),
             imageAlt: 'Pull ups'
           },
+          {
+            title: 'Onderwerp title3',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+          },
+          {
+            title: 'Onderwerp title4',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+            image: require('@/assets/images/TRAINING_Fitlab_Pull.png'),
+            imageAlt: 'Pull ups'
+          },
         ]"
         class="u-margin-bottom-xl row"
       />
@@ -488,10 +504,10 @@ export default {
     async handleContactSubmit({
       name, email, phone, message,
     }) {
-      // eslint-disable-next-line no-restricted-globals
+      // eslint-disable-next-line
       const success = confirm(`${name} - ${email} - ${phone} \nMessage: ${message} \nWhould you like the send to fail or succeed?`);
 
-      return { success, error: 'Oops, something whent wrong' };
+      return { success, error: 'Oops, something went wrong' };
     },
   },
 };

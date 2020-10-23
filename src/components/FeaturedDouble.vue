@@ -86,8 +86,25 @@ export default {
   opacity: 0;
   transition: var(--transition-page);
 
-  &__wrapper:last-child {
-    margin-top: var(--spacing-xl);
+  &__wrapper {
+    margin-bottom: var(--spacing-md);
+
+    &:nth-child(2) {
+      margin-top: var(--spacing-xl);
+    }
+
+    &:nth-child(odd) {
+      // Get the negative value of --spacing-xl
+      margin-top: calc((1px - var(--spacing-xl)) - 1px);
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__item {
