@@ -88,6 +88,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/config/breakpoints';
+
 .featured-double {
   opacity: 0;
   transition: var(--transition-page);
@@ -96,12 +98,16 @@ export default {
     margin-bottom: var(--spacing-md);
 
     &:nth-child(2) {
-      margin-top: var(--spacing-xl);
+      @media (min-width: $breakpoint-md) {
+        margin-top: var(--spacing-xl);
+      }
     }
 
     &:nth-child(odd) {
-      // Get the negative value of --spacing-xl
-      margin-top: calc((1px - var(--spacing-xl)) - 1px);
+      @media (min-width: $breakpoint-md) {
+        // Get the negative value of --spacing-xl
+        margin-top: calc((1px - var(--spacing-xl)) - 1px);
+      }
     }
 
     &:first-child {
