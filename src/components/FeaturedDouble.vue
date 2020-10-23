@@ -26,6 +26,12 @@
             <h3 class="featured-double__item__header">
               {{ item.header }}
             </h3>
+            <p
+              v-if="item.body"
+              class="featured-double__item__body"
+            >
+              {{ item.body }}
+            </p>
             <Button
               type="bordered"
               :light="true"
@@ -154,6 +160,10 @@ export default {
       width: 100%;
       max-width: 320px;
       color: var(--color-light);
+    }
+
+    &__body {
+      margin-bottom: var(--spacing-md);
     }
 
     &:hover,
