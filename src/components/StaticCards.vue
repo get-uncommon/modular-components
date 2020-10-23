@@ -6,11 +6,11 @@
     <h1 class="static-cards__title col-md-8">
       {{ title }}
     </h1>
-    <div
-      v-if="buttonText"
-      class="col-md-4 order-2 order-md-0"
-    >
-      <div class="row static-cards__button__wrapper">
+    <div class="col-md-4 order-2 order-md-0">
+      <div
+        v-if="buttonText"
+        class="row static-cards__button__wrapper"
+      >
         <Button
           v-bind="buttonProps"
         >
