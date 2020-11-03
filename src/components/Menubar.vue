@@ -1,7 +1,10 @@
 <template>
   <div
     class="menubar"
-    :class="showMenubar && 'menubar--show'"
+    :class="{
+      'menubar--show': showMenubar,
+      active: menuActive
+    }"
   >
     <div class="menubar__container">
       <component
@@ -186,7 +189,8 @@ export default {
   top: 0;
   z-index: 999;
   width: 100%;
-  height: var(--menu-bar-height);
+  height: 100%;
+  max-height: var(--menu-bar-height);
   justify-content: stretch;
   color: var(--menu-bar-link-color);
   background-color: var(--menu-bar-color);
@@ -194,8 +198,13 @@ export default {
   transform: translateY(calc(1px - (var(--menu-bar-height) + 1px)));
 
   @media screen and  (max-width: $breakpoint-sm) {
-    height: auto;
     min-height: var(--menu-bar-height);
+    overflow: scroll;
+    background-color: transparent;
+
+    &.active {
+      max-height: 100%;
+    }
   }
 
   &__left {
@@ -204,6 +213,12 @@ export default {
 
   &--show {
     transform: translateY(0);
+  }
+
+  &.active {
+    @media screen and (max-width: $breakpoint-sm) {
+      transform: translateY(0);
+    }
   }
 
   &__container {
@@ -215,8 +230,10 @@ export default {
     justify-content: flex-end;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    background-color: var(--menu-bar-color);
 
     @media screen and (max-width: $breakpoint-sm) {
+      height: auto;
       flex-wrap: wrap;
     }
   }
