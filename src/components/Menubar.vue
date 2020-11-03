@@ -199,7 +199,7 @@ export default {
 
   @media screen and  (max-width: $breakpoint-sm) {
     min-height: var(--menu-bar-height);
-    overflow: scroll;
+    overflow: auto;
     background-color: transparent;
 
     &.active {
@@ -420,7 +420,6 @@ export default {
       position: absolute;
       bottom: 0;
       left: 0;
-      z-index: -1;
       width: 100%;
       height: 1px;
       content: '';
