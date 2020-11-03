@@ -183,7 +183,7 @@ export default {
 
   @media (max-width: $breakpoint-sm) {
     .u-margin-top-xl {
-      margin-top: calc(1px - var(--spacing-lg) - 1px);
+      padding-top: var(--spacing-lg);
     }
   }
 
