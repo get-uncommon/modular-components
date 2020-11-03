@@ -18,11 +18,13 @@
         </Button>
       </div>
     </div>
-    <a
+    <component
+      :is="card.as ? card.as : 'a'"
       v-for="card in cards"
       :key="card.title"
       class="col-md-4 static-cards__card"
       :href="card.url"
+      v-bind="card.props"
     >
       <div class="static-cards__card__image__wrapper">
         <img
@@ -31,9 +33,11 @@
           :alt="card.imageAlt"
         >
       </div>
-      <div class="static-cards__card__subtitle u-margin-top-md">{{ card.subTitle }}</div>
+      <div class="static-cards__card__subtitle u-margin-top-md">
+        {{ card.subTitle }}
+      </div>
       <h3>{{ card.title }}</h3>
-    </a>
+    </component>
   </div>
 </template>
 
