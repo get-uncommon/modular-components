@@ -143,7 +143,11 @@ export default {
       height: 100%;
       flex-direction: column;
       justify-content: space-between;
-      padding: var(--spacing-lg);
+      padding: var(--spacing-md);
+
+      @media (min-width: $breakpoint-md) {
+        padding: var(--spacing-lg);
+      }
     }
 
     &__image {
