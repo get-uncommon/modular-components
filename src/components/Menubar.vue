@@ -107,6 +107,7 @@
 <script>
 import '../icons/facebook';
 import '../icons/instagram';
+import '../icons/linkedin';
 import VueSVGIcon from 'vue-svgicon';
 
 export default {

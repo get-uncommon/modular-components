@@ -60,7 +60,14 @@
           href: '#11',
           props: {
             target: '_blank',
-          }
+          },
+        },
+        {
+          icon: 'linkedin',
+          href: '#11',
+          props: {
+            target: '_blank',
+          },
         }
       ]"
       :logo="{
@@ -268,7 +275,8 @@
           },
           {
             title: 'Onderwerp title4',
-            header: 'Nempe porem facero eatibusae',
+            header: 'Nempe porem facero',
+            body: 'Nempe porem facero eatibusae. Rum qui dolut dollabor si ut moluptas eniminctat. Ne veri simus cores ullesti bea Nempe porem...',
             buttonText: 'call 2 action',
             buttonProps: {icon:'arrow'},
             href: '#',
