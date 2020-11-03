@@ -8,7 +8,9 @@
       :key="item.title"
       class="col-md-6 featured-double__wrapper"
     >
-      <a
+      <component
+        :is="item.as ? item.as : 'a'"
+        v-bind="item.props"
         class="featured-double__item"
         :href="item.href"
       >
@@ -42,7 +44,7 @@
             </Button>
           </div>
         </div>
-      </a>
+      </component>
     </div>
   </div>
 </template>
