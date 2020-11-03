@@ -91,6 +91,7 @@ $slider-width: calc(50vw + 600px);
   cursor: grab;
   opacity: 0;
   transition: var(--transition-page);
+  transition-property: transform, opacity;
   transform: translateY(var(--spacing-lg));
 
   &.show {
