@@ -33,7 +33,7 @@
           :alt="card.imageAlt"
         >
       </div>
-      <div class="static-cards__card__subtitle u-margin-top-md">
+      <div class="static-cards__card__subtitle">
         {{ card.subTitle }}
       </div>
       <h3>{{ card.title }}</h3>
@@ -123,7 +123,12 @@ export default {
     }
 
     &__subtitle {
+      margin-top: var(--spacing-sm);
       color: var(--color-secondary);
+
+      @media (min-width: $breakpoint-md) {
+        margin-top: var(--spacing-md);
+      }
     }
 
     &__image {
