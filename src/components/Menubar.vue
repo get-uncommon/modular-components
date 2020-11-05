@@ -195,7 +195,7 @@ export default {
   color: var(--menu-bar-link-color);
   background-color: var(--menu-bar-color);
   transition: var(--transition-base);
-  transform: translateY(calc(1px - (var(--menu-bar-height) + 1px)));
+  transform: translateY(var(--menu-bar-negative-height));
 
   @media screen and  (max-width: $breakpoint-sm) {
     min-height: var(--menu-bar-height);

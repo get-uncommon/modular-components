@@ -109,6 +109,7 @@ These are the variables that you can override, and their default values
 
   // Menubar
   --menu-bar-height: 100px;
+  --menu-bar-negative-height: -100px;
   --menu-bar-color: var(--color-tertiary);
   --menu-bar-link-color: var(--color-primary);
   --menu-container-width: 1370px;
