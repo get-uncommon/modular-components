@@ -8,7 +8,9 @@
       :key="item.title"
       class="col-md-6 featured-double__wrapper"
     >
-      <a
+      <component
+        :is="item.as ? item.as : 'a'"
+        v-bind="item.props"
         class="featured-double__item"
         :href="item.href"
       >
@@ -26,6 +28,12 @@
             <h3 class="featured-double__item__header">
               {{ item.header }}
             </h3>
+            <p
+              v-if="item.body"
+              class="featured-double__item__body"
+            >
+              {{ item.body }}
+            </p>
             <Button
               type="bordered"
               :light="true"
@@ -36,7 +44,7 @@
             </Button>
           </div>
         </div>
-      </a>
+      </component>
     </div>
   </div>
 </template>
@@ -82,12 +90,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/config/breakpoints';
+
 .featured-double {
   opacity: 0;
   transition: var(--transition-page);
 
-  &__wrapper:last-child {
-    margin-top: var(--spacing-xl);
+  &__wrapper {
+    margin-bottom: var(--spacing-md);
+
+    &:nth-child(2) {
+      @media (min-width: $breakpoint-md) {
+        margin-top: var(--spacing-xl);
+      }
+    }
+
+    &:nth-child(odd) {
+      @media (min-width: $breakpoint-md) {
+        // Get the negative value of --spacing-xl
+        margin-top: calc((1px - var(--spacing-xl)) - 1px);
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__item {
@@ -112,7 +143,11 @@ export default {
       height: 100%;
       flex-direction: column;
       justify-content: space-between;
-      padding: var(--spacing-lg);
+      padding: var(--spacing-md);
+
+      @media (min-width: $breakpoint-md) {
+        padding: var(--spacing-lg);
+      }
     }
 
     &__image {
@@ -137,6 +172,10 @@ export default {
       width: 100%;
       max-width: 320px;
       color: var(--color-light);
+    }
+
+    &__body {
+      margin-bottom: var(--spacing-md);
     }
 
     &:hover,

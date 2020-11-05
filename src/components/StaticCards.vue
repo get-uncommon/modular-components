@@ -6,11 +6,11 @@
     <h1 class="static-cards__title col-md-8">
       {{ title }}
     </h1>
-    <div
-      v-if="buttonText"
-      class="col-md-4 order-2 order-md-0"
-    >
-      <div class="row static-cards__button__wrapper">
+    <div class="col-md-4 order-2 order-md-0">
+      <div
+        v-if="buttonText"
+        class="row static-cards__button__wrapper"
+      >
         <Button
           v-bind="buttonProps"
         >
@@ -18,11 +18,13 @@
         </Button>
       </div>
     </div>
-    <a
+    <component
+      :is="card.as ? card.as : 'a'"
       v-for="card in cards"
       :key="card.title"
       class="col-md-4 static-cards__card"
       :href="card.url"
+      v-bind="card.props"
     >
       <div class="static-cards__card__image__wrapper">
         <img
@@ -31,9 +33,11 @@
           :alt="card.imageAlt"
         >
       </div>
-      <div class="static-cards__card__subtitle u-margin-top-md">{{ card.subTitle }}</div>
+      <div class="static-cards__card__subtitle">
+        {{ card.subTitle }}
+      </div>
       <h3>{{ card.title }}</h3>
-    </a>
+    </component>
   </div>
 </template>
 
@@ -119,7 +123,12 @@ export default {
     }
 
     &__subtitle {
+      margin-top: var(--spacing-sm);
       color: var(--color-secondary);
+
+      @media (min-width: $breakpoint-md) {
+        margin-top: var(--spacing-md);
+      }
     }
 
     &__image {

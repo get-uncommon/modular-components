@@ -60,7 +60,14 @@
           href: '#11',
           props: {
             target: '_blank',
-          }
+          },
+        },
+        {
+          icon: 'linkedin',
+          href: '#11',
+          props: {
+            target: '_blank',
+          },
         }
       ]"
       :logo="{
@@ -253,6 +260,23 @@
           {
             title: 'Onderwerp title2',
             header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+            image: require('@/assets/images/TRAINING_Fitlab_Pull.png'),
+            imageAlt: 'Pull ups'
+          },
+          {
+            title: 'Onderwerp title3',
+            header: 'Nempe porem facero eatibusae',
+            buttonText: 'call 2 action',
+            buttonProps: {icon:'arrow'},
+            href: '#',
+          },
+          {
+            title: 'Onderwerp title4',
+            header: 'Nempe porem facero',
+            body: 'Nempe porem facero eatibusae. Rum qui dolut dollabor si ut moluptas eniminctat. Ne veri simus cores ullesti bea Nempe porem...',
             buttonText: 'call 2 action',
             buttonProps: {icon:'arrow'},
             href: '#',
@@ -488,10 +512,10 @@ export default {
     async handleContactSubmit({
       name, email, phone, message,
     }) {
-      // eslint-disable-next-line no-restricted-globals
+      // eslint-disable-next-line
       const success = confirm(`${name} - ${email} - ${phone} \nMessage: ${message} \nWhould you like the send to fail or succeed?`);
 
-      return { success, error: 'Oops, something whent wrong' };
+      return { success, error: 'Oops, something went wrong' };
     },
   },
 };
