@@ -21,6 +21,15 @@
             :class="waiting && 'contact__form--waiting'"
             @submit.prevent="submit"
           >
+            <div
+              v-if="honeypotName"
+              class="sr-only contact__honeypot"
+            >
+              <input
+                type="text"
+                @input="onHoneypotInput"
+              >
+            </div>
             <Input
               ref="nameInput"
               :input-props="{
@@ -131,6 +140,10 @@ export default {
       type: String,
       required: true,
     },
+    honeypotName: {
+      type: String,
+      default: '',
+    },
     buttonText: {
       type: String,
       required: true,
@@ -159,6 +172,7 @@ export default {
       success: null,
       scrollScene: null,
       waiting: false,
+      honeypotValue: null,
     };
   },
 
@@ -195,6 +209,7 @@ export default {
       this.$refs.emailInput.setError(false);
       this.$refs.messageInput.setError(false);
 
+      const honeypot = this.honeypotValue;
       const name = this.$refs.nameInput.getValue();
       const email = this.$refs.emailInput.getValue();
       const phone = this.$refs.phoneInput.getValue();
@@ -205,7 +220,7 @@ export default {
         this.waiting = true;
 
         const { success, error } = await this.submitHandler({
-          name, email, phone, message,
+          honeypot, name, email, phone, message,
         });
 
         this.waiting = false;
@@ -230,6 +245,10 @@ export default {
         this.errors.push(this.failText.email);
         this.$refs.emailInput.setError(true);
       }
+    },
+
+    onHoneypotInput($event) {
+      this.honeypotValue = $event.target.value;
     },
   },
 };
@@ -272,6 +291,11 @@ $offset-mob: 72px;
     @media (min-width: $breakpoint-lg) {
       margin-top: -#{$offset};
     }
+  }
+
+  &__honeypot,
+  &__honeypot input {
+    opacity: 0;
   }
 
   &__form--waiting {
