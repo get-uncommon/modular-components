@@ -20,6 +20,7 @@
 
 <script>
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PhotoCard from './PhotoCard.vue';
 
 export default {
@@ -38,6 +39,10 @@ export default {
     return {
       scrollScene: null,
     };
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   mounted() {

@@ -15,6 +15,7 @@
 
 <script>
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default {
   name: 'TextBlock',
@@ -44,6 +45,10 @@ export default {
         once: true,
       },
     });
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   beforeDestroy() {

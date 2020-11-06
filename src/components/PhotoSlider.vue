@@ -30,6 +30,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default {
   name: 'PhotoSlider',
@@ -56,6 +57,10 @@ export default {
         },
       },
     };
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   mounted() {

@@ -77,6 +77,7 @@
 
 <script>
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default {
   name: 'Footer',
@@ -100,6 +101,10 @@ export default {
     return {
       scrollScene: null,
     };
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   mounted() {

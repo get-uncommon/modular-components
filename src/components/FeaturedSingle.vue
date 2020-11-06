@@ -43,6 +43,7 @@
 
 <script>
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
 
 export default {
@@ -92,6 +93,10 @@ export default {
     };
   },
 
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
+  },
+
   mounted() {
     const { nodeLower, nodeHigher } = this.$refs;
 
@@ -109,7 +114,6 @@ export default {
         trigger: this.$refs.parallaxContainer,
         start: 'top 80%',
         end: '+=200%',
-        markers: true,
         scrub: true,
       },
     });

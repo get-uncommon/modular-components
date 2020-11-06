@@ -43,6 +43,7 @@
 
 <script>
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
 
 export default {
@@ -67,6 +68,10 @@ export default {
       type: Array,
       required: true,
     },
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   mounted() {

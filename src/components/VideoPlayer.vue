@@ -60,6 +60,7 @@ import '../icons/play';
 import '../icons/fullscreen';
 import '../icons/pause';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default {
   name: 'VideoPlayer',
@@ -83,6 +84,10 @@ export default {
       indicatorStyle: { width: 0 },
       scrollScene: null,
     };
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   mounted() {

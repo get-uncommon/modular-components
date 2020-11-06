@@ -63,6 +63,7 @@
 <script>
 import emailValidator from 'email-validator';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
 import Input from './Input.vue';
 import Message from './Message.vue';
@@ -117,6 +118,10 @@ export default {
       success: null,
       scrollScene: null,
     };
+  },
+
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
   },
 
   mounted() {
