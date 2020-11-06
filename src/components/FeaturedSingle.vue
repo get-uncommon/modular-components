@@ -123,21 +123,6 @@ export default {
         y: -250,
         force3D: true,
       }, 0);
-
-    // this.scrollScene = new ScrollScene({
-    //   triggerElement,
-    //   triggerHook: 'onEnter',
-    //   gsap: { timeline },
-    //   duration: '200%',
-    //   controller: {
-    //     addIndicators: false, // If you are in development mode you can set this to true
-    //   },
-    // });
-    // this.scrollScene.Scene.on('enter', () => {
-    //   if (!triggerElement.classList.contains('show')) {
-    //     triggerElement.classList += ' show';
-    //   }
-    // });
   },
 
   beforeDestroy() {
