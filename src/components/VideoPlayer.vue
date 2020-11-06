@@ -59,7 +59,8 @@ import Fullscreen from 'vue-fullscreen/src/component.vue';
 import '../icons/play';
 import '../icons/fullscreen';
 import '../icons/pause';
-import { ScrollScene } from 'scrollscene';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export default {
   name: 'VideoPlayer',
@@ -85,6 +86,10 @@ export default {
     };
   },
 
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
+  },
+
   mounted() {
     const videoPlayer = this.$refs.player;
     this.player = new Player(videoPlayer);
@@ -93,19 +98,27 @@ export default {
     this.player.on('play', () => this.setPlaying(true));
     this.player.on('pause', () => this.setPlaying(false));
 
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
+    this.scrollScene = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.$refs.component,
+        toggleClass: 'show',
+        once: true,
+      },
     });
   },
 
   beforeDestroy() {
-    this.scrollScene.destroy();
+    if (this.player) {
+      this.player.destroy();
+    }
+
+    if (this.scrollScene) {
+      this.scrollScene.kill();
+
+      if (this.scrollScene.scrollTrigger) {
+        this.scrollScene.scrollTrigger.kill();
+      }
+    }
   },
 
   methods: {

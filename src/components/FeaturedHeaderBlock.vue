@@ -34,7 +34,8 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
 
 export default {
@@ -75,20 +76,28 @@ export default {
     };
   },
 
-  mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
+  beforeCreate() {
+    gsap.registerPlugin(ScrollTrigger);
+  },
 
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
+  mounted() {
+    this.scrollScene = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.$refs.component,
+        toggleClass: 'show',
+        once: true,
+      },
     });
   },
 
   beforeDestroy() {
-    this.scrollScene.destroy();
+    if (this.scrollScene) {
+      this.scrollScene.kill();
+
+      if (this.scrollScene.scrollTrigger) {
+        this.scrollScene.scrollTrigger.kill();
+      }
+    }
   },
 };
 </script>
