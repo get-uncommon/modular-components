@@ -27,7 +27,7 @@
             >
               <input
                 type="text"
-                :v-model="honeypotValue"
+                @input="onHoneypotInput"
               >
             </div>
             <Input
@@ -245,6 +245,10 @@ export default {
         this.errors.push(this.failText.email);
         this.$refs.emailInput.setError(true);
       }
+    },
+
+    onHoneypotInput($event) {
+      this.honeypotValue = $event.target.value;
     },
   },
 };
