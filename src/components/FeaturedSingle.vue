@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene'; // use scrollscene instead https://www.npmjs.com/package/scrollscene
 import { gsap } from 'gsap';
 import Button from './Button.vue';
 
@@ -89,15 +88,33 @@ export default {
   data() {
     return {
       scrollScene: null,
+      scrollSceneClass: null,
     };
   },
 
   mounted() {
-    const triggerElement = this.$refs.parallaxContainer;
-    const timeline = gsap.timeline({ paused: true });
-    const { nodeLower, nodeHigher } = this.$refs; // use ref="" as selector
+    const { nodeLower, nodeHigher } = this.$refs;
 
-    timeline
+    this.scrollSceneClass = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.$refs.parallaxContainer,
+        toggleClass: 'show',
+        once: true,
+        start: 'top 80%',
+      },
+    });
+
+    this.scrollScene = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.$refs.parallaxContainer,
+        start: 'top 80%',
+        end: '+=200%',
+        markers: true,
+        scrub: true,
+      },
+    });
+
+    this.scrollScene
       .to(nodeHigher, {
         y: 200,
         force3D: true,
@@ -107,25 +124,30 @@ export default {
         force3D: true,
       }, 0);
 
-    this.scrollScene = new ScrollScene({
-      triggerElement,
-      triggerHook: 'onEnter',
-      gsap: { timeline },
-      duration: '200%',
-      controller: {
-        addIndicators: false, // If you are in development mode you can set this to true
-      },
-    });
-    this.scrollScene.Scene.on('enter', () => {
-      if (!triggerElement.classList.contains('show')) {
-        triggerElement.classList += ' show';
-      }
-    });
+    // this.scrollScene = new ScrollScene({
+    //   triggerElement,
+    //   triggerHook: 'onEnter',
+    //   gsap: { timeline },
+    //   duration: '200%',
+    //   controller: {
+    //     addIndicators: false, // If you are in development mode you can set this to true
+    //   },
+    // });
+    // this.scrollScene.Scene.on('enter', () => {
+    //   if (!triggerElement.classList.contains('show')) {
+    //     triggerElement.classList += ' show';
+    //   }
+    // });
   },
 
-  // Destroy the scene to avoid memory leaks
   beforeDestroy() {
-    this.scrollScene.destroy();
+    if (this.scrollScene) {
+      this.scrollScene.kill();
+
+      if (this.scrollScene.scrollTrigger) {
+        this.scrollScene.scrollTrigger.kill();
+      }
+    }
   },
 };
 </script>

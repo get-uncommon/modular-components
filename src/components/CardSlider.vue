@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { ScrollScene } from 'scrollscene';
+import { gsap } from 'gsap';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import PhotoCard from './PhotoCard.vue';
 
@@ -65,19 +65,24 @@ export default {
   },
 
   mounted() {
-    this.scrollScene = new ScrollScene({
-      triggerElement: this.$refs.component,
-    });
-
-    this.scrollScene.Scene.on('enter', () => {
-      if (!this.$refs.component.classList.contains('show')) {
-        this.$refs.component.classList += ' show';
-      }
+    this.scrollScene = gsap.timeline({
+      scrollTrigger: {
+        trigger: this.$refs.component,
+        toggleClass: 'show',
+        start: 'top 80%',
+        once: true,
+      },
     });
   },
 
   beforeDestroy() {
-    this.scrollScene.destroy();
+    if (this.scrollScene) {
+      this.scrollScene.kill();
+
+      if (this.scrollScene.scrollTrigger) {
+        this.scrollScene.scrollTrigger.kill();
+      }
+    }
   },
 };
 </script>
