@@ -10,6 +10,20 @@
         {
           text: 'over ons',
           props: {href: '#2'},
+          dropdown: [
+            {
+              text: 'over ons2',
+              props: {href: '#21'},
+            },
+            {
+              text: 'over ons3',
+              props: {href: '#22'},
+            },
+            {
+              text: 'over ons4',
+              props: {href: '#23'},
+            },
+          ],
         },
         {
           text: 'wat doen wij?',

@@ -38,6 +38,23 @@
             >
               {{ link.text }}
             </component>
+            <ul
+              v-if="link.dropdown"
+            >
+              <li
+                v-for="dropdownItem in link.dropdown"
+                :key="dropdownItem.text"
+              >
+                <component
+                  :is="dropdownItem.as ? dropdownItem.as : 'a'"
+                  v-bind="dropdownItem.props"
+                  class="menubar__link"
+                  :class="{active: dropdownItem.active}"
+                >
+                  {{ dropdownItem.text }}
+                </component>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
