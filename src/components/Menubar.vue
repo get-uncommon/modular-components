@@ -26,7 +26,7 @@
       >
         <ul class="menubar__links">
           <li
-            v-for="link in primaryLinks"
+            v-for="(link, index) in primaryLinks"
             :key="link.text"
             class="menubar__link__wrapper"
           >
@@ -34,20 +34,16 @@
               :is="link.as ? link.as : 'a'"
               v-bind="link.props"
               class="menubar__link menubar__link--primary"
+              :data-index="index"
               :class="{active: link.active}"
             >
               {{ link.text }}
-              <svgicon
-                v-if="link.dropdown"
-                class="menubar__link--primary__icon"
-                icon="triangle"
-                height="10"
-                width="10"
-              />
             </component>
             <nav
               v-if="link.dropdown"
               class="menubar__link--primary__dropdown"
+              :class="{open: menuDropdownsOpen[index]}"
+              :data-test="index"
             >
               <ul class="menubar__link--primary__dropdown--wrapper">
                 <li
@@ -65,6 +61,14 @@
                 </li>
               </ul>
             </nav>
+            <svgicon
+              v-if="link.dropdown"
+              class="menubar__link--primary__icon"
+              :class="{open: menuDropdownsOpen[index]}"
+              icon="triangle"
+              height="10"
+              width="10"
+            />
           </li>
         </ul>
       </nav>
@@ -174,6 +178,7 @@ export default {
   data() {
     return {
       menuActive: false,
+      menuDropdownsOpen: new Array(this.$props.primaryLinks.length).fill(false),
       showMenubar: true,
       lastScrollPosition: 0,
     };
@@ -191,10 +196,19 @@ export default {
 
   methods: {
     toggleMenu(event) {
+      const clickOnDropdownItem = event.target.parentElement.getElementsByTagName('nav').length > 0;
       if (event.target.id === 'hamburger') {
         this.menuActive = !this.menuActive;
-      } else {
+      } else if (!clickOnDropdownItem) {
         this.menuActive = false;
+      }
+
+      if (clickOnDropdownItem) {
+        const index = event.target.getAttribute('data-index');
+        this.menuDropdownsOpen[index] = !this.menuDropdownsOpen[index];
+
+        // Update the array in the template.
+        this.menuDropdownsOpen = this.menuDropdownsOpen.slice();
       }
     },
     onScroll() {
@@ -418,11 +432,30 @@ $menuPrimaryDropdownOverlay: 50px;
       margin: 0 var(--spacing-md);
       font-weight: var(--font-weight-bold);
 
+      @media (max-width: $breakpoint-sm) {
+        position: initial;
+        margin: 0;
+      }
+
       &__icon {
         position: absolute;
         top: calc(105%);
         left: 50%;
         transform: translateX(-50%);
+
+        @media (max-width: $breakpoint-sm) {
+          top: var(--spacing-md);
+          right: var(--spacing-md);
+          left: auto;
+          transition: var(--transition-base);
+          transform: translateY(-50%) rotateX(0deg);
+        }
+      }
+
+      &__icon.open {
+        @media (max-width: $breakpoint-sm) {
+          transform: translateY(-50%) rotateX(180deg);
+        }
       }
 
       &__dropdown {
@@ -470,11 +503,44 @@ $menuPrimaryDropdownOverlay: 50px;
         }
       }
 
-      &:hover {
-        + .menubar__link--primary__dropdown {
-          pointer-events: all;
+      @media (max-width: $breakpoint-sm) {
+        &__dropdown {
+          position: inherit;
+          top: 0;
+          left: 0;
+          width: 100%;
+          min-width: inherit;
+          height: 100%;
+          max-height: 0;
+          padding-top: 0;
+          text-align: left;
+          opacity: 0;
+          transition: var(--transition-base);
+          transform: none;
+        }
+
+        &__dropdown--wrapper {
+          padding: 0;
+          background-color: transparent;
+          border: 0;
+        }
+
+        &__dropdown.open {
+          max-height: 300px;
           opacity: 1;
-          transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
+        }
+      }
+
+      &:hover + .menubar__link--primary__dropdown {
+        pointer-events: all;
+        transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
+
+        @media (max-width: $breakpoint-sm) {
+          transform: none;
+        }
+
+        @media (min-width: $breakpoint-md) {
+          opacity: 1;
         }
       }
 
