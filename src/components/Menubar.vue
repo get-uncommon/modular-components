@@ -472,14 +472,14 @@ $menuPrimaryDropdownOverlay: 50px;
         left: 50%;
         z-index: 999;
         min-width: var(--menu-bar-primary-dropdown-width);
-        padding-top: calc(var(--spacing-lg) + #{$menuPrimaryDropdownOverlay});
+        margin-top: calc(var(--spacing-lg) + #{$menuPrimaryDropdownOverlay});
         font-size: var(--menu-bar-primary-dropdown-font-size);
         font-weight: var(--font-weight-bold);
         text-align: center;
-        pointer-events: none;
+        visibility: hidden;
         opacity: 0;
         transition: var(--transition-base);
-        transition-property: opacity, transform;
+        transition-delay: .5s;
         transform: translateY(-15px) translateX(-50%);
 
         li {
@@ -506,6 +506,7 @@ $menuPrimaryDropdownOverlay: 50px;
 
         &:hover {
           pointer-events: all;
+          visibility: visible;
           opacity: 1;
           transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
         }
@@ -557,6 +558,8 @@ $menuPrimaryDropdownOverlay: 50px;
 
       &:hover + .menubar__link--primary__dropdown {
         pointer-events: all;
+        visibility: visible;
+        transition-delay: 0s;
         transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
 
         @media (max-width: $breakpoint-sm) {
