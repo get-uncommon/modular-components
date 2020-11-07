@@ -37,24 +37,34 @@
               :class="{active: link.active}"
             >
               {{ link.text }}
+              <svgicon
+                v-if="link.dropdown"
+                class="menubar__link--primary__icon"
+                icon="triangle"
+                height="10"
+                width="10"
+              />
             </component>
-            <ul
+            <nav
               v-if="link.dropdown"
+              class="menubar__link--primary__dropdown"
             >
-              <li
-                v-for="dropdownItem in link.dropdown"
-                :key="dropdownItem.text"
-              >
-                <component
-                  :is="dropdownItem.as ? dropdownItem.as : 'a'"
-                  v-bind="dropdownItem.props"
-                  class="menubar__link"
-                  :class="{active: dropdownItem.active}"
+              <ul class="menubar__link--primary__dropdown--wrapper">
+                <li
+                  v-for="dropdownItem in link.dropdown"
+                  :key="dropdownItem.text"
                 >
-                  {{ dropdownItem.text }}
-                </component>
-              </li>
-            </ul>
+                  <component
+                    :is="dropdownItem.as ? dropdownItem.as : 'a'"
+                    v-bind="dropdownItem.props"
+                    class="menubar__link menubar__link--primary__dropdown--link"
+                    :class="{active: dropdownItem.active}"
+                  >
+                    {{ dropdownItem.text }}
+                  </component>
+                </li>
+              </ul>
+            </nav>
           </li>
         </ul>
       </nav>
@@ -128,6 +138,7 @@
 import '../icons/facebook';
 import '../icons/instagram';
 import '../icons/linkedin';
+import '../icons/triangle';
 import VueSVGIcon from 'vue-svgicon';
 
 export default {
@@ -200,6 +211,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/config/breakpoints';
+$menuPrimaryDropdownOverlay: 50px;
 
 .menubar {
   position: fixed;
@@ -352,7 +364,7 @@ export default {
     max-width: var(--menu-overlay-width);
     padding: var(--menu-bar-height) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
     pointer-events: none;
-    background-color: var(--color-primary);
+    background-color: var(--menu-bar-dropdown-color);
     opacity: 0;
     transition: var(--transition-base);
     transform: translateY(110%);
@@ -383,14 +395,13 @@ export default {
   &__links {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     list-style: none;
   }
 
   &__link {
     &__wrapper {
       display: inline-block;
-      overflow: hidden;
+      position: relative;
 
       @media (max-width: $breakpoint-sm) {
         display: block;
@@ -402,8 +413,74 @@ export default {
     text-decoration: none;
 
     &--primary {
-      margin-right: var(--spacing-lg);
+      position: relative;
+      z-index: 1;
+      margin: 0 var(--spacing-md);
       font-weight: var(--font-weight-bold);
+
+      &__icon {
+        position: absolute;
+        top: calc(105%);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &__dropdown {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        z-index: 999;
+        min-width: var(--menu-bar-primary-dropdown-width);
+        padding-top: calc(var(--spacing-lg) + #{$menuPrimaryDropdownOverlay});
+        font-size: var(--menu-bar-primary-dropdown-font-size);
+        font-weight: var(--font-weight-bold);
+        text-align: center;
+        pointer-events: none;
+        opacity: 0;
+        transition: var(--transition-base);
+        transition-property: opacity, transform;
+        transform: translateY(-15px) translateX(-50%);
+
+        li {
+          border-bottom: 1px solid var(--menu-bar-primary-dropdown-border-color);
+        }
+
+        li:last-of-type {
+          border-bottom: 0;
+        }
+
+        &--link {
+          display: block;
+          padding: var(--spacing-sm);
+          overflow: hidden;
+        }
+
+        &--wrapper {
+          padding: var(--menu-bar-primary-dropdown-padding);
+          list-style: none;
+          background-color: var(--color-light);
+          border: 1px solid var(--menu-bar-primary-dropdown-border-color);
+          border-radius: var(--menu-bar-primary-dropdown-border-radius);
+        }
+
+        &:hover {
+          pointer-events: all;
+          opacity: 1;
+          transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
+        }
+      }
+
+      &:hover {
+        + .menubar__link--primary__dropdown {
+          pointer-events: all;
+          opacity: 1;
+          transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
+        }
+      }
+
+      &__wrapper {
+        margin-right: var(--spacing-md);
+      }
 
       @media (max-width: $breakpoint-sm) {
         display: inline-block;
@@ -415,6 +492,7 @@ export default {
           width: 100%;
           max-height: 300px;
           order: 3;
+          margin-right: 0;
           padding: var(--spacing-md) 0;
           overflow: hidden;
           opacity: 1;

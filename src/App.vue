@@ -12,16 +12,12 @@
           props: {href: '#2'},
           dropdown: [
             {
-              text: 'over ons2',
-              props: {href: '#21'},
+              text: 'Past achievements and activities',
+              props: {href: '#4'},
             },
             {
-              text: 'over ons3',
-              props: {href: '#22'},
-            },
-            {
-              text: 'over ons4',
-              props: {href: '#23'},
+              text: 'Recent achievements and activities',
+              props: {href: '#5'},
             },
           ],
         },
