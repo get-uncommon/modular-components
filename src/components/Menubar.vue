@@ -35,7 +35,7 @@
               v-bind="link.props"
               class="menubar__link menubar__link--primary"
               :data-index="index"
-              :class="{active: link.active}"
+              :class="{active: link.active || menuDropdownsOpen[index]}"
             >
               {{ link.text }}
             </component>
@@ -449,6 +449,7 @@ $menuPrimaryDropdownOverlay: 50px;
         position: absolute;
         top: calc(105%);
         left: 50%;
+        pointer-events: none;
         transform: translateX(-50%);
 
         @media (max-width: $breakpoint-sm) {
@@ -470,16 +471,14 @@ $menuPrimaryDropdownOverlay: 50px;
         position: absolute;
         top: 100%;
         left: 50%;
-        z-index: 999;
         min-width: var(--menu-bar-primary-dropdown-width);
-        margin-top: calc(var(--spacing-lg) + #{$menuPrimaryDropdownOverlay});
+        padding-top: calc(var(--spacing-lg) + #{$menuPrimaryDropdownOverlay});
         font-size: var(--menu-bar-primary-dropdown-font-size);
         font-weight: var(--font-weight-bold);
         text-align: center;
         visibility: hidden;
         opacity: 0;
         transition: var(--transition-base);
-        transition-delay: .5s;
         transform: translateY(-15px) translateX(-50%);
 
         li {
@@ -521,7 +520,7 @@ $menuPrimaryDropdownOverlay: 50px;
           min-width: inherit;
           height: 100%;
           max-height: 0;
-          padding: 0 0 0;
+          padding: 0;
           text-align: left;
           opacity: 0;
           transition: var(--transition-base);
@@ -538,6 +537,7 @@ $menuPrimaryDropdownOverlay: 50px;
           max-height: 500px;
           padding: 0 0 var(--spacing-sm) 0;
           pointer-events: all;
+          visibility: visible;
           opacity: 1;
         }
 
@@ -557,8 +557,6 @@ $menuPrimaryDropdownOverlay: 50px;
       }
 
       &:hover + .menubar__link--primary__dropdown {
-        pointer-events: all;
-        visibility: visible;
         transition-delay: 0s;
         transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
 
@@ -567,6 +565,8 @@ $menuPrimaryDropdownOverlay: 50px;
         }
 
         @media (min-width: $breakpoint-md) {
+          pointer-events: all;
+          visibility: visible;
           opacity: 1;
         }
       }
