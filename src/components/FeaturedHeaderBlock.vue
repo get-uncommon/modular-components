@@ -85,6 +85,7 @@ export default {
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
+        start: 'top 90%',
         once: true,
       },
     });
