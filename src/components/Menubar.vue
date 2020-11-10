@@ -214,7 +214,13 @@ export default {
     onScroll() {
       const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-      if (currentScrollPosition >= 0) {
+      if (currentScrollPosition <= 0) {
+        this.lastScrollPosition = currentScrollPosition;
+        this.showMenubar = true;
+        return;
+      }
+
+      if (currentScrollPosition > 0) {
         this.showMenubar = currentScrollPosition < this.lastScrollPosition;
         this.lastScrollPosition = currentScrollPosition;
       }
