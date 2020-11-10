@@ -21,6 +21,7 @@
                 <h3>{{ service.title }}</h3>
                 <p>{{ service.body }}</p>
                 <Button
+                  v-if="service.buttonText && service.buttonText"
                   type="anchor"
                   v-bind="service.buttonProps"
                 >

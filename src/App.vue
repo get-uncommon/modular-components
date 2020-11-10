@@ -10,6 +10,16 @@
         {
           text: 'over ons',
           props: {href: '#2'},
+          dropdown: [
+            {
+              text: 'Past achievements and activities',
+              props: {href: '#4'},
+            },
+            {
+              text: 'Recent achievements and activities',
+              props: {href: '#5'},
+            },
+          ],
         },
         {
           text: 'wat doen wij?',
