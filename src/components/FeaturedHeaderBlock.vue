@@ -85,6 +85,7 @@ export default {
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
+        start: 'top 90%',
         once: true,
       },
     });
@@ -117,7 +118,7 @@ export default {
     text-align: center;
 
     @media (min-width: $breakpoint-xl) {
-      margin-bottom: -12px;
+      margin-bottom: -16px;
     }
   }
 
@@ -131,6 +132,8 @@ export default {
       position: absolute;
       top: 50%;
       left: 50%;
+      width: 100%;
+      height: 100%;
       transform: translate(-50%, -50%);
       object-fit: cover;
     }

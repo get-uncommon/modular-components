@@ -76,9 +76,6 @@
 </template>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
 export default {
   name: 'Footer',
 
@@ -95,36 +92,6 @@ export default {
       type: Array,
       default: null,
     },
-  },
-
-  data() {
-    return {
-      scrollScene: null,
-    };
-  },
-
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
-  mounted() {
-    this.scrollScene = gsap.timeline({
-      scrollTrigger: {
-        trigger: this.$refs.component,
-        toggleClass: 'show',
-        once: true,
-      },
-    });
-  },
-
-  beforeDestroy() {
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
   },
 };
 </script>
@@ -226,18 +193,10 @@ export default {
     display: flex;
     justify-content: space-between;
     overflow-y: hidden;
-    opacity: 0;
-    transition: var(--transition-page);
-    transform: translateY(var(--spacing-lg));
 
     @media (max-width: $breakpoint-sm) {
       flex-direction: column;
       justify-content: flex-start;
-    }
-
-    &.show {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 }

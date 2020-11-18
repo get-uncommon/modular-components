@@ -105,14 +105,14 @@ export default {
         trigger: this.$refs.parallaxContainer,
         toggleClass: 'show',
         once: true,
-        start: 'top 80%',
+        start: 'top 90%',
       },
     });
 
     this.scrollScene = gsap.timeline({
       scrollTrigger: {
         trigger: this.$refs.parallaxContainer,
-        start: 'top 80%',
+        start: 'top 90%',
         end: '+=200%',
         scrub: true,
       },
