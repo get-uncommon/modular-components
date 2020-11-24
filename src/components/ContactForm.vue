@@ -19,6 +19,7 @@
           <form
             class="contact__form"
             :class="waiting && 'contact__form--waiting'"
+            novalidate
             @submit.prevent="submit"
           >
             <div
@@ -26,7 +27,9 @@
               class="sr-only contact__honeypot"
             >
               <input
+                :id="honeypotName"
                 type="text"
+                :name="honeypotName"
                 @input="onHoneypotInput"
               >
             </div>
@@ -34,6 +37,8 @@
               ref="nameInput"
               :input-props="{
                 type: 'text',
+                name: 'name',
+                id: 'name'
               }"
               :label="nameText"
               class="u-margin-bottom-md"
@@ -41,7 +46,9 @@
             <Input
               ref="emailInput"
               :input-props="{
-                type: 'text',
+                type: 'email',
+                name: 'email',
+                id: 'email',
                 'v-model': 'email'
               }"
               :label="emailText"
@@ -50,7 +57,9 @@
             <Input
               ref="phoneInput"
               :input-props="{
-                type: 'text',
+                type: 'tel',
+                name: 'phone',
+                id: 'phone',
                 'v-model': 'phone'
               }"
               :label="phoneText"
@@ -61,6 +70,8 @@
               :as="messageType"
               :input-props="{
                 type: 'text',
+                name: 'message',
+                id: 'message',
                 'v-model': 'message',
                 ...messageProps
               }"
