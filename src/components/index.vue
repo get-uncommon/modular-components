@@ -16,6 +16,7 @@
       TextBlock,
       StaticCards,
       PhotoSlider,
+      PhotoCard,
       FeaturedHeaderBlock,
       TextBlocks,
       FeaturedSingle,
@@ -33,6 +34,7 @@
 import Button from './Button.vue';
 import FeaturedHeaderBlock from './FeaturedHeaderBlock.vue';
 import PhotoSlider from './PhotoSlider.vue';
+import PhotoCard from './PhotoCard.vue';
 import TextBlocks from './TextBlocks.vue';
 import NewsLetterForm from './NewsLetterForm.vue';
 import TextBlock from './TextBlock.vue';
@@ -51,6 +53,7 @@ export {
   Button,
   FeaturedHeaderBlock,
   PhotoSlider,
+  PhotoCard,
   TextBlocks,
   StaticCards,
   NewsLetterForm,
