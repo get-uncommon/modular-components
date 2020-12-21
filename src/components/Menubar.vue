@@ -35,7 +35,7 @@
               v-bind="link.props"
               class="menubar__link menubar__link--primary"
               :data-index="index"
-              :class="{active: link.active || menuDropdownsOpen[index]}"
+              :class="{active: link.active}"
             >
               {{ link.text }}
             </component>
@@ -278,7 +278,7 @@ $menuPrimaryDropdownOverlay: 50px;
     align-items: center;
     justify-content: flex-end;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: calc((var(--menu-bar-height) - var(--menu-logo-height)) / 2) var(--spacing-md);
     background-color: var(--menu-bar-color);
 
     @media screen and (max-width: $breakpoint-sm) {
@@ -298,8 +298,8 @@ $menuPrimaryDropdownOverlay: 50px;
     width: 40px;
     height: 40px;
     cursor: pointer;
-    border-top: 2px solid var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
+    border-top: 2px solid var(--menu-bar-link-color);
+    border-bottom: 2px solid var(--menu-bar-link-color);
     transition: var(--transition-base);
     transform: scaleY(.5);
 
@@ -433,7 +433,7 @@ $menuPrimaryDropdownOverlay: 50px;
     }
 
     position: relative;
-    color: var(--color-primary);
+    color: var(--menu-bar-link-color);
     text-decoration: none;
 
     @media (max-width: $breakpoint-sm) {
@@ -499,6 +499,7 @@ $menuPrimaryDropdownOverlay: 50px;
           display: block;
           padding: var(--spacing-sm);
           overflow: hidden;
+          color: var(--menu-bar-link-dropdown-color);
         }
 
         &--wrapper {
