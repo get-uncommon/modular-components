@@ -2,6 +2,7 @@
   <div
     class="menubar"
     :class="{
+      'menubar--top': menubarTop,
       'menubar--show': showMenubar,
       active: menuActive
     }"
@@ -180,6 +181,7 @@ export default {
       menuActive: false,
       menuDropdownsOpen: new Array(this.$props.primaryLinks.length).fill(false),
       showMenubar: true,
+      menubarTop: true,
       lastScrollPosition: 0,
     };
   },
@@ -213,6 +215,8 @@ export default {
     },
     onScroll() {
       const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+      this.menubarTop = currentScrollPosition === 0;
 
       if (currentScrollPosition <= 0) {
         this.lastScrollPosition = currentScrollPosition;
