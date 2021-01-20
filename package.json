@@ -31,7 +31,7 @@
     "@vimeo/player": "^2.12.2",
     "bootstrap": "^4.5.3",
     "email-validator": "^2.0.4",
-    "gsap": "^3.5.1",
+    "gsap": "^3.6.0",
     "normalize.css": "^8.0.1",
     "rfs": "^9.0.3",
     "swiper": "^5.4.5",
