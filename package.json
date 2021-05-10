@@ -34,7 +34,7 @@
     "gsap": "^3.5.1",
     "normalize.css": "^8.0.1",
     "rfs": "^9.0.3",
-    "swiper": "^5.4.5",
+    "swiper": "^6.5.1",
     "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
     "vue-fullscreen": "^2.1.6",
