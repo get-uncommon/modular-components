@@ -28,7 +28,7 @@
     "svg": "vsvg -s ./static/svg/src -t ./src/icons"
   },
   "dependencies": {
-    "@vimeo/player": "^2.12.2",
+    "@vimeo/player": "^2.16.0",
     "bootstrap": "^4.5.3",
     "email-validator": "^2.0.4",
     "gsap": "^3.5.1",
