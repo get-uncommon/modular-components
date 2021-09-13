@@ -17,8 +17,20 @@
           </p>
           <form
             class="news-letter__form"
+            :class="{'news-letter__form--waiting': waiting}"
             @submit.prevent="submit"
           >
+            <div
+              v-if="honeypotName"
+              class="sr-only news-letter__honeypot"
+            >
+              <input
+                :id="honeypotName"
+                type="text"
+                :name="honeypotName"
+                @input="onHoneypotInput"
+              >
+            </div>
             <Input
               ref="nameInput"
               :input-props="{
@@ -110,6 +122,10 @@ export default {
       type: Function,
       default: () => null,
     },
+    honeypotName: {
+      type: String,
+      default: '',
+    },
   },
 
   data() {
@@ -117,6 +133,8 @@ export default {
       errors: [],
       success: null,
       scrollScene: null,
+      waiting: false,
+      honeypotValue: null,
     };
   },
 
@@ -146,7 +164,7 @@ export default {
   },
 
   methods: {
-    submit() {
+    async submit() {
       this.success = null;
       this.errors = [];
       this.$refs.nameInput.setError(false);
@@ -158,7 +176,11 @@ export default {
       const validEmail = emailValidator.validate(email);
       if (name && email && validEmail) {
         this.success = this.successText;
-        this.submitHandler({ name, email });
+
+        this.waiting = true;
+        await this.submitHandler({ name, email });
+        this.waiting = false;
+
         this.$refs.nameInput.setValue('');
         this.$refs.emailInput.setValue('');
       } else if (!(name && email)) {
@@ -170,6 +192,10 @@ export default {
         this.errors.push(this.failText.email);
         this.$refs.emailInput.setError(true);
       }
+    },
+
+    onHoneypotInput($event) {
+      this.honeypotValue = $event.target.value;
     },
   },
 };
@@ -211,6 +237,15 @@ $offset-mob: 72px;
     @media (min-width: $breakpoint-lg) {
       margin-top: -#{$offset};
     }
+  }
+
+  &__honeypot,
+  &__honeypot input {
+    opacity: 0;
+  }
+
+  &__form--waiting {
+    opacity: .5;
   }
 
   &.show {
