@@ -4,11 +4,10 @@
     class="photo-card"
   >
     <div class="photo-card__image">
-      <img
+      <AdvancedImage
         :src="image"
         :alt="imageAlt"
-      >
-    </div>
+      /></div>
     <div
       v-if="title"
       class="photo-card__title"
@@ -29,8 +28,12 @@
 </template>
 
 <script>
+import AdvancedImage from './AdvancedImage.vue';
+
 export default {
   name: 'PhotoCard',
+
+  components: { AdvancedImage },
 
   props: {
     image: {
@@ -65,12 +68,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .photo-card {
   width: 100%;
   padding-bottom: var(--spacing-md);
   color: var(--color-primary);
   text-decoration: none;
+
+  &:hover {
+    color: currentColor;
+    text-decoration: none;
+  }
 
   &__image {
     position: relative;

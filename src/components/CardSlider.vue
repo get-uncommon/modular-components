@@ -112,6 +112,13 @@ export default {
     height: 100%;
     overflow: hidden;
   }
+
+  &:hover {
+    a {
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
 }
 </style>
 
