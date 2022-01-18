@@ -36,7 +36,7 @@
 <script>
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import AdvancedImage from '@/components/AdvancedImage.vue';
+import AdvancedImage from './AdvancedImage.vue';
 
 export default {
   name: 'ContentBlock',
