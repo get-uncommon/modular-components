@@ -31,6 +31,20 @@
           image-class="static-cards__card__image"
           :src="card.image"
           :alt="card.imageAlt"
+          :options="{
+            small: {
+              w: 500,
+              h: 500,
+              q: 80,
+              fit: 'fill'
+            },
+            large: {
+              w: 800,
+              h: 800,
+              q: 90,
+              fit: 'fill'
+            },
+          }"
         />
       </div>
       <div class="static-cards__card__subtitle">

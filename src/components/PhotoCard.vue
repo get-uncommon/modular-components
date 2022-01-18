@@ -7,7 +7,22 @@
       <AdvancedImage
         :src="image"
         :alt="imageAlt"
-      /></div>
+        :options="{
+          small: {
+            w: 370,
+            h: 555,
+            q: 70,
+            fit: 'fill'
+          },
+          large: {
+            w: 740,
+            h: 1110,
+            q: 80,
+            fit: 'fill'
+          },
+        }"
+      />
+    </div>
     <div
       v-if="title"
       class="photo-card__title"

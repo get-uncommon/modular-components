@@ -23,6 +23,20 @@
         image-class="content-block__image"
         :src="img"
         :alt="imgAlt"
+        :options="{
+          small: {
+            w: 470,
+            h: 470,
+            q: 80,
+            fit: 'fill'
+          },
+          large: {
+            w: 600,
+            h: 600,
+            q: 90,
+            fit: 'fill'
+          },
+        }"
       />
     </div>
     <div

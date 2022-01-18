@@ -10,6 +10,20 @@
       <AdvancedImage
         :src="mainImage"
         :alt="mainImageAlt"
+        :options="{
+          small: {
+            w: 450,
+            h: 450,
+            q: 80,
+            fit: 'fill'
+          },
+          large: {
+            w: 800,
+            h: 800,
+            q: 90,
+            fit: 'fill'
+          },
+        }"
       />
     </div>
     <div class="col-md-5 col-12 order-3 order-md-0 u-margin-top-xl featured-single__content">
@@ -36,6 +50,20 @@
       <AdvancedImage
         :src="secondaryImage"
         :alt="secondaryImageAlt"
+        :options="{
+          small: {
+            w: 250,
+            h: 250,
+            q: 80,
+            fit: 'fill'
+          },
+          large: {
+            w: 450,
+            h: 450,
+            q: 90,
+            fit: 'fill'
+          },
+        }"
       />
     </div>
   </div>
