@@ -7,10 +7,10 @@
       ref="nodeHigher"
       class="col-md-6 col-11 offset-1 featured-single__img"
     >
-      <img
+      <AdvancedImage
         :src="mainImage"
         :alt="mainImageAlt"
-      >
+      />
     </div>
     <div class="col-md-5 col-12 order-3 order-md-0 u-margin-top-xl featured-single__content">
       <h2 v-if="title">
@@ -33,10 +33,10 @@
       ref="nodeLower"
       class="col-md-4 col-6  featured-single__img featured-single__img--lower"
     >
-      <img
+      <AdvancedImage
         :src="secondaryImage"
         :alt="secondaryImageAlt"
-      >
+      />
     </div>
   </div>
 </template>
@@ -45,11 +45,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
+import AdvancedImage from './AdvancedImage.vue';
 
 export default {
   name: 'FeaturedSingle',
 
-  components: { Button },
+  components: { Button, AdvancedImage },
 
   props: {
     mainImage: {
@@ -141,7 +142,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../assets/scss/config/breakpoints';
 
 .featured-single {

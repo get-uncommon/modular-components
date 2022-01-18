@@ -19,11 +19,11 @@
       v-if="img"
       class="col-md-10 offset-md-1 content-block__image__wrapper"
     >
-      <img
-        class="content-block__image"
+      <AdvancedImage
+        image-class="content-block__image"
         :src="img"
         :alt="imgAlt"
-      >
+      />
     </div>
     <div
       v-if="body"
@@ -36,9 +36,14 @@
 <script>
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import AdvancedImage from '@/components/AdvancedImage.vue';
 
 export default {
   name: 'ContentBlock',
+
+  components: {
+    AdvancedImage,
+  },
 
   props: {
     title: {
@@ -60,6 +65,10 @@ export default {
     body: {
       type: String,
       default: null,
+    },
+    ctfCompress: {
+      type: Object,
+      default: () => {},
     },
   },
 
@@ -96,7 +105,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .content-block {
     opacity: 0;
     transition: var(--transition-page);

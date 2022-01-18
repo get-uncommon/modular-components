@@ -11,10 +11,10 @@
       class="col-md-10 offset-md-1"
     >
       <div class="header__image">
-        <img
+        <AdvancedImage
           :src="img"
           :alt="imgAlt"
-        >
+        />
       </div>
     </div>
     <div class="header__bottom">
@@ -37,11 +37,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
+import AdvancedImage from './AdvancedImage.vue';
 
 export default {
   name: 'FeaturedHeaderBlock',
 
-  components: { Button },
+  components: { Button, AdvancedImage },
 
   props: {
     title: {
@@ -103,7 +104,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/scss/config/breakpoints';
 
 .header {

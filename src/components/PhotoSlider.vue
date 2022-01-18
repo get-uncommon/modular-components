@@ -13,10 +13,10 @@
           :key="slide.alt"
           class="photo-slider__slide"
         >
-          <img
+          <AdvancedImage
             :src="slide.image"
             :alt="slide.alt"
-          >
+          />
         </swiper-slide>
       </swiper>
     </div>
@@ -31,6 +31,7 @@
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import AdvancedImage from './AdvancedImage.vue';
 
 export default {
   name: 'PhotoSlider',
@@ -38,6 +39,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    AdvancedImage,
   },
 
   props: {
@@ -90,7 +92,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../assets/scss/config/breakpoints';
 
 $slider-width: calc(50vw + 600px);

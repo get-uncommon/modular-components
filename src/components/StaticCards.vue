@@ -27,16 +27,18 @@
       v-bind="card.props"
     >
       <div class="static-cards__card__image__wrapper">
-        <img
-          class="static-cards__card__image"
+        <AdvancedImage
+          image-class="static-cards__card__image"
           :src="card.image"
           :alt="card.imageAlt"
-        >
+        />
       </div>
       <div class="static-cards__card__subtitle">
         {{ card.subTitle }}
       </div>
-      <h3>{{ card.title }}</h3>
+      <h3 class="static-cards__card__title">
+        {{ card.title }}
+      </h3>
     </component>
   </div>
 </template>
@@ -45,11 +47,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
+import AdvancedImage from './AdvancedImage.vue';
 
 export default {
   name: 'StaticCards',
 
-  components: { Button },
+  components: { Button, AdvancedImage },
 
   props: {
     title: {
@@ -97,7 +100,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../assets/scss/config/breakpoints';
 
 .static-cards {
@@ -118,6 +121,12 @@ export default {
         justify-content: center;
         padding-bottom: var(--spacing-md);
       }
+    }
+  }
+
+  &:hover {
+    a {
+      text-decoration: none;
     }
   }
 

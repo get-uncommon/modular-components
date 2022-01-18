@@ -14,12 +14,12 @@
         class="featured-double__item"
         :href="item.href"
       >
-        <img
+        <AdvancedImage
           v-if="item.image"
           :src="item.image"
           :alt="item.imageAlt"
-          class="featured-double__item__image"
-        >
+          image-class="featured-double__item__image"
+        />
         <div class="featured-double__item__content">
           <div class="featured-double__item__title">
             {{ item.title }}
@@ -53,11 +53,12 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
+import AdvancedImage from './AdvancedImage.vue';
 
 export default {
   name: 'FeaturedDouble',
 
-  components: { Button },
+  components: { Button, AdvancedImage },
 
   props: {
     items: {
@@ -99,7 +100,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/scss/config/breakpoints';
 
 .featured-double {
@@ -214,6 +215,12 @@ export default {
 
     .featured-double__item {
       transform: translateY(0);
+    }
+  }
+
+  &:hover {
+    .featured-double__item__content {
+      color: theme-color(light);
     }
   }
 }

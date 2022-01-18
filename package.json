@@ -33,6 +33,7 @@
     "email-validator": "^2.0.4",
     "gsap": "^3.5.1",
     "normalize.css": "^8.0.1",
+    "query-string": "^7.1.0",
     "rfs": "^9.0.3",
     "swiper": "^5.4.5",
     "vue": "^2.6.12",
