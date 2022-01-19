@@ -1,23 +1,23 @@
 <template>
   <div
     ref="component"
-    class="header"
+    class="featured-header"
   >
-    <h1 class="col-md-8 mx-auto header__title">
+    <h1 class="col-md-8 mx-auto featured-header__title">
       {{ title }}
     </h1>
     <div
       v-if="img"
       class="col-md-10 offset-md-1"
     >
-      <div class="header__image">
+      <div class="featured-header__image">
         <AdvancedImage
           :src="img"
           :alt="imgAlt"
         />
       </div>
     </div>
-    <div class="header__bottom">
+    <div class="featured-header__bottom">
       <div
         v-if="body"
         class="col-md-8 mx-auto h4 u-margin-top-lg u-margin-bottom-lg"
@@ -107,7 +107,7 @@ export default {
 <style lang="scss">
 @import '../assets/scss/config/breakpoints';
 
-.header {
+.featured-header {
   opacity: 0;
   transition: var(--transition-page);
   transform: translateY(var(--spacing-lg));
@@ -152,7 +152,7 @@ export default {
     opacity: 1;
     transform: translateY(0);
 
-    .header__bottom {
+    .featured-header__bottom {
       opacity: 1;
       transform: translateY(0);
     }
