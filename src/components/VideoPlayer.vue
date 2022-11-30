@@ -1,61 +1,59 @@
 <template>
-  <Fullscreen ref="fullscreen">
+  <div
+    ref="component"
+    class="video"
+  >
     <div
-      ref="component"
-      class="video"
-    >
-      <div
-        ref="player"
-        class="video__player"
-        :data-vimeo-id="videoId"
-        data-vimeo-controls="false"
-        data-vimeo-allowfullscreen="true"
-      />
-      <div
-        class="video__overlay"
+      ref="player"
+      class="video__player"
+      :data-vimeo-id="videoId"
+      data-vimeo-controls="false"
+      data-vimeo-allowfullscreen="true"
+    />
+    <div
+      class="video__overlay"
+      @click="togglePlay"
+    />
+    <div class="video__controls">
+      <button
+        class="video__controls__icon video__controls__icon--play"
         @click="togglePlay"
-      />
-      <div class="video__controls">
-        <button
-          class="video__controls__icon video__controls__icon--play"
-          @click="togglePlay"
-        >
-          <svg-icon
-            :icon="playing ? 'pause' : 'play'"
-            height="24"
-            width="12"
-          />
-        </button>
+      >
+        <svg-icon
+          :icon="playing ? 'pause' : 'play'"
+          height="24"
+          width="12"
+        />
+      </button>
 
+      <div
+        class="video__controls__progress"
+        @click="updateProgress"
+      >
         <div
-          class="video__controls__progress"
-          @click="updateProgress"
-        >
-          <div
-            class="video__controls__progress__indicator"
-            :style="indicatorStyle"
-          />
-        </div>
-
-        <button
-          class=" video__controls__icon video__controls__icon--fullscreen"
-          @click="toggleFullscreen"
-        >
-          <svg-icon
-            icon="fullscreen"
-            height="24"
-            width="24"
-          />
-        </button>
+          class="video__controls__progress__indicator"
+          :style="indicatorStyle"
+        />
       </div>
+
+      <!-- @TODO fullscreen mode -->
+      <!-- <button
+        class=" video__controls__icon video__controls__icon--fullscreen"
+        @click="toggleFullscreen"
+      >
+        <svg-icon
+          icon="fullscreen"
+          height="24"
+          width="24"
+        />
+      </button> -->
     </div>
-  </Fullscreen>
+  </div>
 </template>
 
 <script>
 import Player from '@vimeo/player';
 import VueSvgIcon from 'vue-svgicon';
-import Fullscreen from 'vue-fullscreen/src/component.vue';
 import '../icons/play';
 import '../icons/fullscreen';
 import '../icons/pause';
@@ -67,7 +65,6 @@ export default {
 
   components: {
     svgIcon: VueSvgIcon,
-    Fullscreen,
   },
 
   props: {
@@ -143,9 +140,9 @@ export default {
         this.player.pause();
       }
     },
-    toggleFullscreen() {
-      this.$refs.fullscreen.toggle();
-    },
+    // toggleFullscreen() {
+    //   this.$refs.fullscreen.toggle();
+    // },
   },
 };
 </script>

@@ -10,6 +10,9 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
+  "engines": {
+    "node": "16.18.0"
+  },
   "files": [
     "src/assets/scss/*",
     "src/assets/images/slider-cursor.svg",
@@ -49,11 +52,11 @@
     "@vue/eslint-config-airbnb": "^5.1.0",
     "babel-eslint": "^10.1.0",
     "css-loader": "^5.0.1",
-    "eslint": "^6.7.2",
+    "eslint": "^7.29.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^10.0.4",
+    "node-sass": "^6.0.0",
+    "sass-loader": "^10.1.1",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
