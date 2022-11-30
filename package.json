@@ -11,7 +11,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "engines": {
-    "node": "16.18.0"
+    "node": "18.12.1"
   },
   "files": [
     "src/assets/scss/*",
@@ -23,12 +23,12 @@
   ],
   "homepage": "https://getuncommon.digital/",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "publish:login": "npm login --registry=https://npm.pkg.github.com && npm publish",
-    "lint": "vue-cli-service lint",
-    "stylelint": "vue-cli-service lint:style --no-fix",
-    "svg": "vsvg -s ./static/svg/src -t ./src/icons"
+    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "publish:login": "export NODE_OPTIONS=--openssl-legacy-provider && npm login --registry=https://npm.pkg.github.com && npm publish",
+    "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
+    "stylelint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint:style --no-fix",
+    "svg": "export NODE_OPTIONS=--openssl-legacy-provider && vsvg -s ./static/svg/src -t ./src/icons"
   },
   "dependencies": {
     "@vimeo/player": "^2.12.2",
