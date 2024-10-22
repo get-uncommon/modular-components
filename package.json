@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "src/components/index.vue",
   "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
@@ -18,7 +18,7 @@
     "package.json",
     "README.md"
   ],
-  "homepage": "https://getuncommon.digital/",
+  "homepage": "https://www.uncommon.nl",
   "scripts": {
     "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
@@ -43,15 +43,8 @@
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
     "@vue/cli-plugin-babel": "^4.5.8",
-    "@vue/cli-plugin-eslint": "^4.5.8",
     "@vue/cli-service": "^4.5.8",
-    "@vue/eslint-config-airbnb": "^5.1.0",
-    "babel-eslint": "^10.1.0",
-    "css-loader": "^5.0.1",
-    "eslint": "^7.29.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "node-sass": "^6.0.0",
+    "sass": "1.32.13",
     "sass-loader": "^10.1.1",
     "stylelint": "^13.7.2",
     "stylelint-config-standard": "^20.0.0",
@@ -60,5 +53,8 @@
     "stylelint-processor-html": "^1.0.0",
     "stylelint-scss": "^3.18.0",
     "vue-template-compiler": "^2.6.12"
+  },
+  "engines": {
+    "node": "^17.0"
   }
 }
