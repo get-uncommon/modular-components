@@ -11,6 +11,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "files": [
+    "dist/*",
     "src/assets/scss/*",
     "src/assets/images/slider-cursor.svg",
     "src/icons/*",
