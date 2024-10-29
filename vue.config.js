@@ -1,4 +1,4 @@
-const { extract } = require("query-string");
+const isProduction = process.env.ENVIRONMENT === 'production';
 
 module.exports = {
   pluginOptions: {
@@ -6,11 +6,11 @@ module.exports = {
   },
   css: {
     extract: true,
-    // loaderOptions: {
-    //   sass: {
-    //     additionalData: '@import "~@/assets/scss/main.scss";',
-    //   },
-    // },
+    loaderOptions: {
+      sass: {
+        additionalData: isProduction ? '' : '@import "~@/assets/scss/main.scss";',
+      },
+    },
   },
   configureWebpack: {
     output: {
