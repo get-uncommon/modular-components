@@ -1,10 +1,8 @@
 {
   "name": "@get-uncommon/modular-components",
   "version": "2.1.0",
-  "main": "src/components/index.vue",
-  "unpkg": "src/components/index.vue",
-  "jsdelivr": "dist/modular-components.umd.min.js",
-  "author": "Uncommon",
+  "main": "dist/modular-components.umd.min.js",
+  "author": "UNCOMMON",
   "license": "MIT",
   "description": "Awesome Uncommon component library",
   "publishConfig": {
@@ -15,17 +13,13 @@
   },
   "files": [
     "dist/*",
-    "src/assets/scss/*",
-    "src/assets/images/slider-cursor.svg",
-    "src/icons/*",
-    "src/components/*",
     "package.json",
     "README.md"
   ],
   "homepage": "https://www.uncommon.nl",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name modular-components src/index.js",
     "publish:login": "npm login --registry=https://npm.pkg.github.com && npm publish",
     "stylelint": "vue-cli-service lint:style --no-fix",
     "svg": "vsvg -s ./static/svg/src -t ./src/icons"
@@ -45,6 +39,7 @@
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
     "sass": "1.32.13",
     "sass-loader": "^10.1.1",

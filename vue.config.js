@@ -5,14 +5,16 @@ module.exports = {
     lintStyleOnBuild: true,
   },
   css: {
-    extract: {
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[name].css',
-    },
-    loaderOptions: {
-      sass: {
-        additionalData: '@import "~@/assets/scss/main.scss";',
-      },
+    extract: true,
+    // loaderOptions: {
+    //   sass: {
+    //     additionalData: '@import "~@/assets/scss/main.scss";',
+    //   },
+    // },
+  },
+  configureWebpack: {
+    output: {
+      libraryExport: 'default',
     },
   },
 };
