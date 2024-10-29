@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "main": "src/components/index.vue",
   "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
@@ -54,8 +54,5 @@
     "stylelint-processor-html": "^1.0.0",
     "stylelint-scss": "^3.18.0",
     "vue-template-compiler": "^2.6.12"
-  },
-  "engines": {
-    "node": "^17.0"
   }
 }
