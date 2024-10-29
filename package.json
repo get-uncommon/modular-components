@@ -5,7 +5,7 @@
   "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
   "author": "Uncommon",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "description": "Awesome Uncommon component library",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
