@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "main": "src/components/index.vue",
   "unpkg": "src/components/index.vue",
   "jsdelivr": "dist/modular-components.umd.min.js",
@@ -9,6 +9,9 @@
   "description": "Awesome Uncommon component library",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
+  },
+  "engines": {
+    "node": "^20.0"
   },
   "files": [
     "dist/*",
@@ -21,12 +24,11 @@
   ],
   "homepage": "https://www.uncommon.nl",
   "scripts": {
-    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
-    "publish:login": "export NODE_OPTIONS=--openssl-legacy-provider && npm login --registry=https://npm.pkg.github.com && npm publish",
-    "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
-    "stylelint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint:style --no-fix",
-    "svg": "export NODE_OPTIONS=--openssl-legacy-provider && vsvg -s ./static/svg/src -t ./src/icons"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "publish:login": "npm login --registry=https://npm.pkg.github.com && npm publish",
+    "stylelint": "vue-cli-service lint:style --no-fix",
+    "svg": "vsvg -s ./static/svg/src -t ./src/icons"
   },
   "dependencies": {
     "@vimeo/player": "^2.18.0",
@@ -43,8 +45,7 @@
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
-    "@vue/cli-plugin-babel": "^4.5.8",
-    "@vue/cli-service": "^4.5.8",
+    "@vue/cli-service": "^5.0.8",
     "sass": "1.32.13",
     "sass-loader": "^10.1.1",
     "stylelint": "^13.7.2",
