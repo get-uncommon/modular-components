@@ -14,7 +14,7 @@ In your `config.js` add the following code to the default export
 ```javascript
 export default {
   css: [
-    '@get-uncommon/modular-components/src/assets/scss/main.scss',
+    '@get-uncommon/modular-components/dist/modular-components.css',
     '~assets/scss/[YOUR_OWN_PROJECT_STYLING]',
   ]
 }
@@ -26,7 +26,7 @@ The package does not require bootstrap to run, however it does use bootstrap cla
 ## Importing components
 You can import components with the following code:
 ```javascript
-import { Button, Footer, PhotoSlider } from '@get-uncommon/modular-components/src/components/index.vue';
+import { Button, Footer, PhotoSlider } from '@get-uncommon/modular-components';
 ```
 These components are currently available for import:
 - Button
