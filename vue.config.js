@@ -1,18 +1,20 @@
-const { extract } = require("query-string");
+const isProduction = process.env.ENVIRONMENT === 'production';
 
 module.exports = {
   pluginOptions: {
     lintStyleOnBuild: true,
   },
   css: {
-    extract: {
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[name].css',
-    },
+    extract: true,
     loaderOptions: {
       sass: {
-        additionalData: '@import "~@/assets/scss/main.scss";',
+        additionalData: isProduction ? '' : '@import "~@/assets/scss/main.scss";',
       },
+    },
+  },
+  configureWebpack: {
+    output: {
+      libraryExport: 'default',
     },
   },
 };
