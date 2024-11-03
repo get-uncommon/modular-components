@@ -11,6 +11,7 @@
     "declaration-no-important": null,
     "declaration-block-no-duplicate-properties": true,
     "max-nesting-depth": 4,
+    "no-descending-specificity": null,
     "number-leading-zero": "never",
     "plugin/declaration-block-no-ignored-properties": true,
     "selector-max-type": 2,

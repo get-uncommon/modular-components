@@ -100,7 +100,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/scss/config/breakpoints';
 
 .featured-double {
@@ -161,18 +161,6 @@ export default {
       }
     }
 
-    &__image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .8;
-      transition: var(--transition-base);
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-
     &__title {
       font-weight: var(--font-weight-bold);
       opacity: .5;
@@ -198,11 +186,6 @@ export default {
           opacity: 1;
         }
 
-        &__image {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
-        }
-
         &__header {
           text-decoration: underline;
         }
@@ -221,6 +204,28 @@ export default {
   &:hover {
     .featured-double__item__content {
       color: theme-color(light);
+    }
+  }
+}
+
+// stylelint-disable-next-line selector-pseudo-element-no-unknown
+::v-deep {
+  .featured-double__item {
+    &__image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .8;
+      transition: var(--transition-base);
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    &:hover .featured-double__item__image {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 }
