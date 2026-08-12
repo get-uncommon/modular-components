@@ -50,10 +50,9 @@
 </template>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
 import AdvancedImage from './AdvancedImage.vue';
+import { createScrollTimeline, killScrollTimeline } from '../utils/animation';
 
 export default {
   name: 'FeaturedDouble',
@@ -73,12 +72,8 @@ export default {
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -88,19 +83,13 @@ export default {
     });
   },
 
-  beforeDestroy() {
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  beforeUnmount() {
+    killScrollTimeline(this.scrollScene);
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/scss/config/breakpoints';
 
 .featured-double {
@@ -161,18 +150,6 @@ export default {
       }
     }
 
-    &__image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: .8;
-      transition: var(--transition-base);
-      transform: translate(-50%, -50%) scale(1.05);
-    }
-
     &__title {
       font-weight: var(--font-weight-bold);
       opacity: .5;
@@ -198,11 +175,6 @@ export default {
           opacity: 1;
         }
 
-        &__image {
-          opacity: 1;
-          transform: translate(-50%, -50%) scale(1);
-        }
-
         &__header {
           text-decoration: underline;
         }
@@ -223,5 +195,22 @@ export default {
       color: theme-color(light);
     }
   }
+}
+
+:deep(.featured-double__item__image) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .8;
+  transition: var(--transition-base);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.featured-double__item:hover :deep(.featured-double__item__image) {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 </style>

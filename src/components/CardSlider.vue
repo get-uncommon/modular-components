@@ -3,11 +3,11 @@
     ref="component"
     class="card-slider"
   >
-    <swiper
-      ref="mySwiper"
-      :options="swiperOptions"
+    <Swiper
+      v-bind="swiperOptions"
+      @swiper="onSwiper"
     >
-      <swiper-slide
+      <SwiperSlide
         v-for="slide in slides"
         :key="slide.alt"
         class="card-slider__slide"
@@ -20,16 +20,19 @@
           :link="slide.linkText"
           :link-props="slide.linkProps"
         />
-      </swiper-slide>
-    </swiper>
+      </SwiperSlide>
+    </Swiper>
   </div>
 </template>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import PhotoCard from './PhotoCard.vue';
+import {
+  createScrollTimeline,
+  killScrollTimeline,
+  markRawInstance,
+} from '../utils/animation';
 
 export default {
   name: 'CardSlider',
@@ -62,15 +65,12 @@ export default {
         },
       },
       scrollScene: null,
+      swiper: null,
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -80,14 +80,15 @@ export default {
     });
   },
 
-  beforeDestroy() {
-    if (this.scrollScene) {
-      this.scrollScene.kill();
+  beforeUnmount() {
+    this.swiper?.destroy(true, true);
+    killScrollTimeline(this.scrollScene);
+  },
 
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  methods: {
+    onSwiper(swiper) {
+      this.swiper = markRawInstance(swiper);
+    },
   },
 };
 </script>

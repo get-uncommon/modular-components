@@ -14,8 +14,7 @@
 </template>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { createScrollTimeline, killScrollTimeline } from '../utils/animation';
 
 export default {
   name: 'TextBlock',
@@ -38,7 +37,7 @@ export default {
   },
 
   mounted() {
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -48,18 +47,8 @@ export default {
     });
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
-  beforeDestroy() {
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  beforeUnmount() {
+    killScrollTimeline(this.scrollScene);
   },
 };
 </script>

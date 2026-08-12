@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+.yarn/*
 
 # Put all the data you need to load the components in the data folder
 data

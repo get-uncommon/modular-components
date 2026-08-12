@@ -1,11 +1,13 @@
+@use 'sass:math';
+
 @function rem($px, $base-val: $default-font-size) {
-  @if not unitless($px) {
+  @if not math.is-unitless($px) {
     $px: strip-units($px);
   }
 
-  @if not unitless($base-val) {
+  @if not math.is-unitless($base-val) {
     $base-val: strip-units($base-val);
   }
 
-  @return ($px / $base-val) * 1rem;
+  @return math.div($px, $base-val) * 1rem;
 }

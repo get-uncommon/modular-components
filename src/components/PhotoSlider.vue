@@ -4,11 +4,12 @@
       ref="component"
       class="photo-slider"
     >
-      <swiper
-        ref="mySwiper"
-        :options="swiperOptions"
+      <Swiper
+        v-bind="swiperOptions"
+        :modules="swiperModules"
+        @swiper="onSwiper"
       >
-        <swiper-slide
+        <SwiperSlide
           v-for="slide in slides"
           :key="slide.alt"
           class="photo-slider__slide"
@@ -17,21 +18,24 @@
             :src="slide.image"
             :alt="slide.alt"
           />
-        </swiper-slide>
-      </swiper>
+        </SwiperSlide>
+      </Swiper>
     </div>
     <div
-      slot="pagination"
       class="photo-slider__pagination u-margin-top-md"
     />
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import AdvancedImage from './AdvancedImage.vue';
+import {
+  createScrollTimeline,
+  killScrollTimeline,
+  markRawInstance,
+} from '../utils/animation';
 
 export default {
   name: 'PhotoSlider',
@@ -52,6 +56,8 @@ export default {
   data() {
     return {
       scrollScene: null,
+      swiper: null,
+      swiperModules: [Pagination],
       swiperOptions: {
         pagination: {
           el: '.photo-slider__pagination',
@@ -61,12 +67,8 @@ export default {
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -76,18 +78,15 @@ export default {
     });
   },
 
-  beforeDestroy() {
-    if (this.$refs.mySwiper && this.$refs.mySwiper.$swiper) {
-      this.$refs.mySwiper.$swiper.destroy();
-    }
+  beforeUnmount() {
+    this.swiper?.destroy(true, true);
+    killScrollTimeline(this.scrollScene);
+  },
 
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  methods: {
+    onSwiper(swiper) {
+      this.swiper = markRawInstance(swiper);
+    },
   },
 };
 </script>

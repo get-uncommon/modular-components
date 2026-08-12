@@ -1,3 +1,11 @@
+## 3.0.0-rc.0
+
+* Migrate the component library to Vue 3 and Vite.
+
+## 2.1.1 (03-11-2024)
+
+* Fix `FeaturedDouble.vue` scoped styling issue.
+
 ## 2.1.0 (29-10-2024)
 
 * Updates (node 20 compatible)

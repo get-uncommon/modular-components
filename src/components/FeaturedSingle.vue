@@ -70,10 +70,9 @@
 </template>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Button from './Button.vue';
 import AdvancedImage from './AdvancedImage.vue';
+import { createScrollTimeline, killScrollTimeline } from '../utils/animation';
 
 export default {
   name: 'FeaturedSingle',
@@ -122,14 +121,10 @@ export default {
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
     const { nodeLower, nodeHigher } = this.$refs;
 
-    this.scrollSceneClass = gsap.timeline({
+    this.scrollSceneClass = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.parallaxContainer,
         toggleClass: 'show',
@@ -138,7 +133,7 @@ export default {
       },
     });
 
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.parallaxContainer,
         start: 'top 90%',
@@ -147,25 +142,21 @@ export default {
       },
     });
 
-    this.scrollScene
-      .to(nodeHigher, {
+    if (this.scrollScene) {
+      this.scrollScene.to(nodeHigher, {
         y: 200,
         force3D: true,
       })
-      .to(nodeLower, {
-        y: -250,
-        force3D: true,
-      }, 0);
+        .to(nodeLower, {
+          y: -250,
+          force3D: true,
+        }, 0);
+    }
   },
 
-  beforeDestroy() {
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  beforeUnmount() {
+    killScrollTimeline(this.scrollScene);
+    killScrollTimeline(this.scrollSceneClass);
   },
 };
 </script>
