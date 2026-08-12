@@ -98,7 +98,7 @@ export default {
   position: relative;
   width: 100%;
   overflow: hidden;
-  cursor: url(../assets/images/slider-cursor.svg) 50 25, auto;
+  cursor: url('../assets/images/slider-cursor.svg') 50 25, auto;
   opacity: 0;
   transition: var(--transition-page);
   transform: translateY(var(--spacing-lg));

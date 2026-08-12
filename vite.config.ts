@@ -1,6 +1,6 @@
 /// <reference types="vite-svg-loader" />
 
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import vue from '@vitejs/plugin-vue';
 import dts from 'unplugin-dts/vite';
 import svgLoader from 'vite-svg-loader';
@@ -18,6 +18,9 @@ const externalDependencies = [
 ];
 
 export default defineConfig({
+  test: {
+    environment: 'jsdom',
+  },
   plugins: [
     vue(),
     svgLoader({
@@ -42,13 +45,13 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler',
         quietDeps: true,
         silenceDeprecations: ['import'],
       },
     },
   },
   build: {
+    copyPublicDir: false,
     cssCodeSplit: false,
     lib: {
       entry: 'src/index.ts',
@@ -61,6 +64,9 @@ export default defineConfig({
     },
     rollupOptions: {
       external: externalDependencies,
+      output: {
+        exports: 'named',
+      },
     },
   },
 });

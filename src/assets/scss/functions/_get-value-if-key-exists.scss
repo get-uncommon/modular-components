@@ -6,6 +6,5 @@
   }
 
   @warn 'Unknown `#{$key}` in $map.';
-
   @return null;
 }

@@ -12,6 +12,10 @@ export default tseslint.config(
   {
     files: ['**/*.vue'],
     languageOptions: {
+      globals: {
+        document: 'readonly',
+        window: 'readonly',
+      },
       parserOptions: {
         parser: tseslint.parser,
       },
@@ -20,6 +24,14 @@ export default tseslint.config(
   {
     rules: {
       'vue/multi-word-component-names': 'off',
+      'vue/no-reserved-component-names': 'off',
+      'vue/no-v-html': 'off',
+    },
+  },
+  {
+    files: ['vite.config.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off',
     },
   },
 );

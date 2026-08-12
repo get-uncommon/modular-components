@@ -3,8 +3,8 @@
 @use 'sass:math';
 @use 'sass:string';
 
-@mixin gradient($startColor: $color-black, $direction: 'to bottom') {
-  $scrimCoordinates: (
+@mixin gradient($start-color: $color-black, $direction: 'to bottom') {
+  $scrim-coordinates: (
     0: 1,
     15.6: .987,
     28.9: .951,
@@ -22,11 +22,10 @@
     95.4: .013,
     100: 0
   );
-
   $stops: ();
 
-  @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop: color.change($startColor, $alpha: $alphaValue) math.percentage(math.div($colorStop, 100));
+  @each $color-stop, $alpha-value in $scrim-coordinates {
+    $stop: color.change($start-color, $alpha: $alpha-value) math.percentage(math.div($color-stop, 100));
     $stops: list.append($stops, $stop, comma);
   }
 

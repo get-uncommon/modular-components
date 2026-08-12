@@ -51,7 +51,6 @@ $font-sizes: map.merge(
   ),
   $font-sizes
 );
-
 $responsive-font-sizes: () !default;
 $responsive-font-sizes: map.merge(
   (

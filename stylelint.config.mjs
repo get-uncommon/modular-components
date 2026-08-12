@@ -14,5 +14,6 @@ export default {
     'no-descending-specificity': null,
     'scss/at-rule-no-unknown': true,
     'selector-class-pattern': null,
+    'value-keyword-case': ['lower', { ignoreKeywords: ['currentColor'] }],
   },
 };

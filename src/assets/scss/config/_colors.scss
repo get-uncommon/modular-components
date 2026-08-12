@@ -25,7 +25,6 @@ $secondary: var(--color-secondary) !default;
 $tertiary: var(--color-tertiary) !default;
 $light: var(--color-light) !default;
 $dark: var(--color-dark) !default;
-
 $theme-colors: () !default;
 $theme-colors: map.merge(
   (
