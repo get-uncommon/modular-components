@@ -1,6 +1,6 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "3.0.0-rc.0",
+  "version": "3.0.0",
   "description": "Reusable Vue components for Uncommon websites",
   "author": "UNCOMMON",
   "license": "MIT",

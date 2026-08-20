@@ -1,6 +1,7 @@
-## 3.0.0-rc.0
+## 3.0.0 (20-08-2026)
 
 * Migrate the component library to Vue 3 and Vite.
+* Restore button icon colors and PhotoSlider layout and pagination styling.
 
 ## 2.1.1 (03-11-2024)
 
