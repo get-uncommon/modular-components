@@ -114,6 +114,11 @@ $slider-width: calc(50vw + 600px);
     transform: translateY(0);
   }
 
+  > .swiper {
+    position: absolute;
+    inset: 0;
+  }
+
   &__slide {
     width: 100%;
     height: 100%;
@@ -132,7 +137,17 @@ $slider-width: calc(50vw + 600px);
   }
 
   &__pagination {
+    --swiper-pagination-color: transparent;
+    --swiper-pagination-bullet-width: 70px;
+    --swiper-pagination-bullet-height: 12px;
+    --swiper-pagination-bullet-border-radius: 0;
+    --swiper-pagination-bullet-inactive-color: transparent;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 0;
+
     display: flex;
+    gap: 16px;
     max-width: $slider-width;
     justify-content: center;
     padding-right: var(--spacing-md);
@@ -173,13 +188,8 @@ $slider-width: calc(50vw + 600px);
       position: relative;
       width: 70px;
       height: 12px;
-      margin-left: 16px;
       overflow: hidden;
       cursor: pointer;
-
-      &:first-child {
-        margin-left: 0;
-      }
 
       &::before {
         position: absolute;

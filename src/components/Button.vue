@@ -134,6 +134,7 @@ export default {
     width: 16px;
     height: 12px;
     margin-left: var(--spacing-sm);
+    fill: currentColor;
     transition: var(--transition-base);
     transform: translateX(0);
   }
