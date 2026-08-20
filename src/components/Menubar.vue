@@ -62,7 +62,7 @@
                 </li>
               </ul>
             </nav>
-            <svgicon
+            <Icon
               v-if="link.dropdown"
               class="menubar__link--primary__icon"
               :class="{open: menuDropdownsOpen[index]}"
@@ -118,7 +118,7 @@
         </ul>
         <ul class="menubar__links">
           <li>
-            <a
+            <component
               :is="link.as ? link.as : 'a'"
               v-for="link in socialLinks"
               :key="link.icon"
@@ -126,12 +126,12 @@
               v-bind="link.props"
               class="menubar__dropdown__social"
             >
-              <svgicon
+              <Icon
                 :icon="link.icon"
                 height="20"
                 width="20"
               />
-            </a>
+            </component>
           </li>
         </ul>
       </nav>
@@ -140,18 +140,12 @@
 </template>
 
 <script>
-import '../icons/facebook';
-import '../icons/instagram';
-import '../icons/linkedin';
-import '../icons/triangle';
-import VueSVGIcon from 'vue-svgicon';
+import Icon from './Icon.vue';
 
 export default {
   name: 'Menubar',
 
-  components: {
-    svgicon: VueSVGIcon,
-  },
+  components: { Icon },
 
   props: {
     logo: {
@@ -179,7 +173,7 @@ export default {
   data() {
     return {
       menuActive: false,
-      menuDropdownsOpen: new Array(this.$props.primaryLinks.length).fill(false),
+      menuDropdownsOpen: new Array(this.primaryLinks?.length || 0).fill(false),
       showMenubar: true,
       menubarTop: true,
       lastScrollPosition: 0,
@@ -191,14 +185,14 @@ export default {
     document.body.addEventListener('click', this.toggleMenu);
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener('scroll', this.onScroll);
     document.body.removeEventListener('click', this.toggleMenu);
   },
 
   methods: {
     toggleMenu(event) {
-      const clickOnDropdownItem = event.target.parentElement.getElementsByTagName('nav').length > 0;
+      const clickOnDropdownItem = event.target.parentElement?.getElementsByTagName('nav').length > 0;
       if (event.target.id === 'hamburger') {
         this.menuActive = !this.menuActive;
       } else if (!clickOnDropdownItem) {
@@ -235,7 +229,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/scss/config/breakpoints';
-$menuPrimaryDropdownOverlay: 50px;
+
+$menu-primary-dropdown-overlay: 50px;
 
 .menubar {
   position: fixed;
@@ -482,7 +477,7 @@ $menuPrimaryDropdownOverlay: 50px;
         top: 100%;
         left: 50%;
         min-width: var(--menu-bar-primary-dropdown-width);
-        padding-top: calc(var(--spacing-lg) + #{$menuPrimaryDropdownOverlay});
+        padding-top: calc(var(--spacing-lg) + #{$menu-primary-dropdown-overlay});
         font-size: var(--menu-bar-primary-dropdown-font-size);
         font-weight: var(--font-weight-bold);
         text-align: center;
@@ -518,7 +513,7 @@ $menuPrimaryDropdownOverlay: 50px;
           pointer-events: all;
           visibility: visible;
           opacity: 1;
-          transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
+          transform: translateY(-$menu-primary-dropdown-overlay) translateX(-50%);
         }
       }
 
@@ -569,7 +564,7 @@ $menuPrimaryDropdownOverlay: 50px;
 
       &:hover + .menubar__link--primary__dropdown {
         transition-delay: 0s;
-        transform: translateY(-$menuPrimaryDropdownOverlay) translateX(-50%);
+        transform: translateY(-$menu-primary-dropdown-overlay) translateX(-50%);
 
         @media (max-width: $breakpoint-sm) {
           transform: none;

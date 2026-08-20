@@ -1,5 +1,10 @@
-@mixin gradient($startColor: $color-black, $direction: 'to bottom') {
-  $scrimCoordinates: (
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:string';
+
+@mixin gradient($start-color: $color-black, $direction: 'to bottom') {
+  $scrim-coordinates: (
     0: 1,
     15.6: .987,
     28.9: .951,
@@ -17,16 +22,12 @@
     95.4: .013,
     100: 0
   );
-
-  $hue: hue($startColor);
-  $saturation: saturation($startColor);
-  $lightness: lightness($startColor);
   $stops: ();
 
-  @each $colorStop, $alphaValue in $scrimCoordinates {
-    $stop: hsla($hue, $saturation, $lightness, $alphaValue) percentage($colorStop / 100);
-    $stops: append($stops, $stop, comma);
+  @each $color-stop, $alpha-value in $scrim-coordinates {
+    $stop: color.change($start-color, $alpha: $alpha-value) math.percentage(math.div($color-stop, 100));
+    $stops: list.append($stops, $stop, comma);
   }
 
-  background: linear-gradient(unquote($direction), $stops);
+  background: linear-gradient(string.unquote($direction), $stops);
 }

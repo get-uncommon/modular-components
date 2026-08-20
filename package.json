@@ -1,51 +1,86 @@
 {
   "name": "@get-uncommon/modular-components",
-  "version": "2.1.0",
-  "main": "dist/modular-components.umd.min.js",
+  "version": "3.0.0",
+  "description": "Reusable Vue components for Uncommon websites",
   "author": "UNCOMMON",
   "license": "MIT",
-  "description": "Awesome Uncommon component library",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "files": [
-    "dist/*",
-    "package.json",
-    "README.md"
-  ],
   "homepage": "https://www.uncommon.nl",
+  "type": "module",
+  "main": "./dist/modular-components.cjs",
+  "module": "./dist/modular-components.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/modular-components.js",
+      "require": "./dist/modular-components.cjs"
+    },
+    "./dist/modular-components.css": "./dist/modular-components.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "restricted"
+  },
+  "packageManager": "yarn@4.14.1",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "ENVIRONMENT=production vue-cli-service build --target lib --name modular-components src/index.js",
-    "publish:login": "npm login --registry=https://npm.pkg.github.com && npm publish",
-    "stylelint": "vue-cli-service lint:style --no-fix",
-    "svg": "vsvg -s ./static/svg/src -t ./src/icons"
+    "build": "vite build",
+    "lint": "eslint .",
+    "stylelint": "stylelint \"src/**/*.{css,scss,vue}\"",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ci": "yarn lint && yarn stylelint && yarn typecheck && yarn test && yarn build"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
   },
   "dependencies": {
-    "@vimeo/player": "^2.18.0",
-    "bootstrap": "^4.5.3",
+    "@vimeo/player": "^2.30.4",
     "email-validator": "^2.0.4",
-    "gsap": "^3.11.3",
+    "gsap": "^3.15.0",
     "normalize.css": "^8.0.1",
-    "query-string": "^7.1.1",
+    "query-string": "^9.5.0",
     "rfs": "^9.0.6",
-    "swiper": "^5.4.5",
-    "vue": "^2.6.12",
-    "vue-awesome-swiper": "^4.1.1",
-    "vue-svgicon": "^3.2.8"
+    "swiper": "14.1.0"
   },
   "devDependencies": {
-    "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-service": "^5.0.8",
-    "sass": "1.32.13",
-    "sass-loader": "^10.1.1",
-    "stylelint": "^13.7.2",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-processor-html": "^1.0.0",
-    "stylelint-scss": "^3.18.0",
-    "vue-template-compiler": "^2.6.12"
+    "@eslint/js": "10.0.1",
+    "@vitejs/plugin-vue": "6.0.8",
+    "@vue/compiler-dom": "3.5.41",
+    "@vue/test-utils": "2.4.11",
+    "eslint": "10.8.1",
+    "eslint-plugin-vue": "10.10.0",
+    "jsdom": "30.0.1",
+    "postcss": "8.5.26",
+    "postcss-html": "2.0.0",
+    "sass-embedded": "1.100.0",
+    "stylelint": "17.14.1",
+    "stylelint-config-html": "2.0.0",
+    "stylelint-config-recommended": "18.0.0",
+    "stylelint-config-recommended-vue": "2.0.0",
+    "stylelint-config-standard-scss": "17.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.67.0",
+    "unplugin-dts": "1.0.3",
+    "vite": "8.1.5",
+    "vite-svg-loader": "5.1.1",
+    "vitest": "4.1.10",
+    "vue": "3.5.41",
+    "vue-eslint-parser": "10.4.1",
+    "vue-tsc": "3.3.9"
   }
 }

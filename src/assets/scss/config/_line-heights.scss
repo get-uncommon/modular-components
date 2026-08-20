@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 /*
  * Document line heights
  * Usage: @include get-line-height(base);
@@ -14,7 +16,7 @@
 }
 
 $line-heights: () !default;
-$line-heights: map-merge(
+$line-heights: map.merge(
   (
     'h1': var(--line-height-h1),
     'h2': var(--line-height-h2),

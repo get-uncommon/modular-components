@@ -1,7 +1,8 @@
-// Styles
 import './assets/scss/main.scss';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-// Components
 import AdvancedImage from './components/AdvancedImage.vue';
 import Button from './components/Button.vue';
 import CardList from './components/CardList.vue';
@@ -22,6 +23,29 @@ import StaticCards from './components/StaticCards.vue';
 import TextBlock from './components/TextBlock.vue';
 import TextBlocks from './components/TextBlocks.vue';
 import VideoPlayer from './components/VideoPlayer.vue';
+
+export {
+  AdvancedImage,
+  Button,
+  CardList,
+  CardSlider,
+  ContactForm,
+  ContentBlock,
+  FeaturedDouble,
+  FeaturedHeaderBlock,
+  FeaturedSingle,
+  Footer,
+  Input,
+  Menubar,
+  Message,
+  NewsLetterForm,
+  PhotoCard,
+  PhotoSlider,
+  StaticCards,
+  TextBlock,
+  TextBlocks,
+  VideoPlayer,
+};
 
 export default {
   AdvancedImage,

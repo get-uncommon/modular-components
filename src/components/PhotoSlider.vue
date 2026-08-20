@@ -4,11 +4,12 @@
       ref="component"
       class="photo-slider"
     >
-      <swiper
-        ref="mySwiper"
-        :options="swiperOptions"
+      <Swiper
+        v-bind="swiperOptions"
+        :modules="swiperModules"
+        @swiper="onSwiper"
       >
-        <swiper-slide
+        <SwiperSlide
           v-for="slide in slides"
           :key="slide.alt"
           class="photo-slider__slide"
@@ -17,21 +18,24 @@
             :src="slide.image"
             :alt="slide.alt"
           />
-        </swiper-slide>
-      </swiper>
+        </SwiperSlide>
+      </Swiper>
     </div>
     <div
-      slot="pagination"
       class="photo-slider__pagination u-margin-top-md"
     />
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import AdvancedImage from './AdvancedImage.vue';
+import {
+  createScrollTimeline,
+  killScrollTimeline,
+  markRawInstance,
+} from '../utils/animation';
 
 export default {
   name: 'PhotoSlider',
@@ -52,6 +56,8 @@ export default {
   data() {
     return {
       scrollScene: null,
+      swiper: null,
+      swiperModules: [Pagination],
       swiperOptions: {
         pagination: {
           el: '.photo-slider__pagination',
@@ -61,12 +67,8 @@ export default {
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -76,18 +78,15 @@ export default {
     });
   },
 
-  beforeDestroy() {
-    if (this.$refs.mySwiper && this.$refs.mySwiper.$swiper) {
-      this.$refs.mySwiper.$swiper.destroy();
-    }
+  beforeUnmount() {
+    this.swiper?.destroy(true, true);
+    killScrollTimeline(this.scrollScene);
+  },
 
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  methods: {
+    onSwiper(swiper) {
+      this.swiper = markRawInstance(swiper);
+    },
   },
 };
 </script>
@@ -115,6 +114,11 @@ $slider-width: calc(50vw + 600px);
     transform: translateY(0);
   }
 
+  > .swiper {
+    position: absolute;
+    inset: 0;
+  }
+
   &__slide {
     width: 100%;
     height: 100%;
@@ -133,7 +137,17 @@ $slider-width: calc(50vw + 600px);
   }
 
   &__pagination {
+    --swiper-pagination-color: transparent;
+    --swiper-pagination-bullet-width: 70px;
+    --swiper-pagination-bullet-height: 12px;
+    --swiper-pagination-bullet-border-radius: 0;
+    --swiper-pagination-bullet-inactive-color: transparent;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 0;
+
     display: flex;
+    gap: 16px;
     max-width: $slider-width;
     justify-content: center;
     padding-right: var(--spacing-md);
@@ -174,13 +188,8 @@ $slider-width: calc(50vw + 600px);
       position: relative;
       width: 70px;
       height: 12px;
-      margin-left: 16px;
       overflow: hidden;
       cursor: pointer;
-
-      &:first-child {
-        margin-left: 0;
-      }
 
       &::before {
         position: absolute;

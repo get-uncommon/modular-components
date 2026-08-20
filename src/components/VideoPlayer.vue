@@ -19,7 +19,7 @@
         class="video__controls__icon video__controls__icon--play"
         @click="togglePlay"
       >
-        <svg-icon
+        <Icon
           :icon="playing ? 'pause' : 'play'"
           height="24"
           width="12"
@@ -41,7 +41,7 @@
         class=" video__controls__icon video__controls__icon--fullscreen"
         @click="toggleFullscreen"
       >
-        <svg-icon
+        <Icon
           icon="fullscreen"
           height="24"
           width="24"
@@ -53,19 +53,17 @@
 
 <script>
 import Player from '@vimeo/player';
-import VueSvgIcon from 'vue-svgicon';
-import '../icons/play';
-import '../icons/fullscreen';
-import '../icons/pause';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import Icon from './Icon.vue';
+import {
+  createScrollTimeline,
+  killScrollTimeline,
+  markRawInstance,
+} from '../utils/animation';
 
 export default {
   name: 'VideoPlayer',
 
-  components: {
-    svgIcon: VueSvgIcon,
-  },
+  components: { Icon },
 
   props: {
     videoId: {
@@ -76,26 +74,22 @@ export default {
 
   data() {
     return {
-      player: {},
+      player: null,
       playing: false,
       indicatorStyle: { width: 0 },
       scrollScene: null,
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
     const videoPlayer = this.$refs.player;
-    this.player = new Player(videoPlayer);
+    this.player = markRawInstance(new Player(videoPlayer));
 
     this.player.on('timeupdate', this.progressHasBeenUpdated);
-    this.player.on('play', () => this.setPlaying(true));
-    this.player.on('pause', () => this.setPlaying(false));
+    this.player.on('play', this.onPlayerPlay);
+    this.player.on('pause', this.onPlayerPause);
 
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -105,21 +99,21 @@ export default {
     });
   },
 
-  beforeDestroy() {
-    if (this.player) {
-      this.player.destroy();
-    }
-
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  beforeUnmount() {
+    this.player?.off('timeupdate', this.progressHasBeenUpdated);
+    this.player?.off('play', this.onPlayerPlay);
+    this.player?.off('pause', this.onPlayerPause);
+    this.player?.destroy();
+    killScrollTimeline(this.scrollScene);
   },
 
   methods: {
+    onPlayerPlay() {
+      this.setPlaying(true);
+    },
+    onPlayerPause() {
+      this.setPlaying(false);
+    },
     setPlaying(value) {
       this.playing = value;
     },

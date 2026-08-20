@@ -11,7 +11,7 @@ $open-sans: 'Open Sans', sans-serif;
 
   // Headings
   --headings-margin-bottom: .5em;
-  --headings-font-family: $font-family-base;
+  --headings-font-family: #{$open-sans};
   --headings-font-weight: bold;
   --headings-line-height: 1;
 
@@ -40,7 +40,7 @@ $open-sans: 'Open Sans', sans-serif;
   --input-color-active: var(--color-primary);
 
   // anchors
-  --anchor-color: $kelp;
+  --anchor-color: #{$kelp};
 
   // actions
   --action-font-weight: bold;
@@ -78,6 +78,7 @@ $font-size-base: rem(18px);
 $line-height-base: 1.8;
 $font-family-monospace: var(--font-family-monospace);
 $font-family-base: var(--font-family-base);
+
 // (optional) Responsive font size options
 $rfs-minimum-font-size: $default-font-size;
 $rfs-base-font-size: $default-font-size;
@@ -112,9 +113,9 @@ $anchor-color: var(--anchor-color);
 
 // Breakpoints
 $grid-breakpoints: (
-  xs: var(--breakpoint-xs),
-  sm: var(--breakpoint-sm),
-  md: var(--breakpoint-md),
-  lg: var(--breakpoint-lg),
-  xl: var(--breakpoint-xl),
+  xs: $breakpoint-xs,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
 );

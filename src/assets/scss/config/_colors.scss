@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 /* Document colors */
 
 $kelp: #3a3f33;
@@ -23,9 +25,8 @@ $secondary: var(--color-secondary) !default;
 $tertiary: var(--color-tertiary) !default;
 $light: var(--color-light) !default;
 $dark: var(--color-dark) !default;
-
 $theme-colors: () !default;
-$theme-colors: map-merge(
+$theme-colors: map.merge(
   (
     'primary': $primary,
     'secondary': $secondary,

@@ -19,9 +19,8 @@
 </template>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PhotoCard from './PhotoCard.vue';
+import { createScrollTimeline, killScrollTimeline } from '../utils/animation';
 
 export default {
   name: 'CardList',
@@ -41,12 +40,8 @@ export default {
     };
   },
 
-  beforeCreate() {
-    gsap.registerPlugin(ScrollTrigger);
-  },
-
   mounted() {
-    this.scrollScene = gsap.timeline({
+    this.scrollScene = createScrollTimeline({
       scrollTrigger: {
         trigger: this.$refs.component,
         toggleClass: 'show',
@@ -56,14 +51,8 @@ export default {
     });
   },
 
-  beforeDestroy() {
-    if (this.scrollScene) {
-      this.scrollScene.kill();
-
-      if (this.scrollScene.scrollTrigger) {
-        this.scrollScene.scrollTrigger.kill();
-      }
-    }
+  beforeUnmount() {
+    killScrollTimeline(this.scrollScene);
   },
 };
 </script>

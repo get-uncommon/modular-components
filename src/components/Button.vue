@@ -3,10 +3,10 @@
     :is="as"
     v-if="as"
     :class="buttonClasses"
-    v-bind="props"
+    v-bind="rootProps"
   >
     <slot />
-    <svgicon
+    <Icon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -15,9 +15,10 @@
   <button
     v-else-if="!href"
     :class="buttonClasses"
+    v-bind="rootProps"
   >
     <slot />
-    <svgicon
+    <Icon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -25,11 +26,11 @@
   </button>
   <a
     v-else
-    :href="href"
     :class="buttonClasses"
+    v-bind="rootProps"
   >
     <slot />
-    <svgicon
+    <Icon
       v-if="icon"
       class="c-button__icon"
       :icon="icon"
@@ -38,15 +39,14 @@
 </template>
 
 <script>
-import '../icons/arrow';
-import VueSVGIcon from 'vue-svgicon';
+import Icon from './Icon.vue';
 
 export default {
   name: 'Button',
 
-  components: {
-    svgicon: VueSVGIcon,
-  },
+  components: { Icon },
+
+  inheritAttrs: false,
 
   props: {
     type: {
@@ -62,7 +62,7 @@ export default {
       default: null,
     },
     as: {
-      type: String,
+      type: [String, Object, Function],
       default: null,
     },
     light: {
@@ -77,7 +77,19 @@ export default {
 
   computed: {
     buttonClasses() {
-      return `c-button c-button--${this.type}  ${this.icon && `c-button--${this.type}--with-icon`} ${this.light && `c-button--${this.type}--light`}`;
+      return [
+        'c-button',
+        `c-button--${this.type}`,
+        this.icon && `c-button--${this.type}--with-icon`,
+        this.light && `c-button--${this.type}--light`,
+      ];
+    },
+    rootProps() {
+      return {
+        ...this.props,
+        ...this.$attrs,
+        ...(this.href ? { href: this.href } : {}),
+      };
     },
   },
 };
@@ -122,6 +134,7 @@ export default {
     width: 16px;
     height: 12px;
     margin-left: var(--spacing-sm);
+    fill: currentColor;
     transition: var(--transition-base);
     transform: translateX(0);
   }
